@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>Como Organizar sua Assistência Técnica sem Planilha | Geração Tech</title>
+  <meta name="description" content="Guia prático para organizar orçamentos, ordens de serviço, estoque e cobranças da sua assistência técnica — com ou sem sistema. Passo a passo real, sem enrolação." />
+  <link rel="canonical" href="https://geracaotechcloud.com.br/blog/como-organizar-assistencia-tecnica-sem-planilha.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080c12;
+      --bg2: #0d1420;
+      --bg3: #111827;
+      --blue: #0ea5e9;
+      --blue2: #38bdf8;
+      --blue3: #0284c7;
+      --accent: #00f5ff;
+      --text: #e2e8f0;
+      --text2: #94a3b8;
+      --border: rgba(14, 165, 233, 0.2);
+      --card: rgba(13, 20, 32, 0.85);
+      --glow: 0 0 30px rgba(14, 165, 233, 0.3);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Exo 2', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    a { color: var(--blue2); text-decoration: none; }
+    a:hover { color: var(--accent); }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; background: rgba(8,12,18,0.9); backdrop-filter: blur(8px);
+      z-index: 10;
+    }
+    .logo { display: flex; align-items: center; gap: 0.6rem; font-weight: 900; font-size: 1.1rem; color: var(--text); }
+    .logo span:first-child { color: var(--blue2); }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a { font-size: 0.9rem; color: var(--text2); }
+    .nav-links a:hover { color: var(--blue2); }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    article {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+    .eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--blue2);
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .lede {
+      font-size: 1.15rem;
+      color: var(--text2);
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 2.75rem 0 1rem;
+      color: var(--text);
+    }
+    p { margin-bottom: 1.1rem; color: var(--text); font-size: 1.02rem; }
+    strong { color: var(--blue2); font-weight: 700; }
+    ol, ul { margin: 0 0 1.5rem 1.4rem; }
+    li { margin-bottom: 0.85rem; }
+    li strong { display: block; color: var(--text); margin-bottom: 0.2rem; }
+
+    .callout {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 10px 10px 0;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      font-size: 0.98rem;
+      color: var(--text2);
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, rgba(14,165,233,0.1), rgba(0,245,255,0.05));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+    .cta-box h3 { font-size: 1.3rem; margin-bottom: 0.6rem; }
+    .cta-box p { color: var(--text2); margin-bottom: 1.5rem; }
+    .cta-buttons { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      color: #041018; font-weight: 700;
+      padding: 0.75rem 1.5rem; border-radius: 8px;
+      box-shadow: var(--glow);
+    }
+    .btn-outline {
+      border: 1px solid var(--border); color: var(--text);
+      padding: 0.75rem 1.5rem; border-radius: 8px;
+    }
+    .btn-outline:hover { border-color: var(--blue2); background: rgba(14,165,233,0.08); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--text2);
+      font-size: 0.85rem;
+      font-family: 'Space Mono', monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo"><span>Geração</span> Tech</a>
+    <ul class="nav-links">
+      <li><a href="/#produtos">Produtos</a></li>
+      <li><a href="/#cloud">Cloud</a></li>
+      <li><a href="/#sistema-gestao">Sistema de Gestão</a></li>
+      <li><a href="/#contato">Fale Conosco</a></li>
+    </ul>
+  </nav>
+
+  <article>
+    <div class="eyebrow">// gestão de assistência técnica</div>
+    <h1>Como organizar sua assistência técnica sem planilha (guia prático)</h1>
+    <p class="lede">Se você já perdeu um orçamento no meio de conversas de WhatsApp, esqueceu de cobrar um cliente ou comprou a mesma peça duas vezes por não saber o que tinha em estoque, esse guia é pra você — com ou sem sistema.</p>
+
+    <p>Toda assistência técnica começa organizada. Um caderno, depois uma planilha, depois várias abas de planilha. Funciona até o dia em que você tem 15 aparelhos no balcão ao mesmo tempo e não lembra qual já foi orçado, qual está esperando peça e qual o cliente já aprovou.</p>
+
+    <p>Isso não é falta de organização sua — é a planilha chegando no limite do que ela consegue fazer sozinha. Abaixo, um passo a passo real de como manter o controle, começando pelo que dá pra fazer hoje, de graça, e terminando em quando realmente vale a pena migrar pra um sistema.</p>
+
+    <h2>Por que a planilha para de funcionar</h2>
+    <p>Não é a planilha que falha — é o processo em volta dela. Três sintomas mais comuns:</p>
+    <ul>
+      <li><strong>O orçamento vive em três lugares diferentes.</strong> Parte no caderno, parte no WhatsApp, parte na cabeça do técnico. Quando o cliente liga perguntando "e aí, ficou pronto?", ninguém tem certeza da resposta.</li>
+      <li><strong>Ninguém sabe o estoque real.</strong> A planilha de peças só está certa no dia em que foi atualizada pela última vez — e isso raramente é hoje.</li>
+      <li><strong>Cobrança fica pra depois.</strong> Sem um lembrete automático, contas a receber viram "lembrar de cobrar o fulano" — e isso é a primeira coisa que se perde quando a loja enche.</li>
+    </ul>
+
+    <h2>5 passos pra organizar sem gastar nada</h2>
+    <p>Antes de pensar em sistema, dá pra resolver boa parte disso só com disciplina de processo. Se sua assistência é pequena ou você está começando agora, comece por aqui:</p>
+    <ol>
+      <li><strong>1. Dê um número pra cada atendimento, sempre.</strong> Nada de "aquele notebook do cliente que veio semana passada". Um número de OS sequencial, escrito no aparelho (etiqueta ou fita crepe) e na planilha, elimina 80% da confusão.</li>
+      <li><strong>2. Registre o diagnóstico antes de orçar.</strong> Anote o problema relatado pelo cliente e o que você encontrou ao abrir o aparelho, separadamente. Evita divergência na hora de explicar o valor do orçamento.</li>
+      <li><strong>3. Separe o estoque por prateleira e anote toda saída, na hora.</strong> Não é preciso sistema pra isso — só o hábito de anotar assim que tira a peça da prateleira, não "depois que terminar o conserto".</li>
+      <li><strong>4. Escolha um dia fixo da semana só pra cobrança.</strong> Toda sexta, por exemplo, revise quem está devendo e mande mensagem. Tirar isso do "lembrar quando der" muda o fluxo de caixa sozinho.</li>
+      <li><strong>5. Confirme agendamento com um dia de antecedência.</strong> Uma mensagem simples de "Oi, lembrando que amanhã às 14h você vem buscar o aparelho" reduz drasticamente clientes que não aparecem.</li>
+    </ol>
+
+    <div class="callout">
+      Esses 5 passos já resolvem a maior parte da desorganização em assistências técnicas pequenas. O problema aparece quando o volume cresce e fazer tudo isso manualmente começa a tomar mais tempo do que o próprio conserto.
+    </div>
+
+    <h2>Quando a planilha não basta mais</h2>
+    <p>Alguns sinais de que chegou a hora de automatizar, não só organizar:</p>
+    <ul>
+      <li>Você tem mais de um técnico e ninguém sabe o que o outro está fazendo.</li>
+      <li>Orçamento aprovado pelo WhatsApp vira "print de conversa" em vez de virar ordem de serviço.</li>
+      <li>Você já perdeu dinheiro por esquecer de cobrar uma parcela.</li>
+      <li>Comprar peça errada ou duplicada virou rotina, não exceção.</li>
+    </ul>
+
+    <h2>Como o Geração Tech resolve isso</h2>
+    <p>O <strong>Geração Tech</strong> foi criado justamente pra cobrir essa lacuna entre "planilha manual" e "sistema caro demais pra uma assistência pequena". Ele automatiza exatamente os pontos citados acima:</p>
+    <ul>
+      <li>Orçamento vira ordem de serviço com um clique, sem reescrever nada.</li>
+      <li>Cliente aprova o orçamento por um link — sem ligação, sem espera.</li>
+      <li>Orçamento, recibo e lembrete de pagamento são enviados automaticamente pelo WhatsApp.</li>
+      <li>Estoque de peças com baixa automática a cada OS.</li>
+      <li>Financeiro organizado sozinho: contas a pagar e a receber, sem planilha paralela.</li>
+    </ul>
+
+    <div class="cta-box">
+      <h3>Veja funcionando antes de decidir</h3>
+      <p>Tem uma demonstração gratuita no ar, com dados de exemplo, pra você testar sem compromisso.</p>
+      <div class="cta-buttons">
+        <a href="https://hotmart.com/pt-br/marketplace/produtos/geracao-tech-gestao-para-assistencia-tecnica/G107599617E" target="_blank" rel="noopener" class="btn-primary">Assinar Agora — R$ 127/mês</a>
+        <a href="https://teste-demo.ginfotecn.com" target="_blank" rel="noopener" class="btn-outline">Ver Demo Gratuita</a>
+      </div>
+    </div>
+  </article>
+
+  <footer>
+    <p>Geração Tech — Soluções em Tecnologia · <a href="/">Voltar para o site</a></p>
+  </footer>
+
+</body>
+</html>
