@@ -565,6 +565,58 @@
       overflow: hidden;
     }
 
+    .sg-faq {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .sg-faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+    }
+
+    .sg-faq-item summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text);
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .sg-faq-item summary::-webkit-details-marker { display: none; }
+
+    .sg-faq-item summary::after {
+      content: '+';
+      color: var(--blue2);
+      font-family: 'Space Mono', monospace;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+
+    .sg-faq-item[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .sg-faq-item[open] summary {
+      color: var(--blue2);
+    }
+
+    .sg-faq-item p {
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: var(--text2);
+    }
+
     .plan-card.featured {
       border-color: rgba(14,165,233,0.5);
       box-shadow: var(--glow);
@@ -1331,16 +1383,54 @@
               <div class="plan-name">Geração Tech · Gestão</div>
               <div class="plan-price">R$ 127<small>/mês</small></div>
               <ul class="plan-features">
+                <li>Usuários e técnicos ilimitados</li>
                 <li>Ordens de serviço e orçamentos ilimitados</li>
-                <li>Orçamento via WhatsApp com aprovação online</li>
+                <li>WhatsApp integrado, sem limite de mensagens</li>
+                <li>Permissões configuráveis por usuário</li>
                 <li>Controle financeiro e de estoque</li>
-                <li>Múltiplos técnicos, um só sistema</li>
+                <li>Instalável como app no celular (Android/iPhone)</li>
+                <li>Backup automático diário incluso</li>
                 <li>Acesso de qualquer lugar, 100% online</li>
               </ul>
               <a href="https://hotmart.com/pt-br/marketplace/produtos/geracao-tech-gestao-para-assistencia-tecnica/G107599617E" target="_blank" rel="noopener" class="btn-primary" style="display:block;text-align:center;margin-top:1.5rem;">Assinar Agora →</a>
               <a href="https://teste-demo.ginfotecn.com" target="_blank" rel="noopener" class="btn-outline" style="display:block;text-align:center;margin-top:0.75rem;">Ver Demo Gratuita</a>
               <p style="font-size:0.75rem;color:var(--text2);text-align:center;margin-top:0.75rem;font-family:'Space Mono',monospace;">login: demo@teste.com · senha: SenhaDemo123!</p>
             </div>
+          </div>
+
+          <div class="sg-faq">
+            <details class="sg-faq-item">
+              <summary>Quantos usuários posso cadastrar?</summary>
+              <p>Sem limite. Cadastre quantos técnicos e atendentes precisar, sem custo por usuário — a assinatura é única, por empresa.</p>
+            </details>
+            <details class="sg-faq-item">
+              <summary>Tem limite de mensagens pelo WhatsApp ou custo extra de API?</summary>
+              <p>Não. O envio automático de orçamento, recibo e lembretes já vem pronto e incluso na assinatura, sem limite de mensagens e sem precisar contratar ou configurar nenhum provedor à parte.</p>
+            </details>
+            <details class="sg-faq-item">
+              <summary>Tem teste grátis?</summary>
+              <p>Você pode testar o sistema agora mesmo, sem cadastro, usando o login de demonstração acima ("Ver Demo Gratuita").</p>
+            </details>
+            <details class="sg-faq-item">
+              <summary>Tem aplicativo para celular?</summary>
+              <p>Sim. O sistema é instalável direto do navegador na tela inicial do celular (Android e iPhone), funcionando como um app — sem precisar baixar de loja.</p>
+            </details>
+            <details class="sg-faq-item">
+              <summary>Dá pra definir permissão por usuário?</summary>
+              <p>Sim. Você controla o que cada técnico ou atendente pode ver e fazer dentro do sistema.</p>
+            </details>
+            <details class="sg-faq-item">
+              <summary>Emite nota fiscal?</summary>
+              <p>Ainda não. O sistema organiza orçamentos, ordens de serviço e financeiro — a emissão de nota fiscal continua sendo feita pelo seu emissor atual.</p>
+            </details>
+            <details class="sg-faq-item">
+              <summary>Tem relatórios avançados?</summary>
+              <p>Sim. Gráficos de faturamento mensal, evolução de ordens de serviço, equipamentos mais atendidos e distribuição por status, direto no painel.</p>
+            </details>
+            <details class="sg-faq-item">
+              <summary>Tem backup e suporte inclusos?</summary>
+              <p>Sim. Backup automático diário do seu banco de dados, guardado em local separado do sistema, e suporte técnico incluso na assinatura — sem custo adicional.</p>
+            </details>
           </div>
         </div>
       </div>
