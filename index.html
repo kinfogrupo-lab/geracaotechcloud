@@ -438,6 +438,33 @@
       background: radial-gradient(circle at 50% 100%, rgba(14,165,233,0.12), transparent 60%);
     }
 
+    .produto-img.foto {
+      height: auto;
+      font-size: 1rem;
+      display: block;
+      background: #070d1a;
+    }
+
+    .produto-img.foto img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .produto-preco {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--blue2);
+      margin: 0 0 1rem;
+    }
+
+    .produto-preco small {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text2);
+    }
+
     .produto-body { padding: 1.25rem; }
 
     .produto-cat {
@@ -1103,6 +1130,21 @@
       </div>
 
       <div class="produtos-grid" id="produtosGrid">
+
+        <div class="produto-card" data-cat="desktop">
+          <a class="produto-img foto" href="ativos/folder-computador-ntc-compact-intel.jpg" target="_blank" rel="noopener" title="Ver o folder completo">
+            <img src="ativos/folder-computador-ntc-compact-intel.jpg" alt="Computador NTC Compact Intel Core i7, 8 GB, SSD NVMe 512 GB, por R$ 2.690,00 no PIX" loading="lazy" width="1024" height="1536">
+          </a>
+          <div class="produto-body">
+            <div class="produto-cat">Desktop · Oferta</div>
+            <div class="produto-nome">Computador NTC Compact Intel</div>
+            <div class="produto-desc">Intel Core i7 6ª geração (i7-6700HQ), 8 GB DDR4, SSD NVMe 512 GB, Intel HD Graphics, Linux, fonte 200 W. Ideal para trabalho, estudos e uso diário.</div>
+            <div class="produto-preco">R$ 2.690,00 <small>no PIX · consulte o valor no cartão · oferta válida enquanto houver estoque</small></div>
+            <div class="produto-footer">
+              <a href="https://wa.me/554198069934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Computador%20NTC%20Compact%20Intel%20(R%24%202.690%2C00%20no%20PIX)." target="_blank" rel="noopener" class="btn-card">Quero este computador</a>
+            </div>
+          </div>
+        </div>
 
         <div class="produto-card" data-cat="notebook">
           <div class="produto-img">💻</div>
