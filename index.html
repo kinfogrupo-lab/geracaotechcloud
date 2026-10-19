@@ -1009,11 +1009,16 @@
   </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Computador NTC Compact Intel Core i7","description":"Intel Core i7 6ª geração (i7-6700HQ), 8 GB DDR4, SSD NVMe 512 GB, Linux, fonte 200 W.","image":"https://geracaotechcloud.com.br/ativos/folder-computador-ntc-compact-intel.jpg","brand":{"@type":"Brand","name":"NTC"},"offers":{"@type":"Offer","url":"https://geracaotechcloud.com.br/#oferta","priceCurrency":"BRL","price":"2690.00","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Geração Tech Soluções em Tecnologia"}}}</script>
 <style>
-    .promo-faixa{display:none;position:relative;z-index:1;background:linear-gradient(90deg,#0b3b66,#0ea5e9);color:#fff;padding:1.4rem 2rem;text-align:center}
-    .promo-faixa .pf-in{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.9rem 1.6rem;align-items:center;justify-content:center}
-    .promo-faixa b{font-size:clamp(1.1rem,2.6vw,1.5rem)}
-    .promo-faixa span{opacity:.95}
-    .promo-faixa a{background:#fff;color:#06324f;font-weight:800;text-decoration:none;padding:.7rem 1.3rem;border-radius:10px}
+    .promo-faixa{display:none;position:fixed;top:82px;left:0;right:0;z-index:99;padding:.55rem 1rem;text-align:center;border-bottom:2px solid var(--accent);animation:promoPisca 1.6s ease-in-out infinite}
+    .promo-faixa .pf-in{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;align-items:center;justify-content:center}
+    .promo-faixa b{font-size:clamp(.95rem,2.2vw,1.2rem);letter-spacing:.3px}
+    .promo-faixa span{font-size:.9rem}
+    .promo-faixa a{font-weight:800;text-decoration:none;padding:.4rem 1rem;border-radius:8px;background:var(--accent);color:#04121f;animation:promoBotao 1.6s ease-in-out infinite}
+    @keyframes promoPisca{0%,100%{background:var(--blue);color:#04121f;box-shadow:0 0 18px rgba(14,165,233,.65)}50%{background:var(--bg);color:var(--accent);box-shadow:0 0 26px rgba(0,245,255,.8)}}
+    @keyframes promoBotao{0%,100%{background:var(--bg);color:var(--accent)}50%{background:var(--accent);color:#04121f}}
+    html.promo-on #hero{padding-top:176px}
+    @media(max-width:768px){.promo-faixa span{display:none}html.promo-on #hero{padding-top:190px}}
+    @media (prefers-reduced-motion: reduce){.promo-faixa,.promo-faixa a{animation:none}.promo-faixa{background:var(--blue);color:#04121f}.promo-faixa a{background:var(--bg);color:var(--accent)}}
     .promo-card{display:none;margin:.9rem 0 0;padding:.8rem 1rem;border:1px dashed var(--blue2);border-radius:10px;font-size:.9rem;line-height:1.5;text-align:left}
     .promo-card a{display:block;text-align:center;margin-top:.7rem;font-weight:800;color:var(--blue2)}
   </style>
@@ -1856,7 +1861,7 @@
   </script>
 
 <script>
-(function(){try{var fim=new Date('2026-11-01T00:00:00-03:00');if(Date.now()<fim.getTime()){['promoFaixa','promoCard'].forEach(function(i){var e=document.getElementById(i);if(e)e.style.display=(i==='promoFaixa'?'block':'block');});}}catch(e){}})();
+(function(){try{var fim=new Date('2026-11-01T00:00:00-03:00');if(Date.now()<fim.getTime()){document.documentElement.classList.add('promo-on');['promoFaixa','promoCard'].forEach(function(i){var e=document.getElementById(i);if(e)e.style.display=(i==='promoFaixa'?'block':'block');});}}catch(e){}})();
 </script>
 </body>
 </html>
