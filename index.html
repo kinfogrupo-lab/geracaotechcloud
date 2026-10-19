@@ -990,6 +990,24 @@
       section { padding: 4rem 1.5rem; }
     }
   </style>
+<style>
+    .oferta-destaque{position:relative;z-index:1;background:linear-gradient(135deg,rgba(14,165,233,.16),rgba(0,245,255,.06));border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem 2rem}
+    .oferta-inner{max-width:1100px;margin:0 auto;display:flex;gap:2.5rem;align-items:center}
+    .oferta-img{flex:0 0 300px;display:block;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 28px rgba(14,165,233,.25)}
+    .oferta-img img{display:block;width:100%;height:auto}
+    .oferta-txt{flex:1;text-align:left}
+    .oferta-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--blue2);margin-bottom:.6rem}
+    .oferta-txt h2{font-size:clamp(1.5rem,3.4vw,2.3rem);font-weight:900;line-height:1.15;margin-bottom:.6rem}
+    .oferta-txt p{color:var(--text2);line-height:1.6;max-width:560px;margin-bottom:1rem}
+    .oferta-preco{font-size:clamp(2rem,5vw,3rem);font-weight:900;color:var(--blue2);line-height:1}
+    .oferta-preco small{display:block;font-size:.8rem;font-weight:500;color:var(--text2);margin-top:.4rem}
+    .oferta-btns{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
+    .oferta-btns a{padding:.85rem 1.4rem;border-radius:10px;font-weight:700;text-decoration:none}
+    .oferta-btns .of-wa{background:#25d366;color:#04210f}
+    .oferta-btns .of-folder{border:1px solid var(--blue);color:var(--blue2)}
+    @media(max-width:768px){.oferta-inner{flex-direction:column;align-items:stretch}.oferta-img{flex-basis:auto;max-width:340px;margin:0 auto}.oferta-destaque{padding:2rem 1.25rem}}
+  </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Computador NTC Compact Intel Core i7","description":"Intel Core i7 6ª geração (i7-6700HQ), 8 GB DDR4, SSD NVMe 512 GB, Linux, fonte 200 W.","image":"https://geracaotechcloud.com.br/ativos/folder-computador-ntc-compact-intel.jpg","brand":{"@type":"Brand","name":"NTC"},"offers":{"@type":"Offer","url":"https://geracaotechcloud.com.br/#oferta","priceCurrency":"BRL","price":"2690.00","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Geração Tech Soluções em Tecnologia"}}}</script>
 </head>
 <body>
 
@@ -1097,6 +1115,25 @@
       </div>
     </div>
   </div>
+
+  <!-- OFERTA EM DESTAQUE -->
+  <section id="oferta" class="oferta-destaque">
+    <div class="oferta-inner">
+      <a class="oferta-img" href="ativos/folder-computador-ntc-compact-intel.jpg" target="_blank" rel="noopener" title="Ver o folder completo">
+        <img src="ativos/folder-computador-ntc-compact-intel.jpg" alt="Folder da oferta: Computador NTC Compact Intel Core i7, 8 GB, SSD NVMe 512 GB, por R$ 2.690,00 no PIX" width="1024" height="1536">
+      </a>
+      <div class="oferta-txt">
+        <span class="oferta-tag">Oferta · Curitiba e região</span>
+        <h2>Computador NTC Compact Intel Core i7</h2>
+        <p>Intel Core i7 6ª geração (i7-6700HQ), 8 GB DDR4, SSD NVMe 512 GB, Linux, fonte 200 W. Ideal para trabalho, estudos e uso diário.</p>
+        <div class="oferta-preco">R$ 2.690,00<small>no PIX · consulte o valor no cartão · oferta válida enquanto houver estoque</small></div>
+        <div class="oferta-btns">
+          <a class="of-wa" href="https://wa.me/554198069934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Computador%20NTC%20Compact%20Intel%20(R%24%202.690%2C00%20no%20PIX)." target="_blank" rel="noopener">Quero este computador</a>
+          <a class="of-folder" href="ativos/folder-computador-ntc-compact-intel.jpg" target="_blank" rel="noopener">Ver o folder completo</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- PRODUTOS -->
   <section id="produtos">
