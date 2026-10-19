@@ -1008,6 +1008,15 @@
     @media(max-width:768px){.oferta-inner{flex-direction:column;align-items:stretch}.oferta-img{flex-basis:auto;max-width:340px;margin:0 auto}.oferta-destaque{padding:2rem 1.25rem}}
   </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Computador NTC Compact Intel Core i7","description":"Intel Core i7 6ª geração (i7-6700HQ), 8 GB DDR4, SSD NVMe 512 GB, Linux, fonte 200 W.","image":"https://geracaotechcloud.com.br/ativos/folder-computador-ntc-compact-intel.jpg","brand":{"@type":"Brand","name":"NTC"},"offers":{"@type":"Offer","url":"https://geracaotechcloud.com.br/#oferta","priceCurrency":"BRL","price":"2690.00","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Geração Tech Soluções em Tecnologia"}}}</script>
+<style>
+    .promo-faixa{display:none;position:relative;z-index:1;background:linear-gradient(90deg,#0b3b66,#0ea5e9);color:#fff;padding:1.4rem 2rem;text-align:center}
+    .promo-faixa .pf-in{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.9rem 1.6rem;align-items:center;justify-content:center}
+    .promo-faixa b{font-size:clamp(1.1rem,2.6vw,1.5rem)}
+    .promo-faixa span{opacity:.95}
+    .promo-faixa a{background:#fff;color:#06324f;font-weight:800;text-decoration:none;padding:.7rem 1.3rem;border-radius:10px}
+    .promo-card{display:none;margin:.9rem 0 0;padding:.8rem 1rem;border:1px dashed var(--blue2);border-radius:10px;font-size:.9rem;line-height:1.5;text-align:left}
+    .promo-card a{display:block;text-align:center;margin-top:.7rem;font-weight:800;color:var(--blue2)}
+  </style>
 </head>
 <body>
 
@@ -1113,6 +1122,15 @@
         <div class="stat-num">24/7</div>
         <div class="stat-label">Suporte técnico</div>
       </div>
+    </div>
+  </div>
+
+  <!-- PROMOÇÃO (some sozinha em 01/11/2026) -->
+  <div class="promo-faixa" id="promoFaixa">
+    <div class="pf-in">
+      <b>Promoção até 31/10: sistema por R$ 127/mês, sem pagar o ano todo</b>
+      <span>Assine este mês e garanta R$ 127/mês por 12 meses no plano mensal.</span>
+      <a href="https://www.asaas.com/000/c/7sc4h5dwxwcww0yw" target="_blank" rel="noopener">Garantir R$ 127/mês</a>
     </div>
   </div>
 
@@ -1478,6 +1496,8 @@
               <div class="plan-name">Geração Tech · Gestão</div>
               <div class="plan-price">R$ 127<small>/mês no plano anual</small></div>
               <p style="margin:-0.4rem 0 1rem;font-size:0.85rem;opacity:.85;">No pagamento anual (PIX ou cartão) · ou R$ 149,90/mês no plano mensal</p>
+              <div class="promo-card" id="promoCard"><b>Promoção até 31/10:</b> assine no plano mensal e garanta <b>R$ 127/mês por 12 meses</b>, sem pagar o ano todo de uma vez.<a href="https://www.asaas.com/000/c/7sc4h5dwxwcww0yw" target="_blank" rel="noopener">Assinar com R$ 127/mês →</a></div>
+
               <ul class="plan-features">
                 <li>Usuários e técnicos ilimitados</li>
                 <li>Ordens de serviço e orçamentos ilimitados</li>
@@ -1835,5 +1855,8 @@
     });
   </script>
 
+<script>
+(function(){try{var fim=new Date('2026-11-01T00:00:00-03:00');if(Date.now()<fim.getTime()){['promoFaixa','promoCard'].forEach(function(i){var e=document.getElementById(i);if(e)e.style.display=(i==='promoFaixa'?'block':'block');});}}catch(e){}})();
+</script>
 </body>
 </html>
