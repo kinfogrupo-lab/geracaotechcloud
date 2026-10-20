@@ -41,6 +41,9 @@ fbq('init','1566241344728350');fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1566241344728350&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18090804606"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18090804606');</script>
 </head>
 <body>
 <header><img src="https://ginfotecn.com/logo.1779470608.png" alt="Geração Tech"><a href="/">Geração Tech Soluções Digitais</a></header>
@@ -105,7 +108,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
     fetch(API+'/cadastro',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
       .then(function(r){return r.json().then(function(j){return {s:r.status,j:j};});})
       .then(function(x){
-        if(x.j&&x.j.ok){ try{ if(window.fbq) fbq('track','Lead'); }catch(e){} f.style.display='none'; m.hidden=false; show('Recebemos o seu cadastro! Estamos criando o seu acesso (leva 1 a 2 minutos). Não feche esta página.','ok'); if(x.j.id&&x.j.id!=='ok') poll(x.j.id,d.email,0); return; }
+        if(x.j&&x.j.ok){ try{ if(window.fbq) fbq('track','Lead'); }catch(e){} try{ if(window.gtag) gtag('event','conversion',{'send_to':'AW-18090804606/kDOtCLPT96MdEP6Kr7JD'}); }catch(e){} f.style.display='none'; m.hidden=false; show('Recebemos o seu cadastro! Estamos criando o seu acesso (leva 1 a 2 minutos). Não feche esta página.','ok'); if(x.j.id&&x.j.id!=='ok') poll(x.j.id,d.email,0); return; }
         b.disabled=false; b.textContent='Quero meu teste grátis'; show((x.j&&x.j.error)||'Não foi possível concluir agora. Tente novamente.','err');
       }).catch(function(){ b.disabled=false; b.textContent='Quero meu teste grátis'; show('Sem conexão com o servidor. Tente novamente em instantes.','err'); });
   });
