@@ -1003,6 +1003,12 @@
     .hero-btns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;max-width:520px}
     .hero-btns a{display:flex;align-items:center;justify-content:center;text-align:center;min-height:56px;padding:12px 20px;box-sizing:border-box;white-space:nowrap}
     @media (max-width:420px){.hero-btns a{white-space:normal;padding:12px 10px;font-size:.85rem}}
+
+    /* menu do topo: sistemas em destaque */
+    .nav-links a.sys{color:var(--text);font-weight:700}
+    .nav-links a.sys:hover{color:var(--blue2)}
+    .nav-sep{width:1px;height:18px;background:var(--border);align-self:center}
+    @media (max-width: 1024px){ .nav-sep{display:none} }
   </style>
 <style>
     .oferta-destaque{position:relative;z-index:1;background:linear-gradient(135deg,rgba(14,165,233,.16),rgba(0,245,255,.06));border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem 2rem}
@@ -1049,12 +1055,11 @@
       </div>
     </a>
     <ul class="nav-links" id="navLinks">
+      <li><a href="/assistencia.html" class="sys">Assistência Técnica</a></li>
+      <li><a href="/barbearia-salao.html" class="sys">Barbearia e Salão</a></li>
+      <li><a href="#cloud" class="sys">Cloud</a></li>
+      <li class="nav-sep" aria-hidden="true"></li>
       <li><a href="#produtos">Produtos</a></li>
-      <li><a href="#servicos">Serviços</a></li>
-      <li><a href="#cloud">Cloud</a></li>
-      <li><a href="#sistema-gestao">Sistema de Gestão</a></li>
-      <li><a href="/barbearia-salao.html">Barbearia e Salão</a></li>
-      <li><a href="/blog/como-organizar-assistencia-tecnica-sem-planilha.html">Blog</a></li>
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#contato" class="nav-cta">Fale Conosco</a></li>
     </ul>
@@ -1769,7 +1774,8 @@
             <li><a href="#servicos">Serviços</a></li>
             <li><a href="#cloud">Cloud</a></li>
             <li><a href="#sistema-gestao">Sistema de Gestão</a></li>
-      <li><a href="/barbearia-salao.html">Barbearia e Salão</a></li>
+      <li><a href="/assistencia.html">Assistência Técnica</a></li>
+            <li><a href="/barbearia-salao.html">Barbearia e Salão</a></li>
       <li><a href="/teste.html">Teste grátis</a></li>
             <li><a href="/blog/como-organizar-assistencia-tecnica-sem-planilha.html">Blog</a></li>
             <li><a href="#sobre">Sobre nós</a></li>
