@@ -989,6 +989,20 @@
       .diferenciais { grid-template-columns: 1fr; }
       section { padding: 4rem 1.5rem; }
     }
+
+    /* menu do topo: sem quebra de linha e hambúrguer em telas médias */
+    .nav-links a{white-space:nowrap}
+    .nav-cta{white-space:nowrap;display:inline-block;line-height:1.2}
+    @media (max-width: 1180px){ .nav-links{gap:1.1rem} .nav-links a{font-size:.74rem;letter-spacing:.5px} }
+    @media (max-width: 1024px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: var(--bg2); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; gap: 1.25rem; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+    }
+    /* botões do início: 4 botões do mesmo tamanho, em grade 2x2 */
+    .hero-btns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;max-width:520px}
+    .hero-btns a{display:flex;align-items:center;justify-content:center;text-align:center;min-height:56px;padding:12px 20px;box-sizing:border-box;white-space:nowrap}
+    @media (max-width:420px){.hero-btns a{white-space:normal;padding:12px 10px;font-size:.85rem}}
   </style>
 <style>
     .oferta-destaque{position:relative;z-index:1;background:linear-gradient(135deg,rgba(14,165,233,.16),rgba(0,245,255,.06));border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem 2rem}
@@ -1040,7 +1054,6 @@
       <li><a href="#cloud">Cloud</a></li>
       <li><a href="#sistema-gestao">Sistema de Gestão</a></li>
       <li><a href="/barbearia-salao.html">Barbearia e Salão</a></li>
-      <li><a href="/teste.html">Teste grátis</a></li>
       <li><a href="/blog/como-organizar-assistencia-tecnica-sem-planilha.html">Blog</a></li>
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#contato" class="nav-cta">Fale Conosco</a></li>
