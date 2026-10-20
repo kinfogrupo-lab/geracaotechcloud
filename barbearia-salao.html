@@ -1,0 +1,95 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sistema para Barbearia e Salão | Geração Tech</title><meta name="description" content="Agenda, agendamento online, caixa e comissão para barbearia e salão. Teste grátis 5 dias.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Sora:wght@600;700;800&display=swap">
+<style>
+:root{--bg:#070d16;--bg2:#0d1726;--card:#101c2e;--line:#1e3048;--tx:#e8f0fa;--mut:#8fa4bd;--ac:#0ea5e9;--ac2:#38bdf8;--ok:#22c55e;--warn:#f59e0b}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font:16px/1.55 Manrope,system-ui,sans-serif}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.w{max-width:1120px;margin:0 auto;padding:0 16px}
+h1,h2,h3{font-family:Sora,Manrope,sans-serif;text-wrap:balance;line-height:1.15}
+.top{position:sticky;top:0;z-index:10;background:#070d16ee;backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .w{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.top img{height:32px}.top nav{display:flex;gap:18px;font-size:14px;color:var(--mut)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:10px;font-weight:800;font-size:15px;border:1px solid transparent;cursor:pointer;font-family:inherit}
+.btn.p{background:var(--ac);color:#04121e}.btn.p:hover{background:var(--ac2)}
+.btn.o{border-color:var(--line);color:var(--tx)}.btn.o:hover{border-color:var(--ac)}
+.btn.s{padding:9px 16px;font-size:14px}
+.hero{padding:48px 0 24px;background:radial-gradient(900px 400px at 80% -10%,#0ea5e92e,transparent)}
+.hero .g{display:grid;gap:28px;grid-template-columns:minmax(0,1fr);align-items:center}
+.tag{display:inline-block;background:#0ea5e91f;color:var(--ac2);font-weight:800;font-size:13px;padding:5px 12px;border-radius:99px;margin-bottom:14px}
+.hero h1{font-size:clamp(28px,5vw,46px);margin-bottom:14px}
+.hero p.lead{color:var(--mut);font-size:18px;max-width:52ch;margin-bottom:22px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero small{display:block;margin-top:12px;color:var(--mut)}
+.hero img.h{border-radius:16px;border:1px solid var(--line)}
+@media(min-width:900px){.hero .g{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}}
+section{padding:56px 0}section.alt{background:var(--bg2)}
+.sec h2{font-size:clamp(24px,4vw,34px);text-align:center;margin-bottom:8px}
+.sec .sub{text-align:center;color:var(--mut);max-width:60ch;margin:0 auto 32px}
+.feat{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.feat div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.feat b{display:block;font-family:Sora;margin-bottom:6px}.feat span{color:var(--mut);font-size:15px}
+.shots{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.shots figure{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.shots figcaption{padding:12px 16px;font-size:14px;color:var(--mut)}
+.shots figure img{width:100%}
+.tabs{display:flex;justify-content:center;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:5px;width:max-content;max-width:100%;margin:0 auto 28px}
+.tabs button{background:none;border:0;color:var(--mut);font:800 15px Manrope;padding:10px 22px;border-radius:8px;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--ac);color:#04121e}
+.tabs em{font-style:normal;font-size:11px;background:var(--ok);color:#052e16;border-radius:99px;padding:2px 7px;margin-left:6px}
+.plans{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));max-width:760px;margin:0 auto}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:14px;position:relative}
+.plan.hot{border-color:var(--ac);box-shadow:0 0 0 1px var(--ac),0 20px 50px #0ea5e91f}
+.plan .ban{position:absolute;top:-13px;left:22px;background:var(--warn);color:#2b1700;font-weight:800;font-size:12px;padding:4px 12px;border-radius:99px}
+.plan h3{font-size:20px}.plan .pr{font-family:Sora;font-size:42px;font-weight:800}
+.plan .pr small{font-size:15px;color:var(--mut);font-family:Manrope;font-weight:600}
+.plan .old{color:var(--mut);text-decoration:line-through;font-size:14px;min-height:20px}
+.plan .tot{font-size:14px;color:var(--mut);border-top:1px solid var(--line);padding-top:12px}.plan .tot b{color:var(--tx)}
+.plan ul{list-style:none;padding:0;display:grid;gap:8px;font-size:15px}
+.plan li:before{content:"✓";color:var(--ok);font-weight:800;margin-right:8px}
+.plan .more{font-size:14px;color:var(--ac2);font-weight:800;text-align:left;background:none;border:0;cursor:pointer;padding:0;font-family:inherit}
+.plan .extra{display:none}.plan .extra.on{display:grid}
+.plan .btn{width:100%}
+.plan .btn.p{animation:pisca 1.4s ease-in-out infinite}
+@keyframes pisca{0%,100%{box-shadow:0 0 0 0 #0ea5e9aa;transform:scale(1)}50%{box-shadow:0 0 0 12px #0ea5e900,0 0 22px #38bdf8;transform:scale(1.03);background:var(--ac2)}}
+@media(prefers-reduced-motion:reduce){.plan .btn.p{animation:none}}.plan.custom{background:transparent;border-style:dashed}
+.note{text-align:center;color:var(--mut);font-size:14px;margin-top:22px}
+.faq{max-width:760px;margin:0 auto;display:grid;gap:10px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+summary{cursor:pointer;font-weight:800;list-style:none}summary::-webkit-details-marker{display:none}
+summary:after{content:"+";float:right;color:var(--ac2)}details[open] summary:after{content:"–"}
+details p{color:var(--mut);margin-top:10px}
+.fin{text-align:center}.fin h2{margin-bottom:12px}.fin p{color:var(--mut);margin-bottom:22px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut);font-size:14px;text-align:center}
+footer img{height:30px;margin:0 auto 10px}
+.wa{position:fixed;right:16px;bottom:16px;background:#25d366;color:#04210f;font-weight:800;padding:12px 18px;border-radius:99px;box-shadow:0 8px 24px #0006;z-index:20}
+:focus-visible{outline:2px solid var(--ac2);outline-offset:2px}
+@media(max-width:640px){.top nav{display:none}}
+</style></head><body>
+<header class="top"><div class="w"><a href="https://geracaotechcloud.com.br/"><img src="https://ginfotecn.com/logo.1779470608.png" alt="Geração Tech"></a>
+<nav><a href="#recursos">Recursos</a><a href="#telas">Telas</a><a href="#planos">Planos</a><a href="#duvidas">Dúvidas</a></nav>
+<a class="btn p s" href="https://geracaotechcloud.com.br/teste.html">Testar grátis 5 dias</a></div></header>
+<main>
+<div class="hero"><div class="w g"><div>
+<span class="tag">Barbearia e Salão de Beleza</span><h1>Agenda cheia, caixa em dia e comissão sem planilha</h1><p class="lead">Seus clientes marcam horário sozinhos pelo celular, cada profissional vê a própria agenda e o caixa do dia fecha no fim do expediente.</p>
+<div class="cta"><a class="btn p" href="https://geracaotechcloud.com.br/teste.html">Começar teste grátis de 5 dias</a><a class="btn o" href="#planos">Ver planos e preços</a></div>
+<small>Sem cartão para testar. Ambiente pronto em cerca de 1 minuto.</small></div>
+<img class="h" src="ativos/beleza/hero-beleza.jpg" alt="Telas do sistema" width="1800" height="1000"></div></div>
+<section id="recursos" class="sec"><div class="w"><h2>Tudo para o dia a dia do balcão</h2><p class="sub">Um sistema só para agenda, atendimento, caixa e comissão.</p><div class="feat"><div><b>Agenda por profissional</b><span>Horários livres calculados pela duração de cada serviço, sem encavalar.</span></div><div><b>Agendamento online</b><span>Link próprio para o cliente escolher serviço, profissional e horário.</span></div><div><b>Caixa do dia</b><span>Entradas por Pix, dinheiro, débito e crédito, pagamento dividido e fechamento.</span></div><div><b>Comissões</b><span>Percentual por profissional ou por serviço, com relatório do período.</span></div><div><b>WhatsApp</b><span>Confirmação e lembretes automáticos para reduzir faltas.</span></div><div><b>Barbearia ou salão</b><span>Mesmos recursos, com nomes e serviços adequados ao seu negócio.</span></div></div></div></section>
+<section id="telas" class="sec alt"><div class="w"><h2>Veja o sistema por dentro</h2><p class="sub">Telas reais do ambiente de demonstração.</p><div class="shots"><figure><img loading="lazy" src="ativos/beleza/tela-painel.jpg" alt="Painel do dia: atendimentos, recebido e comissão"><figcaption>Painel do dia: atendimentos, recebido e comissão</figcaption></figure><figure><img loading="lazy" src="ativos/beleza/tela-caixa.jpg" alt="Caixa do dia por forma de pagamento"><figcaption>Caixa do dia por forma de pagamento</figcaption></figure><figure><img loading="lazy" src="ativos/beleza/tela-comissoes.jpg" alt="Comissões por profissional"><figcaption>Comissões por profissional</figcaption></figure><figure><img loading="lazy" src="ativos/beleza/tela-agendar-celular.jpg" alt="Agendamento online no celular do cliente"><figcaption>Agendamento online no celular do cliente</figcaption></figure></div></div></section>
+<section id="planos" class="sec"><div class="w"><h2>Escolha seu plano</h2><p class="sub">Um plano completo, com profissionais ilimitados. Precisa de algo diferente? Montamos um plano sob medida. Teste grátis por 5 dias.</p>
+<div class="plans" id="plans"><div class="plan hot" data-for="mensal"><span class="ban">Profissionais ilimitados</span><h3>Plano Mensal</h3><div class="old"></div><div class="pr">R$ 99,90<small> /mês</small></div><div class="tot">Valor total: <b>R$ 99,90</b> por mês, sem fidelidade</div><ul><li>Profissionais ilimitados</li><li>Agenda por profissional</li><li>Agendamento online pelo celular</li><li>Caixa do dia e comissões</li><li>Lembretes por WhatsApp</li></ul><ul class="extra"><li>Cadastro de clientes e histórico</li><li>Catálogo de serviços com preço e duração</li><li>Pix, dinheiro, débito e crédito registrados</li><li>Fechamento de caixa</li><li>Backup diário</li><li>Suporte pelo WhatsApp</li></ul><button class="more" type="button">Ver todos os recursos</button><a class="btn p" href="https://www.asaas.com/000/c/dyxsqacirl70c827" target="_blank" rel="noopener">Assinar agora</a></div><div class="plan custom" data-for="mensal"><h3>Personalizado</h3><div class="pr" style="font-size:28px">Sob consulta</div><div class="tot">Montamos o plano de acordo com o que você precisar.</div><ul><li>Migração de dados do sistema atual</li><li>Treinamento da equipe</li><li>Ajustes sob medida</li></ul><a class="btn o" href="https://wa.me/554198069934?text=Quero%20saber%20mais%20do%20sistema%20para%20barbearia%20e%20sal%C3%A3o" target="_blank" rel="noopener">Fale com o consultor</a></div></div>
+<p class="note">Pagamento seguro pela Asaas. Para os ambientes em teste, ao assinar com o mesmo e-mail o acesso é liberado sem perder os dados.</p></div></section>
+<section id="duvidas" class="sec alt"><div class="w"><h2>Perguntas frequentes</h2><p class="sub">&nbsp;</p><div class="faq"><details><summary>Preciso instalar algo?</summary><p>Não. Funciona no navegador do computador e do celular.</p></details><details><summary>Tem limite de profissionais?</summary><p>Não. Todos os planos têm profissionais ilimitados.</p></details><details><summary>O sistema cobra o cliente?</summary><p>Os pagamentos do balcão (Pix, dinheiro, débito e crédito) ficam registrados no caixa; a cobrança em si é feita por você.</p></details><details><summary>O que acontece quando o teste acaba?</summary><p>O acesso é bloqueado e você é levado ao checkout. Seus dados ficam guardados e voltam assim que assinar.</p></details><details><summary>Funciona para salão e para barbearia?</summary><p>Sim. Você escolhe o tipo no cadastro e o sistema usa os nomes certos.</p></details><details><summary>Posso cancelar?</summary><p>O plano mensal não tem fidelidade. </p></details></div></div></section>
+<section class="fin"><div class="w"><h2>Teste 5 dias e veja funcionando</h2><p>Crie seu ambiente agora. Se gostar, assine pelo checkout seguro; se não, é só não continuar.</p>
+<div class="cta" style="justify-content:center"><a class="btn p" href="https://geracaotechcloud.com.br/teste.html">Criar meu teste grátis</a><a class="btn o" href="https://wa.me/554198069934?text=Quero%20saber%20mais%20do%20sistema%20para%20barbearia%20e%20sal%C3%A3o" target="_blank" rel="noopener">Fale com o consultor</a></div></div></section>
+</main>
+<footer><div class="w"><img src="https://ginfotecn.com/logo.1779470608.png" alt="Geração Tech"><div>Geração Tech Soluções Digitais · pagamento seguro pela Asaas</div></div></footer>
+<a class="wa" href="https://wa.me/554198069934?text=Quero%20saber%20mais%20do%20sistema%20para%20barbearia%20e%20sal%C3%A3o" target="_blank" rel="noopener">WhatsApp</a>
+<script>
+var t='mensal';function show(){document.querySelectorAll('[data-for]').forEach(function(e){e.hidden=e.getAttribute('data-for')!==t});
+document.querySelectorAll('.tabs button').forEach(function(b){b.setAttribute('aria-selected',b.dataset.t===t)})}
+document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){t=b.dataset.t;show()}});
+document.querySelectorAll('.more').forEach(function(b){b.onclick=function(){var x=b.previousElementSibling;x.classList.toggle('on');b.textContent=x.classList.contains('on')?'Ocultar recursos':'Ver todos os recursos'}});show();
+</script></body></html>
