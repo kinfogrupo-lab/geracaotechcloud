@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teste grátis por 5 dias | Geração Tech</title>
+<meta name="description" content="Teste o sistema Geração Tech grátis por 5 dias, sem cartão. Assistência técnica, barbearia e salão de beleza.">
+<link rel="icon" href="https://ginfotecn.com/logo.1779470608.png">
+<style>
+  :root{--bg:#080c12;--card:#0f1724;--line:#1e2a3d;--text:#e6edf7;--muted:#8da0bf;--blue:#0ea5e9;--cyan:#00f5ff;--ok:#34d399;--err:#fb7185}
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(1200px 500px at 50% -10%,#0b2a55 0,var(--bg) 60%);color:var(--text);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh}
+  header{max-width:880px;margin:0 auto;padding:18px 20px;display:flex;align-items:center;gap:12px}
+  header img{height:44px;width:44px;border-radius:10px;background:#000;padding:2px}
+  header a{color:var(--text);text-decoration:none;font-weight:700}
+  main{max-width:880px;margin:0 auto;padding:8px 20px 56px;display:grid;gap:28px;grid-template-columns:1fr;}
+  @media(min-width:860px){main{grid-template-columns:1.1fr .9fr;align-items:start}}
+  h1{font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.1;margin:.4em 0 .3em}
+  h1 span{color:var(--cyan)}
+  .lead{color:var(--muted);font-size:1.05rem}
+  ul.check{list-style:none;padding:0;margin:20px 0;display:grid;gap:10px}
+  ul.check li{padding-left:28px;position:relative}
+  ul.check li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:800}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+  label{display:block;font-size:.85rem;color:var(--muted);margin:14px 0 6px}
+  input,select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:#0b1220;color:var(--text);font:inherit}
+  input:focus,select:focus{outline:2px solid rgba(14,165,233,.5);border-color:var(--blue)}
+  button{margin-top:20px;width:100%;padding:14px;border:0;border-radius:10px;background:var(--blue);color:#021726;font:inherit;font-weight:800;cursor:pointer}
+  button:disabled{opacity:.6;cursor:wait}
+  .hp{position:absolute;left:-9999px;height:0;width:0;opacity:0}
+  .msg{margin-top:14px;padding:12px 14px;border-radius:10px;font-size:.95rem}
+  .msg.err{background:rgba(251,113,133,.12);color:var(--err);border:1px solid rgba(251,113,133,.3)}
+  .msg.ok{background:rgba(52,211,153,.12);color:var(--ok);border:1px solid rgba(52,211,153,.3)}
+  small{color:var(--muted)}
+  footer{max-width:880px;margin:0 auto;padding:0 20px 36px;color:var(--muted);font-size:.8rem}
+</style>
+</head>
+<body>
+<header><img src="https://ginfotecn.com/logo.1779470608.png" alt="Geração Tech"><a href="/">Geração Tech Soluções Digitais</a></header>
+<main>
+  <section>
+    <h1>Teste <span>5 dias grátis</span></h1>
+    <p class="lead">Crie o seu acesso e use o sistema de verdade, com seus dados. Sem cartão de crédito e sem compromisso.</p>
+    <ul class="check">
+      <li>O acesso chega por e-mail em poucos minutos</li>
+      <li>Tudo liberado durante os 5 dias</li>
+      <li>Ao terminar, você assina pelo pagamento e continua no mesmo endereço, com seus dados</li>
+      <li>Atendimento e suporte pelo WhatsApp</li>
+    </ul>
+  </section>
+  <section class="card">
+    <form id="f" novalidate>
+      <label for="empresa">Nome da empresa</label>
+      <input id="empresa" name="empresa" autocomplete="organization" maxlength="80" required>
+      <label for="nome">Seu nome</label>
+      <input id="nome" name="nome" autocomplete="name" maxlength="80" required>
+      <label for="email">E-mail (é o seu login e onde chega o acesso)</label>
+      <input id="email" name="email" type="email" autocomplete="email" maxlength="120" required>
+      <label for="whatsapp">WhatsApp com DDD (opcional)</label>
+      <input id="whatsapp" name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000">
+      <label for="segmento">Seu negócio</label>
+      <select id="segmento" name="segmento">
+        <option value="assistencia">Assistência técnica</option>
+        <option value="barbearia">Barbearia</option>
+        <option value="salao">Salão de beleza</option>
+      </select>
+      <input class="hp" type="text" name="website" id="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button id="b" type="submit">Quero meu teste grátis</button>
+      <div id="m" class="msg" hidden></div>
+      <p><small>Ao continuar, você recebe o acesso por e-mail. Usaremos seus dados só para o teste e o contato sobre o sistema.</small></p>
+    </form>
+  </section>
+</main>
+<footer>Geração Tech Soluções Digitais · Curitiba/PR</footer>
+<script>
+(function(){
+  var API='https://webhook.ginfotecn.com/teste';
+  var f=document.getElementById('f'), b=document.getElementById('b'), m=document.getElementById('m');
+  var p=new URLSearchParams(location.search).get('tipo'); if(p && ['assistencia','barbearia','salao'].indexOf(p)>=0) document.getElementById('segmento').value=p;
+  function show(t,c){m.hidden=false;m.className='msg '+c;m.textContent=t;}
+  function poll(id,email,n){
+    if(n>40) return show('Seu acesso está sendo criado. Em alguns minutos ele chega em '+email+' (veja também o spam).','ok');
+    setTimeout(function(){
+      fetch(API+'/status/'+id).then(function(r){return r.json();}).then(function(s){
+        if(s.status==='done') return show('Pronto! Enviamos o acesso para '+email+'. Veja a caixa de entrada e o spam.','ok');
+        if(s.status==='error') return show('Não conseguimos criar o acesso agora. Já avisamos a nossa equipe e entramos em contato pelo e-mail informado.','err');
+        poll(id,email,n+1);
+      }).catch(function(){poll(id,email,n+1);});
+    },4000);
+  }
+  f.addEventListener('submit',function(e){
+    e.preventDefault(); m.hidden=true;
+    var d={empresa:f.empresa.value.trim(),nome:f.nome.value.trim(),email:f.email.value.trim(),whatsapp:f.whatsapp.value.trim(),segmento:f.segmento.value,website:f.website.value};
+    if(d.empresa.length<2) return show('Informe o nome da empresa.','err');
+    if(d.nome.length<2) return show('Informe o seu nome.','err');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) return show('Informe um e-mail válido: é por ele que você recebe o acesso.','err');
+    b.disabled=true; b.textContent='Criando seu acesso...';
+    fetch(API+'/cadastro',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+      .then(function(r){return r.json().then(function(j){return {s:r.status,j:j};});})
+      .then(function(x){
+        if(x.j&&x.j.ok){ f.style.display='none'; m.hidden=false; show('Recebemos o seu cadastro! Estamos criando o seu acesso (leva 1 a 2 minutos). Não feche esta página.','ok'); if(x.j.id&&x.j.id!=='ok') poll(x.j.id,d.email,0); return; }
+        b.disabled=false; b.textContent='Quero meu teste grátis'; show((x.j&&x.j.error)||'Não foi possível concluir agora. Tente novamente.','err');
+      }).catch(function(){ b.disabled=false; b.textContent='Quero meu teste grátis'; show('Sem conexão com o servidor. Tente novamente em instantes.','err'); });
+  });
+})();
+</script>
+</body>
+</html>
