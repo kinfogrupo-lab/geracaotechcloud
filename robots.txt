@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /entrar.html
+Disallow: /barbearia-salao-hotmart.html
+
+Sitemap: https://geracaotechcloud.com.br/sitemap.xml
