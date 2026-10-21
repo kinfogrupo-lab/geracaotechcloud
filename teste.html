@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Teste grátis por 5 dias | Geração Tech</title>
-<meta name="description" content="Teste o sistema Geração Tech grátis por 5 dias, sem cartão. Assistência técnica, barbearia e salão de beleza.">
+<title>Teste grátis por 7 dias | Geração Tech</title>
+<meta name="description" content="Teste o sistema Geração Tech grátis por 7 dias, sem cartão. Assistência técnica, barbearia e salão de beleza.">
 <link rel="icon" href="https://ginfotecn.com/logo.1779470608.png">
 <style>
   :root{--bg:#080c12;--card:#0f1724;--line:#1e2a3d;--text:#e6edf7;--muted:#8da0bf;--blue:#0ea5e9;--cyan:#00f5ff;--ok:#34d399;--err:#fb7185}
@@ -49,11 +49,11 @@ fbq('init','1566241344728350');fbq('track','PageView');
 <header><img src="https://ginfotecn.com/logo.1779470608.png" alt="Geração Tech"><a href="/">Geração Tech Soluções Digitais</a></header>
 <main>
   <section>
-    <h1>Teste <span>5 dias grátis</span></h1>
+    <h1>Teste <span>7 dias grátis</span></h1>
     <p class="lead">Crie o seu acesso e use o sistema de verdade, com seus dados. Sem cartão de crédito e sem compromisso.</p>
     <ul class="check">
       <li>O acesso chega por e-mail em poucos minutos</li>
-      <li>Tudo liberado durante os 5 dias</li>
+      <li>Tudo liberado durante os 7 dias</li>
       <li>Ao terminar, você assina pelo pagamento e continua no mesmo endereço, com seus dados</li>
       <li>Atendimento e suporte pelo WhatsApp</li>
     </ul>
@@ -66,8 +66,8 @@ fbq('init','1566241344728350');fbq('track','PageView');
       <input id="nome" name="nome" autocomplete="name" maxlength="80" required>
       <label for="email">E-mail (é o seu login e onde chega o acesso)</label>
       <input id="email" name="email" type="email" autocomplete="email" maxlength="120" required>
-      <label for="whatsapp">WhatsApp com DDD (opcional)</label>
-      <input id="whatsapp" name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000">
+      <label for="whatsapp">WhatsApp com DDD</label>
+      <input id="whatsapp" name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" required minlength="10" maxlength="20">
       <label for="segmento">Seu negócio</label>
       <select id="segmento" name="segmento">
         <option value="assistencia">Assistência técnica</option>
@@ -104,6 +104,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
     if(d.empresa.length<2) return show('Informe o nome da empresa.','err');
     if(d.nome.length<2) return show('Informe o seu nome.','err');
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) return show('Informe um e-mail válido: é por ele que você recebe o acesso.','err');
+    var zap=d.whatsapp.replace(/\D/g,''); if(zap.length<10||zap.length>13) return show('Informe o WhatsApp com DDD: é por ele que a gente te ajuda a começar.','err');
     b.disabled=true; b.textContent='Criando seu acesso...';
     fetch(API+'/cadastro',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
       .then(function(r){return r.json().then(function(j){return {s:r.status,j:j};});})

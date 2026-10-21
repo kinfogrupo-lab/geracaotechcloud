@@ -11,6 +11,6 @@ button,.b{display:block;width:100%;text-align:center;background:var(--ac);color:
 <main class="box"><img src="https://ginfotecn.com/logo.1779470608.png" alt="Geração Tech"><h1>Entrar no sistema</h1><p>Digite o endereço do seu ambiente, o mesmo que você recebeu por e-mail.</p>
 <form id="f"><label for="s">Endereço do seu sistema</label><div class="row"><input id="s" autocomplete="off" autocapitalize="none" placeholder="minha-barbearia" required><span>.ginfotecn.com</span></div><div class="err" id="e" role="alert"></div><button type="submit">Entrar</button></form>
 <a class="b o" href="https://ginfotecn.com/login">Meu sistema é ginfotecn.com</a>
-<small>Ainda não tem? <a href="https://geracaotechcloud.com.br/teste.html">Teste grátis por 5 dias</a></small></main>
+<small>Ainda não tem? <a href="https://geracaotechcloud.com.br/teste.html">Teste grátis por 7 dias</a></small></main>
 <script>document.getElementById('f').onsubmit=function(ev){ev.preventDefault();var v=document.getElementById('s').value.trim().toLowerCase().replace(/^https?:\/\//,'').replace(/\.ginfotecn\.com.*$/,'').replace(/\/.*$/,'');
 if(!/^[a-z0-9]([a-z0-9-]{0,60}[a-z0-9])?$/.test(v)){document.getElementById('e').textContent='Use só letras, números e hífen, como no e-mail de boas-vindas.';return}location.href='https://'+v+'.ginfotecn.com/login'}</script></body></html>
