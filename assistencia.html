@@ -103,4 +103,5 @@ var t=document.body.dataset.t||'mensal';function show(){document.querySelectorAl
 document.querySelectorAll('.tabs button').forEach(function(b){b.setAttribute('aria-selected',b.dataset.t===t)})}
 document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){t=b.dataset.t;show()}});
 document.querySelectorAll('.more').forEach(function(b){b.onclick=function(){var x=b.previousElementSibling;x.classList.toggle('on');b.textContent=x.classList.contains('on')?'Ocultar recursos':'Ver todos os recursos'}});show();
-</script></body></html>
+</script><script>(function(){try{var o=new URLSearchParams(location.search).get("origem");if(o){sessionStorage.setItem("gt-origem",o);}o=o||sessionStorage.getItem("gt-origem");if(!o)return;document.querySelectorAll('a[href*="teste.html"]').forEach(function(a){var u=new URL(a.href);u.searchParams.set("origem",o);a.href=u.toString();});}catch(e){}})();</script>
+</body></html>

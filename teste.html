@@ -100,7 +100,8 @@ fbq('init','1566241344728350');fbq('track','PageView');
   }
   f.addEventListener('submit',function(e){
     e.preventDefault(); m.hidden=true;
-    var d={empresa:f.empresa.value.trim(),nome:f.nome.value.trim(),email:f.email.value.trim(),whatsapp:f.whatsapp.value.trim(),segmento:f.segmento.value,website:f.website.value};
+    var og=''; try{og=new URLSearchParams(location.search).get('origem')||sessionStorage.getItem('gt-origem')||'';}catch(e){}
+    var d={empresa:f.empresa.value.trim(),nome:f.nome.value.trim(),email:f.email.value.trim(),whatsapp:f.whatsapp.value.trim(),segmento:f.segmento.value,website:f.website.value,origem:og};
     if(d.empresa.length<2) return show('Informe o nome da empresa.','err');
     if(d.nome.length<2) return show('Informe o seu nome.','err');
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) return show('Informe um e-mail válido: é por ele que você recebe o acesso.','err');
