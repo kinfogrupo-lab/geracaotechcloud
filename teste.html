@@ -66,6 +66,8 @@ fbq('init','1566241344728350');fbq('track','PageView');
       <input id="nome" name="nome" autocomplete="name" maxlength="80" required>
       <label for="email">E-mail (é o seu login e onde chega o acesso)</label>
       <input id="email" name="email" type="email" autocomplete="email" maxlength="120" required>
+      <label for="email2">Confirme o e-mail (digite de novo)</label>
+      <input id="email2" name="email2" type="email" autocomplete="off" maxlength="120" required onpaste="return false" ondrop="return false">
       <label for="whatsapp">WhatsApp com DDD</label>
       <input id="whatsapp" name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" required minlength="10" maxlength="20">
       <label for="segmento">Seu negócio</label>
@@ -105,6 +107,9 @@ fbq('init','1566241344728350');fbq('track','PageView');
     if(d.empresa.length<2) return show('Informe o nome da empresa.','err');
     if(d.nome.length<2) return show('Informe o seu nome.','err');
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) return show('Informe um e-mail válido: é por ele que você recebe o acesso.','err');
+    if(d.email.toLowerCase()!==f.email2.value.trim().toLowerCase()) return show('Os dois e-mails estão diferentes. Confira se não há uma letra trocada: é nele que chega o seu acesso.','err');
+    var dom=d.email.split('@')[1].toLowerCase(), fix={'gmial.com':'gmail.com','gmai.com':'gmail.com','gamil.com':'gmail.com','gmail.con':'gmail.com','gmaill.com':'gmail.com','gmail.com.br':'gmail.com','hotmial.com':'hotmail.com','hotmal.com':'hotmail.com','hotmail.con':'hotmail.com','outlok.com':'outlook.com','outloo.com':'outlook.com','yaho.com':'yahoo.com','yahooo.com':'yahoo.com','icloud.con':'icloud.com'};
+    if(fix[dom]) return show('Confira o e-mail: você quis dizer '+d.email.split('@')[0]+'@'+fix[dom]+'? O acesso é enviado para ele.','err');
     var zap=d.whatsapp.replace(/\D/g,''); if(zap.length<10||zap.length>13) return show('Informe o WhatsApp com DDD: é por ele que a gente te ajuda a começar.','err');
     b.disabled=true; b.textContent='Criando seu acesso...';
     fetch(API+'/cadastro',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
