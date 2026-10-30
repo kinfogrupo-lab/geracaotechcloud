@@ -7,6 +7,8 @@
 <meta name="description" content="Teste o sistema Geração Tech grátis por 7 dias, sem cartão. Assistência técnica, barbearia e salão de beleza.">
 <link rel="icon" href="https://ginfotecn.com/logo.1779470608.png">
 <style>
+  .video-desktop{display:none}.video-celular{display:block}
+  @media(min-width:860px){.video-desktop{display:block}.video-celular{display:none}}
   :root{--bg:#080c12;--card:#0f1724;--line:#1e2a3d;--text:#e6edf7;--muted:#8da0bf;--blue:#0ea5e9;--cyan:#00f5ff;--ok:#34d399;--err:#fb7185}
   *{box-sizing:border-box}
   body{margin:0;background:radial-gradient(1200px 500px at 50% -10%,#0b2a55 0,var(--bg) 60%);color:var(--text);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh}
@@ -57,6 +59,10 @@ fbq('init','1566241344728350');fbq('track','PageView');
       <li>Ao terminar, você assina pelo pagamento e continua no mesmo endereço, com seus dados</li>
       <li>Atendimento e suporte pelo WhatsApp</li>
     </ul>
+    <div class="video-desktop" style="margin-top:22px">
+      <p style="margin:0 0 8px;font-weight:700">Veja como abrir a primeira OS em 1 minuto</p>
+      <video controls preload="metadata" playsinline style="width:100%;max-width:520px;border-radius:12px;background:#000;border:1px solid var(--line)" src="video-primeira-os.mp4"></video>
+    </div>
   </section>
   <section class="card">
     <form id="f" novalidate>
@@ -82,9 +88,8 @@ fbq('init','1566241344728350');fbq('track','PageView');
       <p><small>Ao continuar, você recebe o acesso por e-mail. Usaremos seus dados só para o teste e o contato sobre o sistema.</small></p>
     </form>
   </section>
-  <section class="card" id="video-primeira-os" style="margin-top:18px">
+  <section class="card video-celular" id="video-primeira-os" style="margin-top:18px">
     <h2 style="margin:0 0 6px;font-size:1.1rem">Veja como abrir a primeira OS em 1 minuto</h2>
-    <p class="lead" style="font-size:.95rem;margin:0 0 12px">Um passo a passo rápido do sistema funcionando.</p>
     <video controls preload="metadata" playsinline style="width:100%;border-radius:12px;background:#000" src="video-primeira-os.mp4"></video>
   </section>
   <section class="card" id="planos-depois" style="margin-top:18px">
