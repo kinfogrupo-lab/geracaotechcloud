@@ -7,8 +7,8 @@
 <meta name="description" content="Teste o sistema Geração Tech grátis por 7 dias, sem cartão. Assistência técnica, barbearia e salão de beleza.">
 <link rel="icon" href="https://ginfotecn.com/logo.1779470608.png">
 <style>
-  .video-desktop{display:none}.video-celular{display:block}
-  @media(min-width:860px){.video-desktop{display:block}.video-celular{display:none}}
+  .demo-video{grid-column:1/-1;width:100%;max-width:640px;justify-self:center}
+  .demo-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px;background:#05070d}
   :root{--bg:#080c12;--card:#0f1724;--line:#1e2a3d;--text:#e6edf7;--muted:#8da0bf;--blue:#0ea5e9;--cyan:#00f5ff;--ok:#34d399;--err:#fb7185}
   *{box-sizing:border-box}
   body{margin:0;background:radial-gradient(1200px 500px at 50% -10%,#0b2a55 0,var(--bg) 60%);color:var(--text);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh}
@@ -61,10 +61,6 @@ fbq('init','1566241344728350');fbq('track','PageView');
       <li>Ao terminar, você assina pelo pagamento e continua no mesmo endereço, com seus dados</li>
       <li>Atendimento e suporte pelo WhatsApp</li>
     </ul>
-    <div class="video-desktop" style="margin-top:22px">
-      <p style="margin:0 0 8px;font-weight:700">Veja como abrir a primeira OS em 1 minuto</p>
-      <video controls preload="metadata" playsinline style="width:100%;max-width:520px;border-radius:12px;background:#000;border:1px solid var(--line)" src="video-primeira-os.mp4"></video>
-    </div>
   </section>
   <section class="card">
     <form id="f" novalidate>
@@ -90,9 +86,13 @@ fbq('init','1566241344728350');fbq('track','PageView');
       <p><small>Seu acesso será enviado por e-mail. Usaremos seus dados para criar a conta de teste e falar com você sobre o sistema. Não enviaremos spam. Veja a <a href="/politica-de-privacidade.html" style="color:inherit">Política de Privacidade</a>.</small></p>
     </form>
   </section>
-  <section class="card video-celular" id="video-primeira-os" style="margin-top:18px">
-    <h2 style="margin:0 0 6px;font-size:1.1rem">Veja como abrir a primeira OS em 1 minuto</h2>
-    <video controls preload="metadata" playsinline poster="video-primeira-os-poster.jpg" style="width:100%;border-radius:12px;background:#000" src="video-primeira-os.mp4"></video>
+  <section class="card demo-video" id="video-primeira-os" style="margin-top:0">
+    <h2 style="margin:0 0 8px;font-size:1.1rem">Veja como abrir a primeira OS em 1 minuto</h2>
+    <video controls playsinline preload="metadata" poster="video-primeira-os-poster.jpg" width="1280" height="720" aria-label="Demonstração de abertura de uma ordem de serviço">
+      <source src="video-primeira-os.mp4" type="video/mp4">
+      Seu navegador não conseguiu reproduzir o vídeo.
+    </video>
+    <p style="margin:10px 0 0"><small><a href="video-primeira-os.mp4" style="color:inherit">Se o vídeo não iniciar, abrir em uma nova página</a></small></p>
   </section>
   <section class="card" id="planos-depois" style="margin-top:18px">
     <h2 style="margin:0 0 6px;font-size:1.1rem">Depois do teste, você escolhe o plano</h2>
@@ -114,6 +114,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
   var API='https://webhook.ginfotecn.com/teste';
   var f=document.getElementById('f'), b=document.getElementById('b'), m=document.getElementById('m');
   var p=new URLSearchParams(location.search).get('tipo'); if(p && ['assistencia','barbearia','salao'].indexOf(p)>=0) document.getElementById('segmento').value=p;
+  var segAtual='';
   function show(t,c,h){m.hidden=false;m.className='msg '+c;if(h){m.innerHTML=h;}else{m.textContent=t;}}
   var WA='https://wa.me/554198069934?text=Fiz%20o%20cadastro%20do%20teste%20gr%C3%A1tis%20e%20n%C3%A3o%20recebi%20o%20acesso';
   function esc(x){return String(x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -123,12 +124,13 @@ fbq('init','1566241344728350');fbq('track','PageView');
     if(n>40) return okMsg(email);
     setTimeout(function(){
       fetch(API+'/status/'+id).then(function(r){return r.json();}).then(function(s){
-        if(s.status==='done') return okMsg(email);
+        if(s.status==='done'){ gtEv('trial_started',{product_type:segAtual}); return okMsg(email); }
         if(s.status==='error') return show('Não conseguimos criar o acesso agora. Já avisamos a nossa equipe e entramos em contato pelo e-mail informado.','err');
         poll(id,email,n+1);
       }).catch(function(){poll(id,email,n+1);});
     },4000);
   }
+  f.addEventListener('focusin',function ini(){ gtEv('form_start',{product_type:f.segmento.value}); f.removeEventListener('focusin',ini); });
   f.addEventListener('submit',function(e){
     e.preventDefault(); m.hidden=true;
     var og=''; try{var q=new URLSearchParams(location.search);og=q.get('origem')||(q.get('fbclid')?'meta-auto':(q.get('gclid')||q.get('gbraid')||q.get('wbraid'))?'google-auto':'')||sessionStorage.getItem('gt-origem')||'';}catch(e){}
@@ -139,16 +141,28 @@ var cp=''; try{var q2=new URLSearchParams(location.search);cp=q2.get('campanha')
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) return show('Informe um e-mail válido: é por ele que você recebe o acesso.','err');
     var dom=d.email.split('@')[1].toLowerCase(), fix={'gmial.com':'gmail.com','gmai.com':'gmail.com','gamil.com':'gmail.com','gmail.con':'gmail.com','gmaill.com':'gmail.com','gmail.com.br':'gmail.com','hotmial.com':'hotmail.com','hotmal.com':'hotmail.com','hotmail.con':'hotmail.com','outlok.com':'outlook.com','outloo.com':'outlook.com','yaho.com':'yahoo.com','yahooo.com':'yahoo.com','icloud.con':'icloud.com'};
     if(fix[dom]) return show('Confira o e-mail: você quis dizer '+d.email.split('@')[0]+'@'+fix[dom]+'? O acesso é enviado para ele.','err');
+    segAtual=d.segmento;
     var zap=d.whatsapp.replace(/\D/g,''); if(zap.length<10||zap.length>13) return show('Informe o WhatsApp com DDD: é por ele que a gente te ajuda a começar.','err');
     b.disabled=true; b.textContent='Criando seu acesso...';
     fetch(API+'/cadastro',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
       .then(function(r){return r.json().then(function(j){return {s:r.status,j:j};});})
       .then(function(x){
-        if(x.j&&x.j.ok){ try{ if(window.fbq) fbq('track','Lead'); }catch(e){} try{ if(window.gtag) gtag('event','conversion',{'send_to':'AW-18090804606/kDOtCLPT96MdEP6Kr7JD'}); }catch(e){} f.style.display='none'; m.hidden=false; show('Seu pedido de teste foi recebido. Estamos criando o seu acesso (leva 1 a 2 minutos). Não feche esta página.','ok'); if(x.j.id&&x.j.id!=='ok') poll(x.j.id,d.email,0); return; }
+        if(x.j&&x.j.ok){ gtEv('generate_lead',{product_type:d.segmento}); try{ if(window.fbq) fbq('track','Lead'); }catch(e){} try{ if(window.gtag) gtag('event','conversion',{'send_to':'AW-18090804606/kDOtCLPT96MdEP6Kr7JD'}); }catch(e){} f.style.display='none'; m.hidden=false; show('Seu pedido de teste foi recebido. Estamos criando o seu acesso (leva 1 a 2 minutos). Não feche esta página.','ok'); if(x.j.id&&x.j.id!=='ok') poll(x.j.id,d.email,0); return; }
         b.disabled=false; b.textContent='Criar meu acesso grátis'; show((x.j&&x.j.error)||'Não foi possível concluir agora. Tente novamente.','err');
       }).catch(function(){ b.disabled=false; b.textContent='Criar meu acesso grátis'; show('Sem conexão com o servidor. Tente novamente em instantes.','err'); });
   });
 })();
 </script>
+<script>(function(){
+  var GA4_ID=''; /* ID de medição do GA4 (G-XXXXXXXXXX): preencher quando a propriedade existir. Sem ele, os eventos ficam prontos, mas o GA4 não recebe nada. */
+  var p=location.pathname.replace(/\/+$/,'')||'/',page=(p==='/'||p==='/index.html')?'home':/assistencia/.test(p)?'assistencia':/barbearia/.test(p)?'barbearia_salao':/teste/.test(p)?'formulario_teste':'outra';
+  var prod=page==='assistencia'?'assistencia':page==='barbearia_salao'?'barbearia':'';
+  window.dataLayer=window.dataLayer||[];if(!window.gtag){window.gtag=function(){dataLayer.push(arguments);};window.gtag('js',new Date());}
+  if(GA4_ID){try{gtag('config',GA4_ID);}catch(e){}}
+  window.gtEv=function(n,o){try{o=o||{};o.page_type=page;if(!o.product_type&&prod)o.product_type=prod;gtag('event',n,o);}catch(e){}};
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="teste.html"]');if(!a)return;var m=(a.getAttribute('href')||'').match(/tipo=([a-z]+)/);gtEv('click_trial_cta',{cta_name:(a.textContent||'').trim().slice(0,60),product_type:m?m[1]:(prod||undefined)});},true);
+  var alvo=document.getElementById('planos')||document.getElementById('sistema-gestao');
+  if(alvo&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){gtEv('view_pricing');io.disconnect();}});},{threshold:.25});io.observe(alvo);}
+})();</script>
 </body>
 </html>

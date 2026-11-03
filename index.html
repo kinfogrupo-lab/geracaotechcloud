@@ -2080,5 +2080,16 @@ fbq('init','1566241344728350');fbq('track','PageView');
 <script>
 (function(){try{var fim=new Date('2026-11-28T00:00:00-03:00');if(Date.now()<fim.getTime()){document.documentElement.classList.add('promo-on');['promoFaixa','promoCard'].forEach(function(i){var e=document.getElementById(i);if(e)e.style.display=(i==='promoFaixa'?'block':'block');});}}catch(e){}})();
 </script>
+<script>(function(){
+  var GA4_ID=''; /* ID de medição do GA4 (G-XXXXXXXXXX): preencher quando a propriedade existir. Sem ele, os eventos ficam prontos, mas o GA4 não recebe nada. */
+  var p=location.pathname.replace(/\/+$/,'')||'/',page=(p==='/'||p==='/index.html')?'home':/assistencia/.test(p)?'assistencia':/barbearia/.test(p)?'barbearia_salao':/teste/.test(p)?'formulario_teste':'outra';
+  var prod=page==='assistencia'?'assistencia':page==='barbearia_salao'?'barbearia':'';
+  window.dataLayer=window.dataLayer||[];if(!window.gtag){window.gtag=function(){dataLayer.push(arguments);};window.gtag('js',new Date());}
+  if(GA4_ID){try{gtag('config',GA4_ID);}catch(e){}}
+  window.gtEv=function(n,o){try{o=o||{};o.page_type=page;if(!o.product_type&&prod)o.product_type=prod;gtag('event',n,o);}catch(e){}};
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="teste.html"]');if(!a)return;var m=(a.getAttribute('href')||'').match(/tipo=([a-z]+)/);gtEv('click_trial_cta',{cta_name:(a.textContent||'').trim().slice(0,60),product_type:m?m[1]:(prod||undefined)});},true);
+  var alvo=document.getElementById('planos')||document.getElementById('sistema-gestao');
+  if(alvo&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){gtEv('view_pricing');io.disconnect();}});},{threshold:.25});io.observe(alvo);}
+})();</script>
 </body>
 </html>
