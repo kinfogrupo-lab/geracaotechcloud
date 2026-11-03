@@ -53,8 +53,8 @@ fbq('init','1566241344728350');fbq('track','PageView');
 <header><img src="https://ginfotecn.com/logo.1779470608.png" alt="Geração Tech"><a href="/">Geração Tech Soluções Digitais</a></header>
 <main>
   <section>
-    <h1>Teste <span>7 dias grátis</span></h1>
-    <p class="lead">Crie o seu acesso e use o sistema de verdade, com seus dados. Sem cartão de crédito e sem compromisso.</p>
+    <h1>Comece seu teste <span>grátis por 7 dias</span></h1>
+    <p class="lead">Crie seu acesso e experimente o sistema com os dados do seu negócio. Sem cartão e sem cobrança automática.</p>
     <ul class="check">
       <li>O acesso chega por e-mail em poucos minutos</li>
       <li>Tudo liberado durante os 7 dias</li>
@@ -68,17 +68,15 @@ fbq('init','1566241344728350');fbq('track','PageView');
   </section>
   <section class="card">
     <form id="f" novalidate>
+      <label for="nome">Nome</label>
+      <input id="nome" name="nome" autocomplete="name" maxlength="80" required>
       <label for="empresa">Nome da empresa</label>
       <input id="empresa" name="empresa" autocomplete="organization" maxlength="80" required>
-      <label for="nome">Seu nome</label>
-      <input id="nome" name="nome" autocomplete="name" maxlength="80" required>
-      <label for="email">E-mail (é o seu login e onde chega o acesso)</label>
+      <label for="email">E-mail de acesso</label>
       <input id="email" name="email" type="email" autocomplete="email" maxlength="120" required>
-      <label for="email2">Confirme o e-mail (digite de novo)</label>
-      <input id="email2" name="email2" type="email" autocomplete="off" maxlength="120" required onpaste="return false" ondrop="return false">
       <label for="whatsapp">WhatsApp com DDD</label>
       <input id="whatsapp" name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" required minlength="10" maxlength="20">
-      <label for="segmento">Seu negócio</label>
+      <label for="segmento">Tipo de negócio</label>
       <select id="segmento" name="segmento">
         <option value="assistencia">Assistência técnica</option>
         <option value="barbearia">Barbearia</option>
@@ -86,10 +84,10 @@ fbq('init','1566241344728350');fbq('track','PageView');
       </select>
       <input class="hp" type="text" name="website" id="website" tabindex="-1" autocomplete="off" aria-hidden="true">
       <p style="margin:10px 0 8px;font-size:.92rem;text-align:center"><b>Sem cartão. Nada será cobrado automaticamente.</b> Você escolhe um plano depois do teste.</p>
-      <button id="b" type="submit">Quero meu teste grátis</button>
+      <button id="b" type="submit">Criar meu acesso grátis</button>
       <p class="seguro"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3zm-1.2 14.2-3.5-3.5 1.4-1.4 2.1 2.1 4.6-4.6 1.4 1.4-6 6z"/></svg>Seus dados estão seguros. Sem spam.</p>
       <div id="m" class="msg" hidden></div>
-      <p><small>Ao continuar, você recebe o acesso por e-mail. Usaremos seus dados só para o teste e o contato sobre o sistema.</small></p>
+      <p><small>Seu acesso será enviado por e-mail. Usaremos seus dados para criar a conta de teste e falar com você sobre o sistema. Não enviaremos spam. Veja a <a href="/politica-de-privacidade.html" style="color:inherit">Política de Privacidade</a>.</small></p>
     </form>
   </section>
   <section class="card video-celular" id="video-primeira-os" style="margin-top:18px">
@@ -116,12 +114,16 @@ fbq('init','1566241344728350');fbq('track','PageView');
   var API='https://webhook.ginfotecn.com/teste';
   var f=document.getElementById('f'), b=document.getElementById('b'), m=document.getElementById('m');
   var p=new URLSearchParams(location.search).get('tipo'); if(p && ['assistencia','barbearia','salao'].indexOf(p)>=0) document.getElementById('segmento').value=p;
-  function show(t,c){m.hidden=false;m.className='msg '+c;m.textContent=t;}
+  function show(t,c,h){m.hidden=false;m.className='msg '+c;if(h){m.innerHTML=h;}else{m.textContent=t;}}
+  var WA='https://wa.me/554198069934?text=Fiz%20o%20cadastro%20do%20teste%20gr%C3%A1tis%20e%20n%C3%A3o%20recebi%20o%20acesso';
+  function esc(x){return String(x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function mailLink(email){var d=email.split('@')[1].toLowerCase();var u=/gmail\./.test(d)?'https://mail.google.com/':/(hotmail|outlook|live)\./.test(d)?'https://outlook.live.com/mail/':/yahoo\./.test(d)?'https://mail.yahoo.com/':'';return u?'<br><a href="'+u+'" target="_blank" rel="noopener" style="color:inherit;font-weight:700">Abrir meu e-mail</a>':'';}
+  function okMsg(email){show('','ok','<b>Seu pedido de teste foi recebido.</b> Enviamos as instruções de acesso para '+esc(email)+'. Confira também a pasta de spam. Você tem 7 dias para conhecer o sistema; nada será cobrado automaticamente.'+mailLink(email)+'<br>Não recebeu? <a href="'+WA+'" target="_blank" rel="noopener" style="color:inherit;font-weight:700">Fale com a equipe pelo WhatsApp.</a>');}
   function poll(id,email,n){
-    if(n>40) return show('Seu acesso está sendo criado. Em alguns minutos ele chega em '+email+' (veja também o spam).','ok');
+    if(n>40) return okMsg(email);
     setTimeout(function(){
       fetch(API+'/status/'+id).then(function(r){return r.json();}).then(function(s){
-        if(s.status==='done') return show('Pronto! Enviamos o acesso para '+email+'. Veja a caixa de entrada e o spam.','ok');
+        if(s.status==='done') return okMsg(email);
         if(s.status==='error') return show('Não conseguimos criar o acesso agora. Já avisamos a nossa equipe e entramos em contato pelo e-mail informado.','err');
         poll(id,email,n+1);
       }).catch(function(){poll(id,email,n+1);});
@@ -135,7 +137,6 @@ var cp=''; try{var q2=new URLSearchParams(location.search);cp=q2.get('campanha')
     if(d.empresa.length<2) return show('Informe o nome da empresa.','err');
     if(d.nome.length<2) return show('Informe o seu nome.','err');
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) return show('Informe um e-mail válido: é por ele que você recebe o acesso.','err');
-    if(d.email.toLowerCase()!==f.email2.value.trim().toLowerCase()) return show('Os dois e-mails estão diferentes. Confira se não há uma letra trocada: é nele que chega o seu acesso.','err');
     var dom=d.email.split('@')[1].toLowerCase(), fix={'gmial.com':'gmail.com','gmai.com':'gmail.com','gamil.com':'gmail.com','gmail.con':'gmail.com','gmaill.com':'gmail.com','gmail.com.br':'gmail.com','hotmial.com':'hotmail.com','hotmal.com':'hotmail.com','hotmail.con':'hotmail.com','outlok.com':'outlook.com','outloo.com':'outlook.com','yaho.com':'yahoo.com','yahooo.com':'yahoo.com','icloud.con':'icloud.com'};
     if(fix[dom]) return show('Confira o e-mail: você quis dizer '+d.email.split('@')[0]+'@'+fix[dom]+'? O acesso é enviado para ele.','err');
     var zap=d.whatsapp.replace(/\D/g,''); if(zap.length<10||zap.length>13) return show('Informe o WhatsApp com DDD: é por ele que a gente te ajuda a começar.','err');
@@ -143,9 +144,9 @@ var cp=''; try{var q2=new URLSearchParams(location.search);cp=q2.get('campanha')
     fetch(API+'/cadastro',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
       .then(function(r){return r.json().then(function(j){return {s:r.status,j:j};});})
       .then(function(x){
-        if(x.j&&x.j.ok){ try{ if(window.fbq) fbq('track','Lead'); }catch(e){} try{ if(window.gtag) gtag('event','conversion',{'send_to':'AW-18090804606/kDOtCLPT96MdEP6Kr7JD'}); }catch(e){} f.style.display='none'; m.hidden=false; show('Recebemos o seu cadastro! Estamos criando o seu acesso (leva 1 a 2 minutos). Não feche esta página.','ok'); if(x.j.id&&x.j.id!=='ok') poll(x.j.id,d.email,0); return; }
-        b.disabled=false; b.textContent='Quero meu teste grátis'; show((x.j&&x.j.error)||'Não foi possível concluir agora. Tente novamente.','err');
-      }).catch(function(){ b.disabled=false; b.textContent='Quero meu teste grátis'; show('Sem conexão com o servidor. Tente novamente em instantes.','err'); });
+        if(x.j&&x.j.ok){ try{ if(window.fbq) fbq('track','Lead'); }catch(e){} try{ if(window.gtag) gtag('event','conversion',{'send_to':'AW-18090804606/kDOtCLPT96MdEP6Kr7JD'}); }catch(e){} f.style.display='none'; m.hidden=false; show('Seu pedido de teste foi recebido. Estamos criando o seu acesso (leva 1 a 2 minutos). Não feche esta página.','ok'); if(x.j.id&&x.j.id!=='ok') poll(x.j.id,d.email,0); return; }
+        b.disabled=false; b.textContent='Criar meu acesso grátis'; show((x.j&&x.j.error)||'Não foi possível concluir agora. Tente novamente.','err');
+      }).catch(function(){ b.disabled=false; b.textContent='Criar meu acesso grátis'; show('Sem conexão com o servidor. Tente novamente em instantes.','err'); });
   });
 })();
 </script>
