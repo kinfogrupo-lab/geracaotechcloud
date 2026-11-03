@@ -985,7 +985,9 @@
       .nav-links.open { display: flex; }
       .hamburger { display: flex; }
       .hero-inner, .cloud-grid, .sobre-grid, .contato-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .hero-visual { order: -1; }
+      .hero-visual { order: 1; }
+      .hero-visual svg { max-width: 240px; }
+      .promo-faixa span { display: none; }
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
       .diferenciais { grid-template-columns: 1fr; }
       section { padding: 4rem 1.5rem; }
@@ -1565,12 +1567,13 @@ fbq('init','1566241344728350');fbq('track','PageView');
         <div>
           <div class="section-label">// software de gestão</div>
           <h2 class="section-title">Sistemas de Gestão <span>Geração Tech</span></h2>
-          <p class="section-sub">Gestão completa para assistências técnicas e oficinas de conserto, do orçamento ao recebimento, tudo em um só sistema.</p>
+          <p class="section-sub">Gestão completa para assistências técnicas e oficinas, do orçamento ao recebimento, e para barbearias e salões, da agenda ao caixa e às comissões. Tudo em um só sistema.</p>
           <div style="margin:1.5rem 0;text-align:center;">
             <p style="margin:0 0 .8rem;font-size:1.05rem;font-weight:600;">Assista aos vídeos abaixo e conheça os nossos sistemas</p>
             <div style="display:flex;flex-wrap:wrap;gap:18px;justify-content:center"><div style="flex:1 1 220px;max-width:300px;min-width:200px"><p style="margin:0 0 .5rem;font-weight:700">Assistência técnica</p><video controls playsinline preload="none" poster="ativos/assistencia/apresentacao-assistencia-poster.jpg" src="ativos/assistencia/apresentacao-assistencia.mp4" aria-label="Apresentação do sistema para assistência técnica, 25 segundos" style="width:100%;aspect-ratio:9/16;border-radius:14px;border:1px solid rgba(30,144,255,.45);background:#050f26;display:block"></video></div><div style="flex:1 1 220px;max-width:300px;min-width:200px"><p style="margin:0 0 .5rem;font-weight:700">Barbearia e salão</p><video controls playsinline preload="none" poster="ativos/beleza/apresentacao-barbearia-salao-poster.jpg" src="ativos/beleza/apresentacao-barbearia-salao.mp4" aria-label="Apresentação do sistema para barbearia e salão, 26 segundos" style="width:100%;aspect-ratio:9/16;border-radius:14px;border:1px solid rgba(30,144,255,.45);background:#050f26;display:block"></video></div></div>
             <p style="margin-top:.8rem;font-size:.85rem;opacity:.75;"><a href="https://ginfotecn.com/videos/demonstracao-geracao-tech.mp4" target="_blank" rel="noopener" style="text-decoration:underline;color:#38bdf8">Assistir à demonstração completa</a></p>
           </div>
+          <h3 style="font-size:1.1rem;font-weight:800;margin:1.6rem 0 .8rem;color:var(--blue2);">Para assistência técnica</h3>
           <div class="cloud-features">
             <div class="cloud-item">
               <div class="cloud-icon">📋</div>
@@ -1605,6 +1608,37 @@ fbq('init','1566241344728350');fbq('track','PageView');
               <div>
                 <div class="cloud-item-title">Nota Fiscal e Envio ao Cliente</div>
                 <div class="cloud-item-desc">Emita NFS-e e NF-e direto da ordem de serviço e envie a nota ao cliente pelo WhatsApp ou e-mail. Usa o certificado digital A1 da sua empresa.</div>
+              </div>
+            </div>
+          </div>
+          <h3 style="font-size:1.1rem;font-weight:800;margin:2rem 0 .8rem;color:var(--blue2);">Para barbearia e salão</h3>
+          <div class="cloud-features">
+            <div class="cloud-item">
+              <div class="cloud-icon">📅</div>
+              <div>
+                <div class="cloud-item-title">Agenda online pelo celular</div>
+                <div class="cloud-item-desc">O cliente escolhe serviço, profissional e horário pelo seu link, sem esperar resposta no WhatsApp.</div>
+              </div>
+            </div>
+            <div class="cloud-item">
+              <div class="cloud-icon">💵</div>
+              <div>
+                <div class="cloud-item-title">Caixa do dia</div>
+                <div class="cloud-item-desc">Pix, dinheiro, débito e crédito, pagamento dividido e fechamento no fim do expediente.</div>
+              </div>
+            </div>
+            <div class="cloud-item">
+              <div class="cloud-icon">✂️</div>
+              <div>
+                <div class="cloud-item-title">Comissões sem conta de cabeça</div>
+                <div class="cloud-item-desc">Percentual por profissional ou serviço, com relatório do período, inclusive para pacotes.</div>
+              </div>
+            </div>
+            <div class="cloud-item">
+              <div class="cloud-icon">💬</div>
+              <div>
+                <div class="cloud-item-title">Lembretes pelo WhatsApp</div>
+                <div class="cloud-item-desc">Confirmação e lembretes: o cliente confirma ou pede para remarcar por um link.</div>
               </div>
             </div>
           </div>
@@ -1692,6 +1726,14 @@ fbq('init','1566241344728350');fbq('track','PageView');
             <details class="sg-faq-item">
               <summary>Tem backup e suporte inclusos?</summary>
               <p>Sim. Backup automático diário do seu banco de dados, guardado em local separado do sistema, e suporte técnico incluso na assinatura — sem custo adicional.</p>
+            </details>
+            <details class="sg-faq-item">
+              <summary>O sistema serve para barbearia e salão?</summary>
+              <p>Sim. Existe um sistema próprio para barbearia e salão, com agenda online, caixa do dia, comissões, lembretes pelo WhatsApp, pacotes e cupons. Escolha “Barbearia e salão” no teste grátis.</p>
+            </details>
+            <details class="sg-faq-item">
+              <summary>Barbearia e salão têm limite de profissionais?</summary>
+              <p>Não. Os planos de barbearia e salão incluem profissionais ilimitados, com agenda e comissão por profissional.</p>
             </details>
           </div>
         </div>
