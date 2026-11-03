@@ -154,11 +154,11 @@ var cp=''; try{var q2=new URLSearchParams(location.search);cp=q2.get('campanha')
 })();
 </script>
 <script>(function(){
-  var GA4_ID=''; /* ID de medição do GA4 (G-XXXXXXXXXX): preencher quando a propriedade existir. Sem ele, os eventos ficam prontos, mas o GA4 não recebe nada. */
+  var GA4_ID='G-8EKPC17B9Z'; /* ID de medição do GA4 da propriedade Geração Tech Cloud */
   var p=location.pathname.replace(/\/+$/,'')||'/',page=(p==='/'||p==='/index.html')?'home':/assistencia/.test(p)?'assistencia':/barbearia/.test(p)?'barbearia_salao':/teste/.test(p)?'formulario_teste':'outra';
   var prod=page==='assistencia'?'assistencia':page==='barbearia_salao'?'barbearia':'';
   window.dataLayer=window.dataLayer||[];if(!window.gtag){window.gtag=function(){dataLayer.push(arguments);};window.gtag('js',new Date());}
-  if(GA4_ID){try{gtag('config',GA4_ID);}catch(e){}}
+  if(GA4_ID){try{var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtag/js?id='+GA4_ID;document.head.appendChild(gs);gtag('config',GA4_ID);}catch(e){}}
   window.gtEv=function(n,o){try{o=o||{};o.page_type=page;if(!o.product_type&&prod)o.product_type=prod;gtag('event',n,o);}catch(e){}};
   document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="teste.html"]');if(!a)return;var m=(a.getAttribute('href')||'').match(/tipo=([a-z]+)/);gtEv('click_trial_cta',{cta_name:(a.textContent||'').trim().slice(0,60),product_type:m?m[1]:(prod||undefined)});},true);
   var alvo=document.getElementById('planos')||document.getElementById('sistema-gestao');
