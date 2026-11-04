@@ -1004,7 +1004,7 @@
     }
     /* botões do início: 4 botões do mesmo tamanho, em grade 2x2 */
     .hero-btns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;max-width:520px}
-    .hero-btns a{display:flex;align-items:center;justify-content:center;text-align:center;min-height:56px;padding:12px 20px;box-sizing:border-box;white-space:nowrap}
+    .hero-btns a{display:flex;align-items:center;justify-content:center;text-align:center;min-height:56px;padding:12px 20px;box-sizing:border-box;white-space:normal;line-height:1.25}
     @media (max-width:420px){.hero-btns a{white-space:normal;padding:12px 10px;font-size:.85rem}}
 
     /* menu do topo: sistemas em destaque */
@@ -1087,12 +1087,12 @@ fbq('init','1566241344728350');fbq('track','PageView');
           <li><a href="/barbearia-salao.html">Gestão para Barbearia e Salão <small>sistema online</small></a></li>
         </ul>
       </li>
-      <li><a href="/teste.html" class="sys">Teste grátis</a></li>
-      <li><a href="#cloud" class="sys">Sistema Cloud</a></li>
+            <li><a href="#cloud" class="sys">Sistema Cloud</a></li>
       <li class="nav-sep" aria-hidden="true"></li>
       <li><a href="#produtos">Produtos</a></li>
       <li><a href="#servicos">Serviços</a></li>
       <li><a href="#sobre">Sobre</a></li>
+      <li><a href="/teste.html" class="nav-cta">Teste grátis</a></li>
       <li><a href="#contato" class="nav-cta">Fale Conosco</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menu">
