@@ -1081,7 +1081,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
     </a>
     <ul class="nav-links" id="navLinks">
       <li class="has-sub">
-        <a href="#sistema-gestao" class="sys">Conheça nossos sistemas <span class="caret">▾</span></a>
+        <a href="#escolha-sistema" class="sys">Conheça nossos sistemas <span class="caret">▾</span></a>
         <ul class="sub">
           <li><a href="/assistencia.html">Assistência Técnica <small>sistema online</small></a></li>
           <li><a href="/barbearia-salao.html">Gestão para Barbearia e Salão <small>sistema online</small></a></li>
@@ -1214,6 +1214,8 @@ fbq('init','1566241344728350');fbq('track','PageView');
       #escolha-sistema .es-body{display:flex;flex-direction:column;gap:10px;padding:20px 22px 22px;flex:1}
       #escolha-sistema .es-body h3{margin:0;font-size:1.3rem;font-weight:800}
       #escolha-sistema .es-body p{margin:0;color:var(--text2);line-height:1.55}
+      #escolha-sistema .es-list{list-style:none;margin:2px 0 4px;padding:0;display:grid;gap:5px;color:var(--text2);font-size:.95rem}
+      #escolha-sistema .es-list li:before{content:"✓ ";color:var(--blue2);font-weight:800}
       #escolha-sistema .es-act{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px;padding-top:8px}
       #escolha-sistema .es-act a{text-align:center}
       #escolha-sistema .es-nota{text-align:center;margin:20px 0 0;color:var(--text2);font-size:.92rem}
@@ -1230,7 +1232,8 @@ fbq('init','1566241344728350');fbq('track','PageView');
           <div class="es-img" role="img" aria-label="Tela do sistema com a lista de ordens de serviço" style="background-image:url(ativos/assistencia/tela-ordens.jpg)"></div>
           <div class="es-body">
             <h3>Assistência técnica</h3>
-            <p>Ordens de serviço, peças e financeiro no mesmo sistema. Envie orçamentos pelo WhatsApp e emita nota fiscal.</p>
+            <p>Organize cada atendimento, do orçamento à entrega. O cliente aprova o orçamento por link.</p>
+            <ul class="es-list"><li>Ordens de serviço e orçamentos</li><li>Peças, estoque, caixa e despesas</li><li>WhatsApp e nota fiscal, conforme o plano</li></ul>
             <div class="es-act">
               <a class="btn-primary" href="/teste.html?tipo=assistencia">Testar este sistema</a>
               <a class="btn-outline" href="/assistencia.html">Ver o sistema</a>
@@ -1241,7 +1244,8 @@ fbq('init','1566241344728350');fbq('track','PageView');
           <div class="es-img" role="img" aria-label="Tela do agendamento online no celular de uma barbearia" style="background-image:url(ativos/beleza/tela-agendar-celular.jpg)"></div>
           <div class="es-body">
             <h3>Barbearia e salão</h3>
-            <p>O cliente agenda pelo celular. Você acompanha agenda, caixa e comissões num só lugar.</p>
+            <p>Agenda, equipe e caixa em um só lugar. O cliente agenda online pelo celular.</p>
+            <ul class="es-list"><li>Agendamento online</li><li>Caixa do dia e comissões</li><li>Lembretes, pacotes e cupons</li></ul>
             <div class="es-act">
               <a class="btn-primary" href="/teste.html?tipo=barbearia">Testar este sistema</a>
               <a class="btn-outline" href="/barbearia-salao.html">Ver o sistema</a>
@@ -1665,6 +1669,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
               <div class="plan-name">Assistência técnica</div>
               <p style="margin:0 0 .4rem;font-size:1rem;font-weight:600;">Comece organizando a sua assistência hoje</p>
               <div class="plan-price"><small>a partir de </small>R$ 49,90<small>/mês</small></div>
+              <p style="margin:-.2rem 0 .8rem;font-size:.85rem;opacity:.8;">Plano Essencial, pago mensalmente. Os planos Profissional e Completo têm mais recursos.</p>
               <ul class="plan-features">
                 <li>Recursos e limites variam conforme o plano: Essencial, Profissional e Completo</li>
                 <li>Ordens de serviço e orçamentos com link de aprovação pelo cliente</li>
@@ -1684,6 +1689,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
               <div class="plan-name">Barbearia e salão</div>
               <p style="margin:0 0 .4rem;font-size:1rem;font-weight:600;">Comece organizando o seu negócio, salão ou barbearia</p>
               <div class="plan-price"><small>a partir de </small>R$ <span id="gtPrecoBeleza">69,90</span><small>/mês</small></div>
+              <p style="margin:-.2rem 0 .8rem;font-size:.85rem;opacity:.8;" id="gtNotaBeleza">No plano anual (R$ 838,80 à vista), Black Friday até 27/11. O plano mensal custa R$ 89,90 na promoção.</p>
               <ul class="plan-features">
                 <li>Agenda online: o cliente marca horário sozinho</li>
                 <li>Comissão de cada profissional calculada automaticamente</li>
@@ -1700,7 +1706,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
               <a href="/teste.html" class="btn-outline" style="display:block;text-align:center;margin-top:0.75rem;">Testar 7 dias grátis</a>
             </div>
           </div>
-          <script>(function(){try{if(Date.now()>=Date.parse("2026-11-28T03:00:00Z")){var e=document.getElementById("gtPrecoBeleza");if(e)e.textContent="79,90";}}catch(x){}})();</script>
+          <script>(function(){try{if(Date.now()>=Date.parse("2026-11-28T03:00:00Z")){var e=document.getElementById("gtPrecoBeleza");if(e)e.textContent="79,90";var n=document.getElementById("gtNotaBeleza");if(n)n.textContent="No plano anual (R$ 958,80 à vista). O plano mensal custa R$ 99,90, sem fidelidade.";}}catch(x){}})();</script>
 
           <div class="sg-faq">
             <details class="sg-faq-item">
