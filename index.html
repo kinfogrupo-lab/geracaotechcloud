@@ -1203,7 +1203,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
       #sistema-gestao .gt-fold[open]>summary:after{content:"− Recolher"}
       #sistema-gestao .gt-fold>.cloud-features{padding:0 14px 14px}
       #hero h1{font-size:clamp(1.9rem,3.7vw,2.9rem);line-height:1.12}
-      #escolha-sistema{padding:3.5rem 0 3rem}
+      #escolha-sistema{padding:3.5rem 0 3rem;scroll-margin-top:-36px}
       #escolha-sistema .es-in{max-width:1080px;margin:0 auto;padding:0 20px}
       #escolha-sistema .es-head{text-align:center;max-width:720px;margin:0 auto 28px}
       #escolha-sistema .es-head h2{font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:900;line-height:1.2;margin:.4rem 0 .7rem}
@@ -2097,6 +2097,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
   var alvo=document.getElementById('planos')||document.getElementById('sistema-gestao');
   if(alvo&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){gtEv('view_pricing');io.disconnect();}});},{threshold:.25});io.observe(alvo);}
 })();</script>
+<script>(function(){function a(){var n=document.querySelector('nav'),f=document.getElementById('promoFaixa');var h=(n?n.offsetHeight:82)+(f&&getComputedStyle(f).display!=='none'?f.offsetHeight:0);document.documentElement.style.scrollPaddingTop=(h+8)+'px';}a();addEventListener('resize',a);addEventListener('load',a);})();</script>
 </body>
 </html>
 <!-- v2 -->
