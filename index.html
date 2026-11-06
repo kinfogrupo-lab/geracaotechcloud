@@ -539,6 +539,10 @@
     }
 
 
+    /* Sistema de Gestão e Sobre: colunas começam juntas no topo (antes a da esquerda ficava centralizada e sobrava vazio em cima) */
+    #sistema-gestao .cloud-grid, #sobre .sobre-grid { align-items: start; }
+    #sobre .sobre-grid > div:first-child { position: sticky; top: 96px; }
+    @media (max-width: 768px) { #sobre .sobre-grid > div:first-child { position: static; } }
     /* Seção Cloud: coluna da esquerda sobe junto com a dos planos e a sobra ganha uma ilustração */
     #cloud .cloud-grid { align-items: start; }
     #cloud .cloud-grid > div:first-child { display: flex; flex-direction: column; align-self: stretch; }
