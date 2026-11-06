@@ -543,6 +543,8 @@
     #sistema-gestao .cloud-grid, #sobre .sobre-grid { align-items: start; }
     #sobre .sobre-grid > div:first-child { position: sticky; top: 96px; }
     @media (max-width: 768px) { #sobre .sobre-grid > div:first-child { position: static; } }
+    #sistema-gestao .cloud-grid > div:first-child { display: flex; flex-direction: column; align-self: stretch; }
+    #sistema-gestao .gestao-art { min-height: 340px; }
     /* Seção Cloud: coluna da esquerda sobe junto com a dos planos e a sobra ganha uma ilustração */
     #cloud .cloud-grid { align-items: start; }
     #cloud .cloud-grid > div:first-child { display: flex; flex-direction: column; align-self: stretch; }
@@ -1709,6 +1711,56 @@ fbq('init','1566241344728350');fbq('track','PageView');
             </div>
           </div>
           </details>
+          <div class="cloud-art gestao-art" aria-hidden="true">
+            <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg" fill="none">
+              <defs>
+                <linearGradient id="gestGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#00f5ff"/></linearGradient>
+                <linearGradient id="gestBar" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#0ea5e9" stop-opacity="0.35"/><stop offset="1" stop-color="#00f5ff"/></linearGradient>
+              </defs>
+              <rect x="20" y="40" width="300" height="210" rx="14" fill="rgba(13,20,32,0.92)" stroke="url(#gestGrad)" stroke-width="2.5"/>
+              <path d="M20 66 H320" stroke="#38bdf8" stroke-opacity="0.35"/>
+              <circle cx="38" cy="53" r="4" fill="#38bdf8"/><circle cx="53" cy="53" r="4" fill="#38bdf8" opacity="0.6"/><circle cx="68" cy="53" r="4" fill="#38bdf8" opacity="0.3"/>
+              <g stroke="#38bdf8" stroke-opacity="0.55" stroke-width="1.5">
+                <rect x="36" y="80" width="82" height="42" rx="8" fill="rgba(14,165,233,0.10)"/>
+                <rect x="129" y="80" width="82" height="42" rx="8" fill="rgba(14,165,233,0.10)"/>
+                <rect x="222" y="80" width="82" height="42" rx="8" fill="rgba(14,165,233,0.10)"/>
+              </g>
+              <g stroke="#00f5ff" stroke-width="3" stroke-linecap="round">
+                <path d="M48 96 h26"/><path d="M141 96 h34"/><path d="M234 96 h22"/>
+              </g>
+              <g stroke="#38bdf8" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round">
+                <path d="M48 110 h46"/><path d="M141 110 h40"/><path d="M234 110 h50"/>
+              </g>
+              <g fill="url(#gestBar)">
+                <rect x="40" y="196" width="18" height="40" rx="3"/><rect x="66" y="176" width="18" height="60" rx="3"/><rect x="92" y="186" width="18" height="50" rx="3"/>
+                <rect x="118" y="160" width="18" height="76" rx="3"/><rect x="144" y="170" width="18" height="66" rx="3"/><rect x="170" y="146" width="18" height="90" rx="3"/>
+              </g>
+              <path d="M36 236 H196" stroke="#38bdf8" stroke-opacity="0.4"/>
+              <g stroke="#38bdf8" stroke-opacity="0.45" stroke-width="2" stroke-linecap="round">
+                <path d="M222 150 h58"/><path d="M222 172 h46"/><path d="M222 194 h54"/><path d="M222 216 h40"/>
+              </g>
+              <g stroke="#00f5ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M206 150 l3 3 l6-7"/><path d="M206 172 l3 3 l6-7"/><path d="M206 194 l3 3 l6-7"/>
+              </g>
+              <path d="M130 250 v26 M80 276 h100" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+              <rect x="226" y="150" width="140" height="262" rx="22" fill="rgba(13,20,32,0.96)" stroke="url(#gestGrad)" stroke-width="3" transform="translate(0,0)"/>
+              <rect x="276" y="160" width="40" height="6" rx="3" fill="#38bdf8" opacity="0.5"/>
+              <g stroke="#38bdf8" stroke-opacity="0.6" stroke-width="1.5">
+                <rect x="240" y="184" width="112" height="46" rx="8" fill="rgba(14,165,233,0.10)"/>
+              </g>
+              <g stroke="#00f5ff" stroke-width="3" stroke-linecap="round"><path d="M252 200 h40"/></g>
+              <path d="M252 216 h70" stroke="#38bdf8" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round"/>
+              <g fill="#38bdf8" fill-opacity="0.35">
+                <rect x="240" y="246" width="30" height="26" rx="6"/><rect x="278" y="246" width="30" height="26" rx="6"/><rect x="316" y="246" width="30" height="26" rx="6"/>
+                <rect x="240" y="280" width="30" height="26" rx="6"/><rect x="278" y="280" width="30" height="26" rx="6"/><rect x="316" y="280" width="30" height="26" rx="6"/>
+                <rect x="240" y="314" width="30" height="26" rx="6"/><rect x="316" y="314" width="30" height="26" rx="6"/>
+              </g>
+              <rect x="278" y="314" width="30" height="26" rx="6" fill="#00f5ff" class="pulse"/>
+              <rect x="240" y="352" width="106" height="34" rx="10" fill="url(#gestGrad)"/>
+              <path d="M270 369 l7 7 l14-15" stroke="#0d1420" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M300 369 h30" stroke="#0d1420" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
         </div>
 
         <div>
