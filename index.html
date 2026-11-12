@@ -1033,8 +1033,13 @@
 
     /* menu do topo: sem quebra de linha e hambúrguer em telas médias */
     .nav-links a{white-space:nowrap}
-    .logo img.brand-h{height:56px;width:auto;display:block}
-    @media (max-width: 480px){ .logo img.brand-h{height:44px} }
+    /* topo: texto do logotipo um pouco menor e menu mais perto do logotipo */
+    .logo{gap:10px}
+    .logo-text{justify-content:center}
+    .logo-text span:first-child{font-size:1.05rem;letter-spacing:.5px;line-height:1.15}
+    .logo-text span:last-child{font-size:.58rem;letter-spacing:1.2px;line-height:1.2;margin-top:2px;white-space:nowrap}
+    .logo-text span:first-child{white-space:nowrap}
+    @media (min-width:1025px){ .nav-links{flex:1;margin-left:2.2rem;align-items:center} .nav-links li:has(> a[href="/teste.html"]){margin-left:auto} }
     .nav-cta{white-space:nowrap;display:inline-block;line-height:1.2}
     @media (max-width: 1180px){ .nav-links{gap:1.1rem} .nav-links a{font-size:.74rem;letter-spacing:.5px} }
     @media (max-width: 1024px) {
@@ -1116,8 +1121,12 @@ fbq('init','1566241344728350');fbq('track','PageView');
 
   <!-- NAV -->
   <nav>
-    <a href="#hero" class="logo" aria-label="Geração Tech Soluções Digitais">
-      <img class="brand-h" src="/encomendas-logo.png" srcset="/encomendas-logo.png 1x, /encomendas-logo@2x.png 2x" width="759" height="183" alt="Geração Tech Soluções Digitais">
+    <a href="#hero" class="logo">
+      <img src="/encomendas-simbolo2.png" width="58" height="55" alt="Geração Tech" style="height:54px;width:auto;filter:drop-shadow(0 0 12px rgba(14,165,233,0.45));">
+      <div class="logo-text">
+        <span>Geração <em class="gt-tech">Tech</em></span>
+        <span>Soluções em Tecnologia</span>
+      </div>
     </a>
     <ul class="nav-links" id="navLinks">
       <li class="has-sub">
