@@ -82,6 +82,11 @@ fbq('init','1566241344728350');fbq('track','PageView');
         <option value="barbearia">Barbearia</option>
         <option value="salao">Salão de beleza</option>
       </select>
+      <div id="cod" hidden>
+        <label for="codigo">Código enviado para o seu WhatsApp</label>
+        <input id="codigo" name="codigo" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="6 dígitos">
+        <p style="margin:8px 0 0;font-size:.88rem"><a href="#" id="reenviar" style="color:inherit">Reenviar código</a> &middot; <a href="#" id="corrigir" style="color:inherit">Corrigir o número</a></p>
+      </div>
       <input class="hp" type="text" name="website" id="website" tabindex="-1" autocomplete="off" aria-hidden="true">
       <p style="margin:10px 0 8px;font-size:.92rem;text-align:center"><b>Sem cartão. Nada será cobrado automaticamente.</b> Você escolhe um plano depois do teste.</p>
       <button id="b" type="submit">Criar meu acesso grátis</button>
@@ -136,6 +141,36 @@ fbq('init','1566241344728350');fbq('track','PageView');
   }
   function bad(field,msg){ show(msg,'err'); try{ f.querySelectorAll('.campo-erro').forEach(function(x){x.classList.remove('campo-erro');}); var el=f[field]; if(el){ el.classList.add('campo-erro'); el.scrollIntoView({block:'center',behavior:'smooth'}); el.focus({preventScroll:true}); el.addEventListener('input',function r(){ el.classList.remove('campo-erro'); el.removeEventListener('input',r); }); } }catch(e){} return false; }
   f.addEventListener('focusin',function ini(){ gtEv('form_start',{product_type:f.segmento.value}); f.removeEventListener('focusin',ini); });
+  var codBox=document.getElementById('cod');
+  function rotulo(){ return codBox.hidden ? 'Criar meu acesso grátis' : 'Confirmar e criar meu acesso'; }
+  function lerJson(r){ return r.json().then(function(j){ return {s:r.status,j:j}; }); }
+  function dadosAtuais(){ return {whatsapp:f.whatsapp.value.trim(), website:f.website.value}; }
+  function pedirCodigo(d){
+    b.disabled=true; b.textContent='Enviando o código para o seu WhatsApp...';
+    fetch(API+'/codigo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({whatsapp:d.whatsapp,website:d.website})})
+      .then(lerJson).then(function(x){
+        if(x.j&&x.j.ok){
+          if(!x.j.exige) return enviar(d);
+          codBox.hidden=false; b.disabled=false; b.textContent=rotulo();
+          show('Enviamos um código de 6 dígitos para o seu WhatsApp. Digite abaixo para confirmar que o número é seu.','ok');
+          document.getElementById('codigo').focus(); return;
+        }
+        b.disabled=false; b.textContent=rotulo(); show((x.j&&x.j.error)||'Não foi possível enviar o código agora. Tente novamente.','err');
+      }).catch(function(){ b.disabled=false; b.textContent=rotulo(); show('Sem conexão com o servidor. Tente novamente em instantes.','err'); });
+  }
+  function enviar(d){
+    b.disabled=true; b.textContent='Criando seu acesso...';
+    fetch(API+'/cadastro',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+      .then(lerJson)
+      .then(function(x){
+        if(x.j&&x.j.ok){ gtEv('generate_lead',{product_type:d.segmento}); try{ if(window.fbq) fbq('track','Lead'); }catch(e){} f.style.display='none'; m.hidden=false; show('Seu pedido de teste foi recebido. Estamos criando o seu acesso (leva 1 a 2 minutos). Não feche esta página.','ok'); if(x.j.id&&x.j.id!=='ok') poll(x.j.id,d.email,0); return; }
+        b.disabled=false; b.textContent=rotulo(); show((x.j&&x.j.error)||'Não foi possível concluir agora. Tente novamente.','err');
+        if(x.j&&x.j.codigoNecessario){ var ci=document.getElementById('codigo'); ci.value=''; ci.focus(); }
+      }).catch(function(){ b.disabled=false; b.textContent=rotulo(); show('Sem conexão com o servidor. Tente novamente em instantes.','err'); });
+  }
+  document.getElementById('reenviar').addEventListener('click',function(e){ e.preventDefault(); document.getElementById('codigo').value=''; pedirCodigo(dadosAtuais()); });
+  document.getElementById('corrigir').addEventListener('click',function(e){ e.preventDefault(); codBox.hidden=true; document.getElementById('codigo').value=''; b.textContent=rotulo(); m.hidden=true; f.whatsapp.focus(); });
+  f.whatsapp.addEventListener('input',function(){ if(!codBox.hidden){ codBox.hidden=true; document.getElementById('codigo').value=''; b.textContent=rotulo(); } });
   f.addEventListener('submit',function(e){
     e.preventDefault(); m.hidden=true;
     var og=''; try{var q=new URLSearchParams(location.search);og=q.get('origem')||(q.get('fbclid')?'meta-auto':(q.get('gclid')||q.get('gbraid')||q.get('wbraid'))?'google-auto':'')||sessionStorage.getItem('gt-origem')||'';}catch(e){}
@@ -150,13 +185,13 @@ var cp=''; try{var q2=new URLSearchParams(location.search);cp=q2.get('campanha')
     if(fix[dom]) return bad('email','Confira o e-mail: você quis dizer '+d.email.split('@')[0]+'@'+fix[dom]+'? O acesso é enviado para ele.');
     segAtual=d.segmento;
     var zap=d.whatsapp.replace(/\D/g,''); if(zap.length<10||zap.length>13) return bad('whatsapp','Informe o WhatsApp com DDD: é por ele que a gente te ajuda a começar.');
-    b.disabled=true; b.textContent='Criando seu acesso...';
-    fetch(API+'/cadastro',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
-      .then(function(r){return r.json().then(function(j){return {s:r.status,j:j};});})
-      .then(function(x){
-        if(x.j&&x.j.ok){ gtEv('generate_lead',{product_type:d.segmento}); try{ if(window.fbq) fbq('track','Lead'); }catch(e){} f.style.display='none'; m.hidden=false; show('Seu pedido de teste foi recebido. Estamos criando o seu acesso (leva 1 a 2 minutos). Não feche esta página.','ok'); if(x.j.id&&x.j.id!=='ok') poll(x.j.id,d.email,0); return; }
-        b.disabled=false; b.textContent='Criar meu acesso grátis'; show((x.j&&x.j.error)||'Não foi possível concluir agora. Tente novamente.','err');
-      }).catch(function(){ b.disabled=false; b.textContent='Criar meu acesso grátis'; show('Sem conexão com o servidor. Tente novamente em instantes.','err'); });
+    var cod=document.getElementById('cod'), codInput=document.getElementById('codigo');
+    if(!cod.hidden){
+      var c=codInput.value.replace(/\D/g,'');
+      if(c.length<4) return bad('codigo','Digite o código que chegou no seu WhatsApp (6 dígitos).');
+      d.codigo=c; return enviar(d);
+    }
+    pedirCodigo(d);
   });
 })();
 </script>
