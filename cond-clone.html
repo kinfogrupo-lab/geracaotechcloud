@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gestão de Encomendas para Condomínios | Geração Tech</title>
+<meta name="description" content="Gestão de encomendas para condomínios: a portaria fotografa a etiqueta, o morador recebe no WhatsApp o aviso com o código de retirada e o síndico acompanha tudo. Teste grátis por 14 dias, sem cartão.">
+<link rel="canonical" href="https://geracaotechcloud.com.br/condominios.html">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="shortcut icon" href="/favicon.ico">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Geração Tech"><meta property="og:title" content="Gestão de Encomendas para Condomínios | Geração Tech"><meta property="og:description" content="A portaria fotografa a etiqueta e o morador recebe o aviso no WhatsApp com o código de retirada. Teste grátis por 14 dias, sem cartão."><meta property="og:url" content="https://geracaotechcloud.com.br/condominios.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="encomendas-app.css">
+<style>
+  .hero { padding: 46px 0 26px }
+  .hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 34px; align-items: center }
+  .hero h1 span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent }
+  .badge { display: inline-flex; gap: 8px; align-items: center; border: var(--borda); background: var(--card); border-radius: 999px; padding: 7px 14px; font-size: 12.5px; color: var(--cinza); margin-bottom: 18px }
+  .badge b { color: var(--ciano) }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 26px }
+  .stats .kpi-label { white-space: normal; overflow-wrap: anywhere }
+  .stats .card { padding: 16px; text-align: center }
+  .scanmock { position: relative; border-radius: 26px; overflow: hidden; border: var(--borda); background: var(--painel); aspect-ratio: 4/3.4; display: grid; place-items: center }
+  .scanmock .tag { position: absolute; background: rgba(5,7,13,.72); border: 1px solid var(--ciano); border-radius: 10px; padding: 6px 10px; font-size: 11.5px; font-family: var(--display); font-weight: 700 }
+  .scanmock .t1 { top: 14%; left: 10% } .scanmock .t2 { top: 34%; right: 8% } .scanmock .t3 { bottom: 20%; left: 18% }
+  .scanmock .laser { position: absolute; left: 8%; right: 8%; height: 2px; background: var(--ciano); box-shadow: 0 0 14px 2px var(--ciano); animation: scan 2.8s ease-in-out infinite }
+  @keyframes scan { 0%,100% { top: 22% } 50% { top: 72% } }
+  .steps { counter-reset: s }
+  .steps .card { position: relative; padding-top: 30px }
+  .steps .card::before { counter-increment: s; content: counter(s); position: absolute; top: -16px; left: 22px; width: 42px; height: 42px; border-radius: 14px; background: var(--grad); color: #04121f; display: grid; place-items: center; font-family: var(--display); font-weight: 900; font-size: 18px }
+  .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px }
+  .vs .no li, .vs .yes li { list-style: none; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.06); font-size: 14px }
+  .vs ul { margin: 0; padding: 0 }
+  .vs .no li::before { content: '— '; color: var(--err) }
+  .vs .yes li::before { content: '+ '; color: var(--ok); font-weight: 700 }
+  .featurelist { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4px 26px }
+  .featurelist .feature { padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.06) }
+  .sliderwrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 26px; align-items: start }
+  .sliderwrap input[type=range] { width: 100% }
+  .sliderwrap .sliderline { display: flex; gap: 16px; align-items: baseline }
+  .sliderwrap .sliderline .num { font-family: var(--display); font-weight: 800; font-size: 44px }
+  .faq details { border: var(--borda); border-radius: 16px; padding: 14px 18px; margin-bottom: 10px; background: rgba(255,255,255,.03) }
+  .faq summary { cursor: pointer; font-family: var(--display); font-weight: 700; font-size: 15px }
+  .faq p { margin: 10px 0 0; color: var(--cinza); font-size: 14px }
+  footer.foot { border-top: var(--borda); padding: 30px 0; color: var(--cinza); font-size: 13px }
+  @media (max-width: 860px) { .hero .wrap, .sliderwrap { grid-template-columns: 1fr } .vs { grid-template-columns: 1fr } }
+</style>
+<style>
+.vcard video{width:100%;max-width:300px;height:auto;aspect-ratio:9/16;border-radius:14px;background:#0a1220;display:block;margin:0 auto}
+.vcard p{margin:10px 0 0;text-align:center}
+.wa-fab{position:fixed;right:16px;bottom:16px;background:#25d366;color:#04210f;font-weight:800;padding:12px 18px;border-radius:99px;box-shadow:0 8px 24px #0006;z-index:20;font-family:var(--display)}
+.plans .plan{cursor:pointer}
+</style>
+<!-- Meta Pixel --><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src='https://connect.facebook.net/en_US/fbevents.js';s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script');fbq('init','1566241344728350');fbq('track','PageView');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18090804606"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18090804606');
+document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"],a[href*="whatsapp.com/send"]'):null;if(a&&window.gtag){try{gtag('event','conversion',{'send_to':'AW-18090804606/joOVCNGkpJ0dEP6Kr7JD'});}catch(x){}}},true);</script>
+</head>
+<body>
+<header class="top site home">
+  <div class="wrap topbar">
+    <a class="brand" href="https://geracaotechcloud.com.br/" aria-label="Geração Tech Soluções Digitais">
+      <img src="encomendas-logo.png"
+           srcset="encomendas-logo.png 1x, encomendas-logo@2x.png 2x"
+           width="759" height="183" alt="Geração Tech — Soluções Digitais">
+      <span class="who">Soluções<b>Digitais</b></span>
+    </a>
+    <nav class="main site-nav" aria-label="Menu principal">
+      <a href="#recursos">Recursos</a>
+      <a href="#como">Como funciona</a>
+      <a href="#precos">Preços</a>
+      <a href="#faq">Dúvidas</a>
+      <a class="signin" href="https://condominios.ginfotecn.com/login.html">Entrar</a>
+    </nav>
+    <div class="topcta">
+      <a class="mini-signin" href="https://condominios.ginfotecn.com/login.html">Entrar</a>
+      <a class="btn primary" href="https://condominios.ginfotecn.com/?cadastro=1">Teste grátis</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="badge"><b id="trialBadge">14 dias grátis</b> · Sem cartão · <span id="promoBadge">Sem fidelidade</span></div>
+      <h1 id="heroTitle">Sua portaria organizada em <span>minutos</span>.</h1>
+      <p class="muted" id="heroSub" style="font-size:17px;max-width:44ch">O porteiro fotografa a etiqueta, o sistema lê e deixa pronto o aviso no WhatsApp do morador, com o código de retirada. Histórico de cada entrega, do recebimento à retirada.</p>
+      <div class="row" style="margin-top:22px">
+        <a class="btn primary big" style="width:auto"  id="ctaHero" href="https://condominios.ginfotecn.com/?cadastro=1">Cadastre seu condomínio grátis</a>
+        <a class="btn ghost big" style="width:auto" id="ctaWhats" href="https://wa.me/554198069934?text=Quero%20saber%20mais%20do%20sistema%20para%20condom%C3%ADnios" target="_blank" rel="noopener">Falar com especialista</a>
+      </div>
+      <div class="stats">
+        <div class="card"><div class="kpi">1 toque</div><div class="kpi-label">para registrar e avisar o morador</div></div>
+        <div class="card"><div class="kpi">Sem internet</div><div class="kpi-label">o registro fica na fila e sincroniza depois</div></div>
+        <div class="card"><div class="kpi">Código</div><div class="kpi-label">de retirada diferente a cada encomenda</div></div>
+      </div>
+    </div>
+    <div class="scanmock">
+      <div class="laser"></div>
+      <svg viewBox="0 0 220 170" width="72%" aria-hidden="true">
+        <rect x="22" y="34" width="176" height="102" rx="10" fill="#0F2033" stroke="rgba(255,255,255,.14)"/>
+        <rect x="42" y="52" width="136" height="30" rx="4" fill="#fff"/>
+        <g stroke="#0b1220" stroke-width="2">
+          <path d="M50 58v18M56 58v18M61 58v18M68 58v18M75 58v18M79 58v18M86 58v18M93 58v18M97 58v18M104 58v18M112 58v18M116 58v18M123 58v18M130 58v18M137 58v18M144 58v18M151 58v18M158 58v18M165 58v18"/>
+        </g>
+        <text x="42" y="100" fill="#C7D3E3" font-family="monospace" font-size="11">EXEMPLO · NL00 0000 000 BR</text>
+        <text x="42" y="118" fill="#22D3EE" font-family="monospace" font-size="11">DESTINATÁRIO · APTO 402</text>
+      </svg>
+      <div class="tag t1">Etiqueta lida</div>
+      <div class="tag t2">Apto 402 · Bloco A</div>
+      <div class="tag t3">Aviso pronto no WhatsApp</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap">
+    <div class="vs">
+      <div class="card panel no">
+        <div class="label" style="color:#fecaca">Sem sistema</div>
+        <ul><li>Caderno ou planilha manual</li><li>Morador não sabe que chegou</li><li>Encomendas perdidas sem prova</li><li>Tempo perdido anotando e procurando</li><li>Reclamações de moradores sem resposta clara</li></ul>
+      </div>
+      <div class="card panel hi yes">
+        <div class="label">Com o sistema</div>
+        <ul><li>Tudo digital, sem caderno</li><li>Aviso no WhatsApp do morador, com um toque</li><li>Foto da chegada e registro de cada retirada</li><li>Registro rápido, pela câmera do celular</li><li>Menos conflito: tudo fica registrado</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="como">
+  <div class="wrap">
+    <div class="center"><div class="label">Como funciona</div><h2>Do problema à solução, em minutos</h2></div>
+    <div class="grid g3 steps" style="margin-top:34px">
+      <div class="card panel"><h3>Porteiro fotografa</h3><p class="muted">Aponte a câmera do celular ou tablet para a etiqueta. O sistema lê o código de rastreio, reconhece a transportadora e sugere o morador. Se a etiqueta estiver ruim, é só digitar o código ou o apartamento.</p></div>
+      <div class="card panel"><h3>Aviso ao morador</h3><p class="muted">Confirmado o registro, a mensagem fica pronta e o porteiro envia com um toque. O morador recebe no WhatsApp o apartamento, a transportadora e o código de retirada.</p></div>
+      <div class="card panel"><h3>Morador retira com o código</h3><p class="muted">O morador diz o código de 4 dígitos, o porteiro digita e a baixa está feita. Fica registrado quem retirou e qual porteiro atendeu.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="recursos">
+  <div class="wrap">
+    <h2>Tudo incluído no plano</h2>
+    <p class="muted">Sem cobranças extras. Sem módulos opcionais. Um plano só, com desconto para quem paga por mais tempo.</p>
+    <div class="featurelist" id="features"></div>
+  </div>
+</section>
+
+<section class="section" id="precos">
+  <div class="wrap">
+    <div class="center"><div class="label">Preços</div><h2>Quantas unidades tem seu condomínio?</h2>
+      <p class="muted">Veja o preço em tempo real. Você paga por unidade do condomínio, não por módulo.</p></div>
+
+    <div class="sliderwrap" style="margin-top:26px">
+      <div class="card panel">
+        <div class="sliderline"><input type="range" id="unitsRange" min="5" max="2000" step="5" value="240" aria-label="Número de unidades"><div class="num"><span id="unitsNum">240</span><span class="muted" style="font-size:14px;font-weight:400"> unidades</span></div></div>
+        <div class="scale"><span>5</span><span>500</span><span>1000</span><span>1500</span><span>2000+</span></div>
+        <div class="plans" id="planPick" style="margin-top:20px"></div>
+        <div class="plans" id="plans" style="margin-top:12px"></div>
+        <div class="price-hero" style="margin-top:16px">
+          <div class="muted small"><span id="cycleName">Completo · Mensal</span></div>
+          <div class="strike" id="priceFull" style="display:none">R$ 261,60</div>
+          <div class="big" id="priceMain">R$ 261,60</div>
+          <div class="muted small" id="pricePerUnit">R$ 1,09 por unidade/mês</div>
+          <div class="small muted" id="priceTotal" style="margin-top:6px"></div>
+        </div>
+        <a class="btn primary big" style="margin-top:16px"  id="ctaCalc" href="https://condominios.ginfotecn.com/?cadastro=1">Cadastre seu condomínio grátis</a>
+        <p class="center small muted" style="margin-top:12px">14 dias grátis · Sem cartão · Cancele quando quiser</p>
+      </div>
+
+      <div class="card panel">
+        <div class="vcard"><video controls playsinline preload="metadata" poster="reel-encomendas-poster.jpg" src="reel-encomendas.mp4" aria-label="Apresentação do sistema de encomendas para condomínios"></video><p class="small muted">Veja o sistema em menos de 30 segundos.</p></div>
+        <h3 style="margin-top:18px">Tudo incluído, sem pegadinha</h3>
+        <div class="list" id="included"></div>
+        <div class="row" style="margin-top:16px;border-top:var(--borda);padding-top:14px">
+          <span class="pill ativo"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><path d="M4 12.5 9 18 20 6"/></svg> Sem fidelidade</span>
+          <span class="small muted">cancele a qualquer momento, direto pelo painel. Seus dados ficam salvos por 90 dias.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="grid g3">
+      <div class="card panel"><div class="kpi">R$ <span id="kPerUnit">1,09</span></div><div class="kpi-label">por unidade/mês, tudo incluído</div></div>
+      <div class="card panel"><div class="kpi" id="kTrial">14 dias</div><div class="kpi-label">de teste grátis, sem cartão</div></div>
+      <div class="card panel"><div class="kpi">0</div><div class="kpi-label">módulos pagos por fora</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section faq" id="faq">
+  <div class="wrap">
+    <div class="center"><div class="label">Dúvidas</div><h2>Perguntas frequentes</h2></div>
+    <div style="margin-top:26px" id="faqList"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="card panel hi center" style="padding:40px 24px">
+      <h2 style="margin-bottom:8px">Comece hoje mesmo</h2>
+      <p class="muted" style="max-width:56ch;margin:0 auto 20px">Cadastre o condomínio, importe os moradores por planilha e faça o primeiro registro em minutos. Sem cartão de crédito.</p>
+      <div class="row center" style="justify-content:center">
+        <a class="btn primary big" style="width:auto" href="https://condominios.ginfotecn.com/?cadastro=1">Testar grátis por <span id="ctaTrialDays">14 dias</span></a>
+        <a class="btn ghost big" style="width:auto" id="ctaWhats2" href="https://wa.me/554198069934?text=Quero%20saber%20mais%20do%20sistema%20para%20condom%C3%ADnios" target="_blank" rel="noopener">Tirar dúvidas no WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap row spread">
+    <div class="row">
+      <img class="logo-simbolo" src="encomendas-simbolo.png" alt="">
+      <div><b class="brandtag">Geração Tech Soluções Digitais</b><div class="small">Soluções Digitais · <span id="productNameFoot">sistema de encomendas</span></div></div>
+    </div>
+    <div class="small">
+      <span id="year">2026</span> · <a href="https://condominios.ginfotecn.com/termos.html">Termos</a> · <a href="https://condominios.ginfotecn.com/privacidade.html">Privacidade</a> · <a href="https://condominios.ginfotecn.com/login.html">Entrar no painel</a>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-fab" href="https://wa.me/554198069934?text=Quero%20saber%20mais%20do%20sistema%20para%20condom%C3%ADnios" target="_blank" rel="noopener">WhatsApp</a>
+<script>
+(function(){
+const FAQ = [
+  ['O que é o sistema?', 'Um sistema de gestão de encomendas para condomínios: a portaria registra pela câmera do celular e o morador é avisado no WhatsApp, com o código de retirada, quando a encomenda chega.'],
+  ['Como é o registro de uma encomenda?', 'É rápido: uma foto da etiqueta e um toque de confirmação. O sistema lê a transportadora, o código de rastreio e o apartamento. Se a etiqueta estiver ruim, o porteiro digita o código ou o apartamento; se o morador não tem cadastro, cadastra na hora.'],
+  ['Preciso comprar hardware ou câmera nova?', 'Não. O sistema usa a câmera do celular ou tablet que a portaria já tem. Nenhuma impressora, leitor ou servidor extra é obrigatório.'],
+  ['O morador precisa instalar aplicativo?', 'Não. Ele recebe o aviso no WhatsApp, com apartamento, transportadora e código de retirada. A portaria usa o sistema no navegador ou instala como aplicativo, sem loja.'],
+  ['Como funciona o aviso no WhatsApp?', 'Hoje o aviso sai pelo link direto do WhatsApp: a mensagem fica pronta e o porteiro envia com um toque, sem custo extra. O envio automático pela API oficial do WhatsApp (Meta) está em preparação.'],
+  ['Como é a retirada?', 'Cada encomenda tem um código de 4 dígitos, diferente a cada pacote. O morador diz o código, o porteiro digita em "Retirar" e a baixa está feita, com registro de quem retirou e de qual porteiro atendeu.'],
+  ['E se a internet cair?', 'O registro da encomenda continua funcionando e fica numa fila, que sincroniza sozinha quando a conexão volta. O envio do WhatsApp e a baixa da retirada precisam de internet.'],
+  ['Como funciona a cobrança?', 'Preço por unidade do condomínio, em plano único com tudo incluído e valor mínimo mensal (R$ 149), com desconto de 6% no trimestral, 12% no semestral e 23% no anual: sem cobrança por encomenda, sem módulo opcional, sem taxa de implantação e sem fidelidade. Teste de 14 dias sem cartão.'],
+  ['Posso cancelar quando quiser?', 'Sim, sem fidelidade e sem multa, direto pelo painel. Você exporta o histórico completo em CSV e seus dados ficam salvos por 90 dias.'],
+  ['Os dados são do condomínio ou da empresa?', 'Do condomínio. Você exporta todo o histórico em CSV quando quiser, e no cancelamento os dados continuam disponíveis por 90 dias para exportação.'],
+  ['E a LGPD?', 'Acesso por perfil, trilha de auditoria, isolamento por condomínio e fotos acessíveis apenas para usuários autenticados. Dados minimizados: nome, unidade e contato. Backup diário.'],
+];
+const FEATS = [
+      ['Leitura da etiqueta pela câmera', 'Transportadora, rastreio e apartamento lidos em segundos; se a etiqueta estiver ruim, é só digitar'],
+      ['Aviso no WhatsApp do morador', 'Mensagem pronta com o código de retirada, enviada com um toque'],
+      ['Código de retirada por encomenda', '4 dígitos, diferente a cada pacote, para dar baixa na portaria'],
+      ['Registro mesmo sem internet', 'Fica numa fila e sincroniza quando a conexão volta'],
+      ['Cadastro ilimitado de encomendas', 'Sem limite de registros por mês'],
+      ['Gestão de moradores', 'Cadastro completo com apartamento e contato'],
+      ['Relatórios e histórico', 'Entregas e retiradas, com quem atendeu cada uma'],
+      ['Múltiplos porteiros', 'Vários operadores simultâneos'],
+      ['Suporte pelo WhatsApp', 'Atendimento da equipe Geração Tech'],
+      ['Atualizações gratuitas', 'Sempre a versão mais recente, sem custo extra'],
+      ['Multi-condomínios', 'Ideal para síndicos e administradoras'],
+      ['Sem fidelidade', 'Cancele a qualquer momento, direto pelo painel'],
+];
+var BASE=1.09,MIN=149,CY=[{id:'mensal',label:'Mensal',sub:'sem desconto',months:1,off:0},{id:'trimestral',label:'Trimestral',sub:'6% OFF',months:3,off:.06},{id:'semestral',label:'Semestral',sub:'12% OFF',months:6,off:.12},{id:'anual',label:'Anual',sub:'23% OFF',months:12,off:.23}];
+var units=240,cycle='mensal';
+function $(s){return document.querySelector(s)}
+function r2(x){return Math.round((x+Number.EPSILON)*100)/100}
+function brl(v){return 'R$ '+v.toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,'.')}
+function setT(s,t){var e=$(s);if(e)e.textContent=t}
+var CHECK='<svg viewBox="0 0 24 24"><path d="M4 12.5 9 18 20 6"/></svg>';
+function feats(){var h=FEATS.map(function(f){return '<div class="feature">'+CHECK+'<div><b>'+f[0]+'</b><span>'+f[1]+'</span></div></div>'}).join('');$('#features').innerHTML=h;$('#included').innerHTML=h}
+function faq(){$('#faqList').innerHTML=FAQ.map(function(f,i){return '<details'+(i===0?' open':'')+'><summary>'+f[0]+'</summary><p>'+f[1]+'</p></details>'}).join('')}
+function render(){
+ var bruto=r2(units*BASE),base=Math.max(MIN,bruto),minimo=bruto<MIN;
+ var cur=CY.filter(function(c){return c.id===cycle})[0];
+ var qs=CY.map(function(c){var m=r2(base*(1-c.off));return {id:c.id,label:c.label,sub:c.sub,months:c.months,off:c.off,monthly:m,total:r2(m*c.months)}});
+ var q=qs.filter(function(c){return c.id===cycle})[0];
+ setT('#unitsNum',units>=2000?'2000+':units);
+ var pp=$('#planPick'); if(pp) pp.style.display='none';
+ $('#plans').innerHTML=qs.map(function(c){return '<div class="plan '+(c.id===cycle?'on':'')+'" data-cycle="'+c.id+'"><div class="name">'+c.label+'</div><div class="off">'+c.sub+'</div><div class="val">'+brl(c.monthly)+'</div><div class="tot">Total '+brl(c.total)+'</div></div>'}).join('');
+ [].forEach.call(document.querySelectorAll('#plans .plan'),function(el){el.onclick=function(){cycle=el.getAttribute('data-cycle');render()}});
+ setT('#cycleName','Tudo incluído · '+cur.label+(cur.off?' com '+Math.round(cur.off*100)+'% OFF':''));
+ var pf=$('#priceFull'); pf.style.display=cur.off?'':'none'; pf.textContent=brl(base);
+ setT('#priceMain',brl(q.monthly));
+ setT('#pricePerUnit',brl(r2(q.monthly/units))+' por unidade/mês');
+ setT('#kPerUnit',(q.monthly/units).toFixed(2).replace('.',','));
+ setT('#priceTotal',cycle==='mensal'?(minimo?'Valor mínimo do plano: '+brl(MIN)+'/mês (até 136 unidades)':units+' unidades × '+brl(BASE)):'Total de '+brl(q.total)+' a cada '+cur.months+' meses');
+ var href='https://condominios.ginfotecn.com/?cadastro=1&unidades='+units+'&ciclo='+cycle;
+ [].forEach.call(document.querySelectorAll('a[href*="cadastro=1"]'),function(a){a.setAttribute('href',href)});
+}
+var rg=$('#unitsRange'); rg.value=240; rg.addEventListener('input',function(){var r=Number(rg.value);units=r>=2000?2000:r;render()});
+setT('#trialBadge','14 dias grátis'); setT('#year','2026'); setT('#productNameFoot','GT-Condomínios · gestão de encomendas');
+feats();faq();render();
+})();
+</script>
+<script>(function(){
+  var GA4_ID='G-8EKPC17B9Z'; /* ID de medição do GA4 da propriedade Geração Tech Cloud */
+  var p=location.pathname.replace(/\/+$/,'')||'/',page=(p==='/'||p==='/index.html')?'home':/assistencia/.test(p)?'assistencia':/condominios/.test(p)?'condominios':/barbearia/.test(p)?'barbearia_salao':/teste/.test(p)?'formulario_teste':'outra';
+  var prod=page==='assistencia'?'assistencia':page==='barbearia_salao'?'barbearia':page==='condominios'?'condominios':'';
+  window.dataLayer=window.dataLayer||[];if(!window.gtag){window.gtag=function(){dataLayer.push(arguments);};window.gtag('js',new Date());}
+  if(GA4_ID){try{var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtag/js?id='+GA4_ID;document.head.appendChild(gs);gtag('config',GA4_ID);}catch(e){}}
+  window.gtEv=function(n,o){try{o=o||{};o.page_type=page;if(!o.product_type&&prod)o.product_type=prod;gtag('event',n,o);}catch(e){}};
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="teste.html"],a[href*="cadastro=1"]');if(!a)return;var m=(a.getAttribute('href')||'').match(/tipo=([a-z]+)/);gtEv('click_trial_cta',{cta_name:(a.textContent||'').trim().slice(0,60),product_type:m?m[1]:(prod||undefined)});},true);
+  var alvo=document.getElementById('precos')||document.getElementById('planos');
+  if(alvo&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){gtEv('view_pricing');io.disconnect();}});},{threshold:.25});io.observe(alvo);}
+})();</script>
+</body>
+</html>

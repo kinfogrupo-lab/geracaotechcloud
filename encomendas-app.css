@@ -1,0 +1,280 @@
+/* ============================================================
+   Identidade Geração Tech — sistema de gestão de encomendas
+   Paleta oficial: preto #05070D, painéis #0B1220/#0F2033,
+   azul de marca #169BD5/#0E7BEA, degradê #22D3EE→#169BD5→#0B63CE
+   ============================================================ */
+
+:root {
+  --preto: #05070D;
+  --painel: #0B1220;
+  --painel2: #0F2033;
+  --azul: #169BD5;
+  --azul2: #0E7BEA;
+  --ciano: #22D3EE;
+  --azul-forte: #0B63CE;
+  --branco: #FFFFFF;
+  --cinza: #C7D3E3;
+  --wa: #25D366;
+  --ok: #34D399;
+  --warn: #FBBF24;
+  --err: #F87171;
+  --grad: linear-gradient(135deg, #22D3EE 0%, #169BD5 45%, #0B63CE 100%);
+  --borda: 1px solid rgba(255, 255, 255, 0.10);
+  --card: rgba(255, 255, 255, 0.04);
+  --raio: 22px;
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --display: 'Montserrat', var(--sans);
+}
+
+* { box-sizing: border-box }
+html, body { margin: 0; padding: 0 }
+body {
+  background: var(--preto); color: var(--branco);
+  font-family: var(--sans); font-size: 15px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; min-height: 100vh;
+}
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(700px 420px at 12% -5%, rgba(34, 211, 238, 0.16), transparent 60%),
+    radial-gradient(760px 460px at 95% 8%, rgba(11, 99, 206, 0.20), transparent 62%);
+}
+main, header, footer, .wrap { position: relative; z-index: 1 }
+
+a { color: var(--ciano); text-decoration: none }
+h1, h2, h3, h4, .display { font-family: var(--display); letter-spacing: -0.02em; margin: 0 0 .4em }
+h1 { font-size: clamp(30px, 5.2vw, 52px); font-weight: 800; line-height: 1.05 }
+h2 { font-size: clamp(22px, 3.4vw, 34px); font-weight: 800 }
+h3 { font-size: 18px; font-weight: 700 }
+p { margin: 0 0 1em }
+.label { font-family: var(--display); text-transform: uppercase; letter-spacing: .08em; font-size: 11.5px; font-weight: 700; color: var(--ciano) }
+.muted { color: var(--cinza) }
+.small { font-size: 12.5px }
+.mono { font-variant-numeric: tabular-nums }
+
+.wrap { width: min(1180px, 92vw); margin: 0 auto }
+.section { padding: 54px 0 }
+.grid { display: grid; gap: 18px }
+.g2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) }
+.g3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) }
+.row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap }
+.spread { justify-content: space-between }
+.center { text-align: center }
+.hide { display: none !important }
+
+/* ---------- logo e marca ---------- */
+.logo { height: 46px; width: auto; display: block }
+.logo-sm { height: 34px; width: auto }
+.logo-simbolo { height: 26px; width: auto }
+.brandtag { font-family: var(--display); font-weight: 800; letter-spacing: -.01em }
+
+/* ---------- cards ---------- */
+.card {
+  background: var(--card); border: var(--borda); border-radius: var(--raio);
+  padding: 22px; backdrop-filter: blur(6px);
+}
+.card.panel { background: var(--painel) }
+.card.hi { border-color: rgba(34, 211, 238, 0.35); box-shadow: 0 0 0 1px rgba(34, 211, 238, .12), 0 24px 60px -30px rgba(11, 99, 206, .6) }
+.kpi { font-family: var(--display); font-size: 30px; font-weight: 800; line-height: 1 }
+.kpi-label { color: var(--cinza); font-size: 12.5px; text-transform: uppercase; letter-spacing: .07em }
+
+/* ---------- botões ---------- */
+.btn {
+  font-family: var(--display); font-weight: 700; font-size: 14.5px; letter-spacing: -.01em;
+  border: 0; border-radius: 14px; padding: 13px 20px; cursor: pointer; color: var(--branco);
+  background: var(--painel2); transition: transform .12s ease, filter .2s ease, background .2s;
+  display: inline-flex; align-items: center; gap: 8px; justify-content: center;
+}
+.btn:hover { transform: translateY(-1px) }
+.btn:active { transform: translateY(0) }
+.btn.primary { background: var(--grad); color: #04121f }
+.btn.wa { background: var(--wa); color: #062d18 }
+.btn.ghost { background: transparent; border: var(--borda) }
+.btn.danger { background: rgba(248, 113, 113, .14); border: 1px solid rgba(248, 113, 113, .4); color: #fecaca }
+.btn.big { padding: 16px 26px; font-size: 16px; border-radius: 16px; width: 100% }
+.btn.sm { padding: 8px 13px; font-size: 12.5px; border-radius: 11px }
+.btn:disabled { opacity: .5; cursor: not-allowed; transform: none }
+
+/* ---------- formulários ---------- */
+input, select, textarea {
+  width: 100%; background: rgba(255, 255, 255, .05); border: var(--borda); color: var(--branco);
+  border-radius: 12px; padding: 12px 14px; font: inherit; font-size: 15px;
+}
+input:focus, select:focus, textarea:focus { outline: 2px solid rgba(34, 211, 238, .45); border-color: transparent }
+input::placeholder { color: rgba(199, 211, 227, .55) }
+label { display: block; font-size: 12.5px; color: var(--cinza); margin: 0 0 6px; text-transform: uppercase; letter-spacing: .06em; font-weight: 600 }
+.field { margin-bottom: 14px }
+.check { display: flex; align-items: center; gap: 8px; text-transform: none; letter-spacing: 0; color: var(--branco); font-weight: 500 }
+.check input { width: auto }
+
+input[type=range] { padding: 0; background: transparent; border: 0; height: 28px }
+input[type=range]::-webkit-slider-runnable-track { height: 6px; border-radius: 999px; background: linear-gradient(90deg, var(--ciano), var(--azul-forte)) }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #fff; margin-top: -7px; box-shadow: 0 2px 10px rgba(0,0,0,.5) }
+
+/* ---------- tabelas e listas ---------- */
+table { width: 100%; border-collapse: collapse; font-size: 14px }
+th, td { text-align: left; padding: 11px 10px; border-bottom: 1px solid rgba(255, 255, 255, .07) }
+th { color: var(--cinza); font-size: 11.5px; text-transform: uppercase; letter-spacing: .07em; font-weight: 700 }
+tbody tr:hover { background: rgba(255, 255, 255, .03) }
+.list { display: flex; flex-direction: column; gap: 10px }
+.item { display: flex; gap: 12px; align-items: flex-start; padding: 13px; border-radius: 16px; background: rgba(255,255,255,.03); border: var(--borda) }
+.item .ico { flex: 0 0 40px; height: 40px; border-radius: 12px; background: var(--painel2); display: grid; place-items: center; color: var(--ciano) }
+.btn .ic, .pill .ic, .tabbar .ic { width: 16px; height: 16px }
+.item h4 { margin: 0 0 2px; font-family: var(--display); font-size: 15px }
+.item p { margin: 0; color: var(--cinza); font-size: 13px }
+
+/* ---------- pills / status ---------- */
+.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: .05em }
+.pill.pendente { background: rgba(251, 191, 36, .16); color: #fcd34d }
+.pill.guardado { background: rgba(34, 211, 238, .16); color: #67e8f9 }
+.pill.entregue { background: rgba(52, 211, 153, .16); color: #6ee7b7 }
+.pill.devolvido { background: rgba(248, 113, 113, .16); color: #fecaca }
+.pill.trial { background: rgba(22, 155, 213, .18); color: #7dd3fc }
+.pill.ativo { background: rgba(52, 211, 153, .16); color: #6ee7b7 }
+.pill.cancelado, .pill.expirado { background: rgba(248, 113, 113, .16); color: #fecaca }
+
+/* ---------- ícones (SVG traçado, sem emoji) ---------- */
+.ic { width: 18px; height: 18px; vertical-align: -3px; flex: 0 0 auto }
+.ic-lg { width: 22px; height: 22px }
+.ico svg, .feature svg { width: 20px; height: 20px; stroke: var(--ciano); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round }
+.feature { display: flex; gap: 12px; align-items: flex-start }
+.feature svg { width: 22px; height: 22px; flex: 0 0 22px; margin-top: 2px }
+.feature b { display: block; font-family: var(--display); font-size: 15px }
+.feature span { color: var(--cinza); font-size: 13.5px }
+
+/* ---------- header / nav ---------- */
+header.top { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px); background: rgba(5, 7, 13, .72); border-bottom: var(--borda) }
+header.top .wrap { display: flex; align-items: center; gap: 14px; padding: 12px 0; flex-wrap: wrap }
+header.top .brandtag { min-width: 0; flex: 1 1 auto }
+header.top .row { margin-left: auto }
+nav.main { display: flex; gap: 20px; align-items: center; font-size: 14px }
+nav.main a { color: var(--cinza) }
+nav.main a:hover { color: var(--branco) }
+
+/* ---------- cabeçalho institucional (site da Geração Tech Soluções Digitais) ---------- */
+html { scroll-padding-top: 108px }
+header.top.site .topbar { display: flex; align-items: center; gap: clamp(20px, 2.8vw, 46px); flex-wrap: nowrap }
+header.top.site .brand { display: flex; align-items: center; gap: 14px; flex: 0 0 auto; min-width: 0 }
+header.top.site .brand img { height: clamp(50px, 5.2vw, 70px); width: auto; display: block }
+header.top.site .brand .who { font-family: var(--display); font-weight: 700; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--ciano); border-left: 1px solid rgba(34,211,238,.28); padding-left: 14px; line-height: 1.5; white-space: nowrap }
+header.top.site .brand .who b { display: block; color: #cfdaea; font-weight: 600; letter-spacing: .1em }
+header.top.site nav.main { flex: 1 1 auto; justify-content: space-evenly; gap: clamp(16px, 2.4vw, 44px); min-width: 0 }
+header.top.site nav.main a { position: relative; font-family: var(--display); font-weight: 600; font-size: 15px; color: #cdd7e5; padding: 9px 1px; white-space: nowrap }
+header.top.site nav.main a:hover { color: #fff }
+header.top.site nav.main a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 3px; height: 2px; border-radius: 2px; background: var(--grad); transition: right .22s ease }
+header.top.site nav.main a:hover::after { right: 0 }
+header.top.site nav.main a.signin { color: var(--ciano) }
+header.top.site nav.main a.signin::after { background: var(--ciano) }
+header.top.site .topcta { flex: 0 0 auto; margin-left: auto }
+header.top.site .topcta .btn { white-space: nowrap }
+header.top.site .topcta { display: flex; align-items: center; gap: 14px }
+header.top.site .mini-signin { display: none; font-family: var(--display); font-weight: 600; font-size: 14px; color: var(--ciano) }
+/* páginas sem botão de ação (termos, privacidade): menu encostado na marca */
+header.top.site nav.main.left { justify-content: flex-start; gap: clamp(24px, 3vw, 42px) }
+/* abaixo de 1000px o menu vira uma faixa rolável embaixo da marca, sem estourar a tela */
+@media (max-width: 1000px) {
+  html { scroll-padding-top: 132px }
+  header.top.site .topbar { flex-wrap: wrap; gap: 10px 18px }
+  header.top.site .brand img { height: clamp(44px, 8.6vw, 56px) }
+  header.top.site .brand .who { display: none }
+  header.top.site nav.main { order: 3; flex: 1 1 100%; min-width: 0; justify-content: flex-start; gap: 26px; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none }
+  header.top.site nav.main::-webkit-scrollbar { display: none }
+  /* o corte à direita avisa que a faixa de menu continua rolando */
+  header.top.site nav.main { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 46px), transparent calc(100% - 6px)); mask-image: linear-gradient(90deg, #000 calc(100% - 46px), transparent calc(100% - 6px)) }
+  header.top.site .topcta { margin-left: auto }
+  /* no celular o "Entrar" sobe para a linha da marca; a faixa rolável fica só com o conteúdo */
+  header.top.site.home nav.main a.signin { display: none }
+  header.top.site .mini-signin { display: inline-block }
+}
+/* telas estreitas: marca menor e CTA compacto, tudo em uma linha só */
+@media (max-width: 560px) {
+  header.top.site .brand img { height: 40px }
+  header.top.site .topcta { gap: 10px }
+  header.top.site .topcta .btn { padding: 10px 15px; font-size: 14px }
+  header.top.site .mini-signin { font-size: 13.5px }
+}
+@media (max-width: 420px) {
+  header.top.site .mini-signin { display: none }
+  header.top.site.home nav.main a.signin { display: inline-block }
+}
+
+/* colunas nunca estouram a largura em telas pequenas */
+.hero .wrap > *, .wrap > *, .grid > *, .shell > *, .plans > * { min-width: 0 }
+
+/* ---------- app layout ---------- */
+.appnav { display: flex; gap: 6px; flex-wrap: wrap }
+.appnav button { background: transparent; border: 0; color: var(--cinza); font: inherit; font-family: var(--display); font-weight: 700; font-size: 13.5px; padding: 9px 14px; border-radius: 12px; cursor: pointer }
+.appnav button.on { background: var(--painel2); color: var(--branco) }
+.shell { display: grid; grid-template-columns: 1fr; gap: 18px }
+.photo { width: 100%; max-height: 320px; object-fit: contain; border-radius: 16px; background: #000; border: var(--borda) }
+.cam { position: relative; border-radius: 20px; overflow: hidden; background: #000; border: var(--borda); aspect-ratio: 4/3; display: grid; place-items: center }
+.cam video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover }
+.cam .frame { position: absolute; inset: 16% 8%; border: 2px dashed rgba(34, 211, 238, .8); border-radius: 12px; pointer-events: none }
+.cam .hint { position: absolute; bottom: 10px; left: 10px; right: 10px; text-align: center; font-size: 12.5px; color: var(--cinza); background: rgba(5,7,13,.6); padding: 6px; border-radius: 10px }
+.sig { width: 100%; height: 170px; background: #fff; border-radius: 16px; touch-action: none }
+.bar { height: 8px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden }
+.bar > i { display: block; height: 100%; background: var(--grad) }
+.spark { display: flex; align-items: flex-end; gap: 4px; height: 84px }
+.spark > div { flex: 1; background: var(--grad); border-radius: 4px 4px 0 0; min-height: 2px; opacity: .85 }
+.toast { position: fixed; right: 16px; bottom: 16px; z-index: 60; display: flex; flex-direction: column; gap: 8px }
+.toast div { background: var(--painel2); border: var(--borda); border-left: 3px solid var(--ciano); padding: 12px 16px; border-radius: 12px; font-size: 14px; box-shadow: 0 18px 40px -20px #000; animation: pop .18s ease }
+.toast div.err { border-left-color: var(--err) }
+.toast div.ok { border-left-color: var(--ok) }
+@keyframes pop { from { transform: translateY(8px); opacity: 0 } }
+
+/* ---------- planos / calculadora ---------- */
+.plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px }
+.plan { cursor: pointer; text-align: center; padding: 16px 12px; border-radius: 16px; border: var(--borda); background: rgba(255,255,255,.03); transition: .18s }
+.plan:hover { border-color: rgba(34,211,238,.4) }
+.plan.on { background: linear-gradient(180deg, rgba(34,211,238,.16), rgba(11,99,206,.10)); border-color: var(--ciano) }
+.plan .name { font-family: var(--display); font-weight: 700; font-size: 13px }
+.plan .off { font-size: 11px; color: var(--cinza) }
+.plan .val { font-family: var(--display); font-weight: 800; font-size: 21px; margin: 6px 0 2px }
+.plan .tot { font-size: 11.5px; color: var(--cinza) }
+.price-hero { text-align: center; padding: 24px; border-radius: var(--raio); background: rgba(255,255,255,.05); border: var(--borda) }
+.price-hero .strike { color: var(--cinza); text-decoration: line-through }
+.price-hero .big { font-family: var(--display); font-weight: 900; font-size: clamp(38px, 7vw, 64px); line-height: 1; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent }
+.units-box { display: inline-flex; align-items: baseline; gap: 10px; padding: 14px 20px; border: 2px solid var(--ciano); border-radius: 16px; background: rgba(34,211,238,.08) }
+.units-box input { border: 0; background: transparent; font-family: var(--display); font-weight: 800; font-size: 30px; width: 5ch; padding: 0 }
+.units-box input:focus { outline: none }
+.scale { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--cinza); margin-top: 4px }
+
+/* ---------- responsivo ---------- */
+@media (max-width: 720px) {
+  .section { padding: 36px 0 }
+  nav.main:not(.site-nav) { display: none }
+  .shell { gap: 14px }
+  th, td { padding: 9px 6px; font-size: 13px }
+}
+@media print { body::before { display: none } .card { border: 1px solid #999 } }
+
+/* Prévia da mensagem exatamente como o morador vê no WhatsApp */
+.bubble { background: #DCF3E4; color: #14251b; border-radius: 14px 14px 14px 4px; padding: 12px 14px; margin: 10px 0 0; }
+.bubble, .item .bubble p, .bubble p { color: #14251b; }
+.bubble p { margin: 0 0 6px; font-size: 14px; line-height: 1.45; white-space: pre-wrap; }
+.bubble p:last-of-type { margin-bottom: 0; }
+.bubble .small.muted, .bubble .small { color: #3d5b47; }
+.bubble .btn.wa.sm { background: #25D366; color: #062d17; }
+@media (prefers-color-scheme: light) { .bubble { box-shadow: 0 2px 10px rgba(0,0,0,.18) } }
+
+/* ---------- barra superior do painel e da portaria (celular e computador) ---------- */
+header.top .wrap { flex-wrap: nowrap; gap: 12px; padding: 10px 0 }
+header.top .logo-sm { flex: 0 0 auto }
+header.top .brandtag { overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+header.top .row { flex-wrap: nowrap; flex: 0 0 auto }
+.tabbar { display: flex; flex-wrap: wrap; scrollbar-width: none; -webkit-overflow-scrolling: touch }
+.tabbar::-webkit-scrollbar { display: none }
+.tabbar a { flex: 0 0 auto; white-space: nowrap; display: inline-flex; align-items: center; gap: 7px }
+@media (max-width: 640px) {
+  header.top .logo-sm { height: 28px; width: 30px; object-fit: cover; object-position: left center }
+  header.top .brandtag { font-size: 14px !important }
+  header.top .btn.sm { padding: 8px 10px }
+  header.top .btn.sm .lbl { display: none }
+  .tabbar { flex-wrap: nowrap; overflow-x: auto; gap: 4px; margin: 12px -4px 16px; padding: 0 4px 8px }
+  .tabbar a { font-size: 13px; padding: 9px 12px }
+}
+
+/* ---------- janelas (lote, detalhe da encomenda): cobrem a tela, não aparecem no fim da página ---------- */
+.modal { position: fixed; inset: 0; background: rgba(2, 4, 9, .78); display: none; place-items: center; z-index: 40; padding: 16px }
+.modal.on { display: grid }
+.modal > .card { width: min(620px, 100%); max-height: 92vh; overflow: auto }
