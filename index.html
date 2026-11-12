@@ -1062,7 +1062,7 @@
 <style>
     .oferta-destaque{position:relative;z-index:1;background:linear-gradient(135deg,rgba(14,165,233,.16),rgba(0,245,255,.06));border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem 2rem}
     .oferta-inner{max-width:1100px;margin:0 auto;display:flex;gap:2.5rem;align-items:center}
-    .oferta-img{flex:0 0 300px;display:block;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 28px rgba(14,165,233,.25)}
+    .oferta-img{flex:0 0 360px;display:block;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 28px rgba(14,165,233,.25)}
     .oferta-img img{display:block;width:100%;height:auto}
     .oferta-txt{flex:1;text-align:left}
     .oferta-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--blue2);margin-bottom:.6rem}
@@ -1072,11 +1072,15 @@
     .oferta-preco small{display:block;font-size:.8rem;font-weight:500;color:var(--text2);margin-top:.4rem}
     .oferta-btns{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
     .oferta-btns a{padding:.85rem 1.4rem;border-radius:10px;font-weight:700;text-decoration:none}
+    .oferta-lista{list-style:none;margin:0 0 .25rem;padding:0;display:grid;gap:.6rem;max-width:560px}
+    .oferta-lista li{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.7rem 1rem;border:1px solid var(--border);border-radius:10px;background:rgba(14,165,233,.07)}
+    .oferta-lista li span{font-weight:700}
+    .oferta-lista li b{font-size:1.35rem;font-weight:900;color:var(--blue2);text-align:right}
+    .oferta-lista li small{display:block;font-size:.72rem;font-weight:500;color:var(--text2)}
     .oferta-btns .of-wa{background:#25d366;color:#04210f}
     .oferta-btns .of-folder{border:1px solid var(--blue);color:var(--blue2)}
     @media(max-width:768px){.oferta-inner{flex-direction:column;align-items:stretch}.oferta-img{flex-basis:auto;max-width:340px;margin:0 auto}.oferta-destaque{padding:2rem 1.25rem}}
   </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Computador NTC Compact Intel Core i7","description":"Intel Core i7 6ª geração (i7-6700HQ), 8 GB DDR4, SSD NVMe 512 GB, Linux, fonte 200 W.","image":"https://geracaotechcloud.com.br/ativos/folder-computador-ntc-compact-intel.jpg","brand":{"@type":"Brand","name":"NTC"},"offers":{"@type":"Offer","url":"https://geracaotechcloud.com.br/#oferta","priceCurrency":"BRL","price":"2690.00","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Geração Tech Soluções em Tecnologia"}}}</script>
 <style>
     .promo-faixa{display:none;position:fixed;top:82px;left:0;right:0;z-index:99;padding:.55rem 1rem;text-align:center;border-bottom:2px solid var(--accent);animation:promoPisca 1.6s ease-in-out infinite}
     .promo-faixa .pf-in{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;align-items:center;justify-content:center}
@@ -1226,7 +1230,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
   <div class="promo-faixa" id="promoFaixa">
     <div class="pf-in">
       <b>Black Friday até 27/11: veja os planos</b>
-      <span>Assistência técnica: Completo a R$ 119,90/mês. Barbearia e salão: anual a R$ 64,90/mês. No Pix: computador i7 por R$ 2.590 e teclado K250 por R$ 229.</span>
+      <span>Assistência técnica: Completo a R$ 119,90/mês. Barbearia e salão: anual a R$ 64,90/mês. Nuvem e Backup a partir de R$ 89,90/mês.</span>
       <a href="#sistema-gestao">Ver os planos</a>
     </div>
   </div>
@@ -1298,17 +1302,21 @@ fbq('init','1566241344728350');fbq('track','PageView');
   <!-- OFERTA EM DESTAQUE -->
   <section id="oferta" class="oferta-destaque">
     <div class="oferta-inner">
-      <a class="oferta-img" href="ativos/folder-computador-ntc-compact-intel.jpg" target="_blank" rel="noopener" title="Ver o folder completo">
-        <img src="ativos/folder-computador-ntc-compact-intel.jpg" alt="Folder da oferta: Computador NTC Compact Intel Core i7, 8 GB, SSD NVMe 512 GB, por R$ 2.690,00 no PIX" width="1024" height="1536">
+      <a class="oferta-img" href="ativos/folder-black-friday.jpg" target="_blank" rel="noopener" title="Ver o folder completo">
+        <img src="ativos/folder-black-friday.webp" alt="Folder Modo Black Friday ativado até 27/11: Gestão para Assistência Técnica por R$ 119,90 por mês, Gestão para Barbearia e Salão por R$ 64,90 por mês, Computador Compact Intel i7 por R$ 2.590,00 no Pix, Teclado Logitech K250 por R$ 229,00 no Pix e Nuvem e Backup a partir de R$ 89,90 por mês" width="1080" height="1350">
       </a>
       <div class="oferta-txt">
-        <span class="oferta-tag">Oferta · Curitiba e região</span>
-        <h2>Computador NTC Compact Intel Core i7</h2>
-        <p>Intel Core i7 6ª geração (i7-6700HQ), 8 GB DDR4, SSD NVMe 512 GB, Linux, fonte 200 W. Ideal para trabalho, estudos e uso diário.</p>
-        <div class="oferta-preco">R$ 2.690,00<small>no PIX · consulte o valor no cartão · oferta válida enquanto houver estoque</small></div>
+        <span class="oferta-tag">Black Friday · até 27/11</span>
+        <h2>Modo Black Friday ativado</h2>
+        <p>Os dois sistemas da Geração Tech com preço reduzido até 27/11. Teste grátis por 7 dias, sem cartão e sem cobrança automática. Computador e teclado também estão em oferta: veja no folder.</p>
+        <ul class="oferta-lista">
+          <li><span>Assistência técnica</span><b>R$ 119,90<small>/mês · de R$ 149,90</small></b></li>
+          <li><span>Barbearia e salão</span><b>R$ 64,90<small>/mês no plano anual · R$ 778,80 à vista · de R$ 79,90</small></b></li>
+          <li><span>Nuvem e Backup</span><b>R$ 89,90<small>/mês · a partir de</small></b></li>
+        </ul>
         <div class="oferta-btns">
-          <a class="of-wa" href="https://wa.me/554198069934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Computador%20NTC%20Compact%20Intel%20(R%24%202.690%2C00%20no%20PIX)." target="_blank" rel="noopener">Quero este computador</a>
-          <a class="of-folder" href="ativos/folder-computador-ntc-compact-intel.jpg" target="_blank" rel="noopener">Ver o folder completo</a>
+          <a class="of-wa" href="teste.html">Testar grátis por 7 dias</a>
+          <a class="of-folder" href="ativos/folder-black-friday.jpg" target="_blank" rel="noopener">Ver o folder completo</a>
         </div>
       </div>
     </div>
@@ -1364,21 +1372,6 @@ fbq('init','1566241344728350');fbq('track','PageView');
       </div>
 
       <div class="produtos-grid" id="produtosGrid">
-
-        <div class="produto-card" data-cat="desktop">
-          <a class="produto-img foto" href="ativos/folder-computador-ntc-compact-intel.jpg" target="_blank" rel="noopener" title="Ver o folder completo">
-            <img src="ativos/folder-computador-ntc-compact-intel.jpg" alt="Computador NTC Compact Intel Core i7, 8 GB, SSD NVMe 512 GB, por R$ 2.690,00 no PIX" loading="lazy" width="1024" height="1536">
-          </a>
-          <div class="produto-body">
-            <div class="produto-cat">Desktop · Oferta</div>
-            <div class="produto-nome">Computador NTC Compact Intel</div>
-            <div class="produto-desc">Intel Core i7 6ª geração (i7-6700HQ), 8 GB DDR4, SSD NVMe 512 GB, Intel HD Graphics, Linux, fonte 200 W. Ideal para trabalho, estudos e uso diário.</div>
-            <div class="produto-preco">R$ 2.690,00 <small>no PIX · consulte o valor no cartão · oferta válida enquanto houver estoque</small></div>
-            <div class="produto-footer">
-              <a href="https://wa.me/554198069934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Computador%20NTC%20Compact%20Intel%20(R%24%202.690%2C00%20no%20PIX)." target="_blank" rel="noopener" class="btn-card">Quero este computador</a>
-            </div>
-          </div>
-        </div>
 
         <div class="produto-card" data-cat="notebook">
           <div class="produto-img">💻</div>
