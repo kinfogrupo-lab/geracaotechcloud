@@ -1033,6 +1033,8 @@
 
     /* menu do topo: sem quebra de linha e hambúrguer em telas médias */
     .nav-links a{white-space:nowrap}
+    .logo img.brand-h{height:56px;width:auto;display:block}
+    @media (max-width: 480px){ .logo img.brand-h{height:44px} }
     .nav-cta{white-space:nowrap;display:inline-block;line-height:1.2}
     @media (max-width: 1180px){ .nav-links{gap:1.1rem} .nav-links a{font-size:.74rem;letter-spacing:.5px} }
     @media (max-width: 1024px) {
@@ -1114,16 +1116,12 @@ fbq('init','1566241344728350');fbq('track','PageView');
 
   <!-- NAV -->
   <nav>
-    <a href="#hero" class="logo">
-      <img src="/ativos/logo-geracao-tech.webp" width="70" height="70" alt="Geração Tech" style="height:70px;width:auto;filter:drop-shadow(0 0 14px rgba(14,165,233,0.5));">
-      <div class="logo-text">
-        <span>Geração <em class="gt-tech">Tech</em></span>
-        <span>Soluções em Tecnologia</span>
-      </div>
+    <a href="#hero" class="logo" aria-label="Geração Tech Soluções Digitais">
+      <img class="brand-h" src="/encomendas-logo.png" srcset="/encomendas-logo.png 1x, /encomendas-logo@2x.png 2x" width="759" height="183" alt="Geração Tech Soluções Digitais">
     </a>
     <ul class="nav-links" id="navLinks">
       <li class="has-sub">
-        <a href="#escolha-sistema" class="sys">Conheça nossos sistemas <span class="caret">▾</span></a>
+        <a href="#escolha-sistema" class="sys">Nossos sistemas <span class="caret">▾</span></a>
         <ul class="sub">
           <li><a href="/assistencia.html">Assistência Técnica <small>sistema online</small></a></li>
           <li><a href="/barbearia-salao.html">Gestão para Barbearia e Salão <small>sistema online</small></a></li>
