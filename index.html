@@ -1033,6 +1033,13 @@
 
     /* menu do topo: sem quebra de linha e hambúrguer em telas médias */
     .nav-links a{white-space:nowrap}
+    /* celular pequeno: nada passa da largura da tela */
+    html,body{max-width:100%;overflow-x:hidden}
+    .hero-inner > *, .cloud-grid > *, .sobre-grid > *, .contato-grid > *{min-width:0}
+    .cloud-item, .servico-foto-card, .produto-card, .plan-card, .dif-card, .contato-item{min-width:0;max-width:100%}
+    img{max-width:100%}
+    #hero{overflow:hidden}
+    div[style*="minmax(300px"]{grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr)) !important}
     /* topo: texto do logotipo um pouco menor e menu mais perto do logotipo */
     .logo{gap:10px}
     .logo-text{justify-content:center}
