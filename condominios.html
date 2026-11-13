@@ -150,18 +150,19 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e
 <section class="section" id="precos">
   <div class="wrap">
     <div class="center"><div class="label">Preços</div><h2>Quantas unidades tem seu condomínio?</h2>
-      <p class="muted">Veja o preço em tempo real. Você paga por unidade do condomínio, não por módulo.</p></div>
+      <p class="muted">Veja o preço em tempo real. Prédio pequeno paga preço de prédio pequeno: a partir de R$ 79 por mês, com tudo incluído.</p></div>
+      <div class="plans" id="tierTable" style="margin-top:22px"></div>
 
     <div class="sliderwrap" style="margin-top:26px">
       <div class="card panel">
-        <div class="sliderline"><input type="range" id="unitsRange" min="5" max="2000" step="5" value="240" aria-label="Número de unidades"><div class="num"><span id="unitsNum">240</span><span class="muted" style="font-size:14px;font-weight:400"> unidades</span></div></div>
-        <div class="scale"><span>5</span><span>500</span><span>1000</span><span>1500</span><span>2000+</span></div>
+        <div class="sliderline"><input type="range" id="unitsRange" min="1" max="2000" step="1" value="240" aria-label="Número de unidades"><div class="num"><span id="unitsNum">240</span><span class="muted" style="font-size:14px;font-weight:400"> unidades</span></div></div>
+        <div class="scale"><span>1</span><span>500</span><span>1000</span><span>1500</span><span>2000+</span></div>
         <div class="plans" id="planPick" style="margin-top:20px"></div>
         <div class="plans" id="plans" style="margin-top:12px"></div>
         <div class="price-hero" style="margin-top:16px">
           <div class="muted small"><span id="cycleName">Completo · Mensal</span></div>
-          <div class="strike" id="priceFull" style="display:none">R$ 261,60</div>
-          <div class="big" id="priceMain">R$ 261,60</div>
+          <div class="strike" id="priceFull" style="display:none">R$ 156,96</div>
+          <div class="big" id="priceMain">R$ 156,96</div>
           <div class="muted small" id="pricePerUnit">R$ 1,09 por unidade/mês</div>
           <div class="small muted" id="priceTotal" style="margin-top:6px"></div>
         </div>
@@ -185,7 +186,7 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e
 <section class="section">
   <div class="wrap">
     <div class="grid g3">
-      <div class="card panel"><div class="kpi">R$ <span id="kPerUnit">1,09</span></div><div class="kpi-label">por unidade/mês, tudo incluído</div></div>
+      <div class="card panel"><div class="kpi">R$ <span id="kFrom">79</span></div><div class="kpi-label">por mês para prédios de até 20 unidades, tudo incluído</div></div>
       <div class="card panel"><div class="kpi" id="kTrial">14 dias</div><div class="kpi-label">de teste grátis, sem cartão</div></div>
       <div class="card panel"><div class="kpi">0</div><div class="kpi-label">módulos pagos por fora</div></div>
     </div>
@@ -236,7 +237,7 @@ const FAQ = [
   ['Como funciona o aviso no WhatsApp?', 'Hoje o aviso sai pelo link direto do WhatsApp: a mensagem fica pronta e o porteiro envia com um toque, sem custo extra. O envio automático pela API oficial do WhatsApp (Meta) está em preparação.'],
   ['Como é a retirada?', 'Cada encomenda tem um código de 4 dígitos, diferente a cada pacote. O morador diz o código, o porteiro digita em "Retirar" e a baixa está feita, com registro de quem retirou e de qual porteiro atendeu.'],
   ['E se a internet cair?', 'O registro da encomenda continua funcionando e fica numa fila, que sincroniza sozinha quando a conexão volta. O envio do WhatsApp e a baixa da retirada precisam de internet.'],
-  ['Como funciona a cobrança?', 'Preço por unidade do condomínio, em plano único com tudo incluído e valor mínimo mensal (R$ 149), com desconto de 6% no trimestral, 12% no semestral e 23% no anual: sem cobrança por encomenda, sem módulo opcional, sem taxa de implantação e sem fidelidade. Teste de 14 dias sem cartão.'],
+  ['Como funciona a cobrança?', 'Plano único, com tudo incluído, e o preço acompanha o tamanho do prédio: até 20 unidades são R$ 79 por mês; de 21 a 50 unidades, R$ 119 por mês; de 51 unidades em diante, R$ 1,09 por unidade, com mínimo de R$ 149 por mês. Sobre esse valor vêm os descontos de 6% no trimestral, 12% no semestral e 23% no anual. Sem cobrança por encomenda, sem módulo opcional, sem taxa de implantação e sem fidelidade. Teste de 14 dias sem cartão.'],
   ['Posso cancelar quando quiser?', 'Sim, sem fidelidade e sem multa, direto pelo painel. Você exporta o histórico completo em CSV e seus dados ficam salvos por 90 dias.'],
   ['Os dados são do condomínio ou da empresa?', 'Do condomínio. Você exporta todo o histórico em CSV quando quiser, e no cancelamento os dados continuam disponíveis por 90 dias para exportação.'],
   ['E a LGPD?', 'Acesso por perfil, trilha de auditoria, isolamento por condomínio e fotos acessíveis apenas para usuários autenticados. Dados minimizados: nome, unidade e contato. Backup diário.'],
@@ -255,7 +256,7 @@ const FEATS = [
       ['Multi-condomínios', 'Ideal para síndicos e administradoras'],
       ['Sem fidelidade', 'Cancele a qualquer momento, direto pelo painel'],
 ];
-var BASE=1.09,MIN=149,CY=[{id:'mensal',label:'Mensal',sub:'sem desconto',months:1,off:0},{id:'trimestral',label:'Trimestral',sub:'6% OFF',months:3,off:.06},{id:'semestral',label:'Semestral',sub:'12% OFF',months:6,off:.12},{id:'anual',label:'Anual',sub:'23% OFF',months:12,off:.23}];
+var BASE=1.09,MIN=149,TIERS=[{id:'pequeno',label:'Prédio pequeno',range:'até 20 unidades',upTo:20,flat:79},{id:'medio',label:'Prédio médio',range:'de 21 a 50 unidades',upTo:50,flat:119},{id:'grande',label:'Condomínio grande',range:'51 unidades ou mais',upTo:null,perUnit:1.09,min:149}],CY=[{id:'mensal',label:'Mensal',sub:'sem desconto',months:1,off:0},{id:'trimestral',label:'Trimestral',sub:'6% OFF',months:3,off:.06},{id:'semestral',label:'Semestral',sub:'12% OFF',months:6,off:.12},{id:'anual',label:'Anual',sub:'23% OFF',months:12,off:.23}];
 var units=240,cycle='mensal';
 function $(s){return document.querySelector(s)}
 function r2(x){return Math.round((x+Number.EPSILON)*100)/100}
@@ -265,20 +266,22 @@ var CHECK='<svg viewBox="0 0 24 24"><path d="M4 12.5 9 18 20 6"/></svg>';
 function feats(){var h=FEATS.map(function(f){return '<div class="feature">'+CHECK+'<div><b>'+f[0]+'</b><span>'+f[1]+'</span></div></div>'}).join('');$('#features').innerHTML=h;$('#included').innerHTML=h}
 function faq(){$('#faqList').innerHTML=FAQ.map(function(f,i){return '<details'+(i===0?' open':'')+'><summary>'+f[0]+'</summary><p>'+f[1]+'</p></details>'}).join('')}
 function render(){
- var bruto=r2(units*BASE),base=Math.max(MIN,bruto),minimo=bruto<MIN;
+ var t=TIERS.filter(function(x){return x.upTo==null||units<=x.upTo})[0]||TIERS[TIERS.length-1];
+ var bruto=r2(units*BASE),base=t.flat!=null?r2(t.flat):Math.max(MIN,bruto),minimo=t.flat==null&&bruto<MIN;
  var cur=CY.filter(function(c){return c.id===cycle})[0];
  var qs=CY.map(function(c){var m=r2(base*(1-c.off));return {id:c.id,label:c.label,sub:c.sub,months:c.months,off:c.off,monthly:m,total:r2(m*c.months)}});
  var q=qs.filter(function(c){return c.id===cycle})[0];
  setT('#unitsNum',units>=2000?'2000+':units);
  var pp=$('#planPick'); if(pp) pp.style.display='none';
+ var tt=$('#tierTable'); if(tt) tt.innerHTML=TIERS.map(function(x){return '<div class="plan '+(x.id===t.id?'on':'')+'"><div class="name">'+x.label+'</div><div class="off">'+x.range+'</div><div class="val">'+(x.flat!=null?brl(x.flat):brl(x.perUnit)+'/un')+'</div><div class="tot">'+(x.flat!=null?'por mês, no plano mensal':'por mês · mínimo '+brl(x.min))+'</div></div>'}).join('');
  $('#plans').innerHTML=qs.map(function(c){return '<div class="plan '+(c.id===cycle?'on':'')+'" data-cycle="'+c.id+'"><div class="name">'+c.label+'</div><div class="off">'+c.sub+'</div><div class="val">'+brl(c.monthly)+'</div><div class="tot">Total '+brl(c.total)+'</div></div>'}).join('');
  [].forEach.call(document.querySelectorAll('#plans .plan'),function(el){el.onclick=function(){cycle=el.getAttribute('data-cycle');render()}});
  setT('#cycleName','Tudo incluído · '+cur.label+(cur.off?' com '+Math.round(cur.off*100)+'% OFF':''));
  var pf=$('#priceFull'); pf.style.display=cur.off?'':'none'; pf.textContent=brl(base);
  setT('#priceMain',brl(q.monthly));
- setT('#pricePerUnit',brl(r2(q.monthly/units))+' por unidade/mês');
- setT('#kPerUnit',(q.monthly/units).toFixed(2).replace('.',','));
- setT('#priceTotal',cycle==='mensal'?(minimo?'Valor mínimo do plano: '+brl(MIN)+'/mês (até 136 unidades)':units+' unidades × '+brl(BASE)):'Total de '+brl(q.total)+' a cada '+cur.months+' meses');
+ setT('#pricePerUnit',t.label+' · '+t.range+' · dá '+brl(r2(q.monthly/units))+' por unidade/mês');
+ setT('#kFrom',String(TIERS[0].flat));
+ setT('#priceTotal',cycle==='mensal'?(t.flat!=null?'Valor fixo da faixa “'+t.label+'” ('+t.range+'): '+brl(t.flat)+'/mês':(minimo?'Valor mínimo do plano: '+brl(MIN)+'/mês (até 136 unidades)':units+' unidades × '+brl(BASE))):'Total de '+brl(q.total)+' a cada '+cur.months+' meses');
  var href='https://condominios.ginfotecn.com/?cadastro=1&unidades='+units+'&ciclo='+cycle;
  [].forEach.call(document.querySelectorAll('a[href*="cadastro=1"]'),function(a){a.setAttribute('href',href)});
 }
