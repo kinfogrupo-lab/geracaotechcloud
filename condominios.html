@@ -47,7 +47,7 @@
   .redes a:hover { color: var(--ciano); border-color: var(--ciano); background: rgba(34,211,238,.10) }
   .redes a:focus-visible { outline: 2px solid var(--ciano); outline-offset: 2px; color: var(--ciano) }
   .redes svg { width: 21px; height: 21px; fill: currentColor; display: block }
-  @media (max-width: 640px) { .redes { justify-content: center } }
+  @media (max-width: 640px) { .redes { justify-content: center } footer.foot { padding-bottom: 84px } }
   @media (max-width: 860px) { .hero .wrap, .sliderwrap { grid-template-columns: 1fr } .vs { grid-template-columns: 1fr } }
 </style>
 <style>
@@ -245,13 +245,14 @@ const FAQ = [
   ['Como é o registro de uma encomenda?', 'É rápido: uma foto da etiqueta e um toque de confirmação. O sistema lê a transportadora, o código de rastreio e o apartamento. Se a etiqueta estiver ruim, o porteiro digita o código ou o apartamento; se o morador não tem cadastro, cadastra na hora.'],
   ['Preciso comprar hardware ou câmera nova?', 'Não. O sistema usa a câmera do celular ou tablet que a portaria já tem. Nenhuma impressora, leitor ou servidor extra é obrigatório.'],
   ['O morador precisa instalar aplicativo?', 'Não. Ele recebe o aviso no WhatsApp, com apartamento, transportadora e código de retirada. A portaria usa o sistema no navegador ou instala como aplicativo, sem loja.'],
-  ['Como funciona o aviso no WhatsApp?', 'Hoje o aviso sai pelo link direto do WhatsApp: a mensagem fica pronta e o porteiro envia com um toque, sem custo extra. O envio automático pela API oficial do WhatsApp (Meta) está em preparação.'],
+  ['Como o morador é avisado? Tem WhatsApp oficial?', 'Hoje o aviso sai pelo WhatsApp da portaria: o sistema monta a mensagem pronta, com o código de retirada, e o porteiro envia com um toque, sem custo por mensagem. Estamos implantando o envio automático pela API oficial do WhatsApp (Meta), que dispensa o toque do porteiro. Assim que estiver no ar, o condomínio será avisado.'],
   ['Como é a retirada?', 'Cada encomenda tem um código de 4 dígitos, diferente a cada pacote. O morador diz o código, o porteiro digita em "Retirar" e a baixa está feita, com registro de quem retirou e de qual porteiro atendeu.'],
   ['E se a internet cair?', 'O registro da encomenda continua funcionando e fica numa fila, que sincroniza sozinha quando a conexão volta. O envio do WhatsApp e a baixa da retirada precisam de internet.'],
+  ['Preciso de ajuda para implantar?', 'Não. A maioria faz sozinha: você cria o teste de 14 dias, cadastra os moradores (por planilha ou na hora, pela portaria) e o porteiro registra a primeira encomenda no mesmo dia. Não precisa instalar equipamento: funciona no celular ou tablet da portaria. Se quiser ajuda, nossa equipe responde pelo WhatsApp.'],
   ['Como funciona a cobrança?', 'Plano único, com tudo incluído, e o preço acompanha o tamanho do prédio: até 20 unidades são R$ 79 por mês; de 21 a 50 unidades, R$ 119 por mês; de 51 unidades em diante, R$ 1,09 por unidade, com mínimo de R$ 149 por mês. Sobre esse valor vêm os descontos de 6% no trimestral, 12% no semestral e 23% no anual. Sem cobrança por encomenda, sem módulo opcional, sem taxa de implantação e sem fidelidade. Teste de 14 dias sem cartão.'],
   ['Posso cancelar quando quiser?', 'Sim, sem fidelidade e sem multa, direto pelo painel. Você exporta o histórico completo em CSV e seus dados ficam salvos por 90 dias.'],
   ['Os dados são do condomínio ou da empresa?', 'Do condomínio. Você exporta todo o histórico em CSV quando quiser, e no cancelamento os dados continuam disponíveis por 90 dias para exportação.'],
-  ['E a LGPD?', 'Acesso por perfil, trilha de auditoria, isolamento por condomínio e fotos acessíveis apenas para usuários autenticados. Dados minimizados: nome, unidade e contato. Backup diário.'],
+  ['O sistema segue a LGPD?', 'Sim. Os dados de moradores e encomendas ficam no sistema com acesso por perfil: síndico, conselho e porteiro veem apenas o que precisam. O sistema registra quem recebeu e quem entregou cada encomenda, e as fotos das etiquetas ficam guardadas por 3 meses. Os dados são do condomínio: você pode exportar todo o histórico de encomendas em planilha (CSV) quando quiser. Detalhes na <a href="https://condominios.ginfotecn.com/privacidade.html">Política de Privacidade</a>.'],
 ];
 const FEATS = [
       ['Leitura da etiqueta pela câmera', 'Transportadora, rastreio e apartamento lidos em segundos; se a etiqueta estiver ruim, é só digitar'],
