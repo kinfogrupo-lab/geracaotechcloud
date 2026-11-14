@@ -1125,7 +1125,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
 <script>document.addEventListener("DOMContentLoaded",function(){try{var fab=document.querySelector(".whatsapp-fab");if(!fab)return;var cs=[].filter.call(document.querySelectorAll('a[href*="teste.html"]'),function(a){return !a.closest("nav,.top,footer")&&/teste gr.tis 7 dias/i.test(a.textContent);});var t=0;function upd(){t=0;var h=innerHeight,hide=false;if(innerWidth<=768){for(var i=0;i<cs.length;i++){var b=cs[i].getBoundingClientRect();if(b.width>0&&b.bottom>0&&b.top<h){hide=true;break;}}}fab.classList.toggle("wa-esconde",hide);}function sch(){if(!t)t=setTimeout(upd,50);}addEventListener("scroll",sch,{passive:true});addEventListener("resize",sch);upd();}catch(e){}});</script>
 <style>
 /* ícones de redes sociais no rodapé — herdam a cor do rodapé de cada página */
-.redes{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;margin:18px 0 0}
+.redes{display:flex!important;position:static!important;float:none;inset:auto;width:auto;max-width:none;background:none;box-shadow:none;border:0;padding:0;z-index:auto;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;margin:18px 0 0}
 .redes a{display:inline-flex;width:44px;height:44px;border-radius:50%;align-items:center;justify-content:center;color:inherit;border:1px solid currentColor;opacity:.65;transition:opacity .15s}
 .redes a:hover{opacity:1}
 .redes a:focus-visible{outline:2px solid currentColor;outline-offset:2px;opacity:1}

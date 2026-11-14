@@ -42,7 +42,7 @@
   .faq summary { cursor: pointer; font-family: var(--display); font-weight: 700; font-size: 15px }
   .faq p { margin: 10px 0 0; color: var(--cinza); font-size: 14px }
   footer.foot { border-top: var(--borda); padding: 30px 0; color: var(--cinza); font-size: 13px }
-  .redes { display: flex; gap: 12px; align-items: center; flex-wrap: wrap }
+  .redes { display: flex !important; position: static !important; float: none; width: auto; background: none; border: 0; padding: 0; z-index: auto; gap: 12px; align-items: center; flex-wrap: wrap }
   .redes a { display: inline-flex; width: 44px; height: 44px; border-radius: 50%; align-items: center; justify-content: center; border: var(--borda); color: var(--cinza); background: var(--card); transition: color .15s, border-color .15s, background .15s }
   .redes a:hover { color: var(--ciano); border-color: var(--ciano); background: rgba(34,211,238,.10) }
   .redes a:focus-visible { outline: 2px solid var(--ciano); outline-offset: 2px; color: var(--ciano) }
