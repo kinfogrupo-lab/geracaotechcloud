@@ -142,4 +142,45 @@ document.querySelectorAll('.more').forEach(function(b){b.onclick=function(){var 
   var alvo=document.getElementById('planos')||document.getElementById('sistema-gestao');
   if(alvo&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){gtEv('view_pricing');io.disconnect();}});},{threshold:.25});io.observe(alvo);}
 })();</script>
+
+<!-- Menu do celular (17/11/2026): as páginas de sistemas não tinham como ir para o resto do site no celular. -->
+<style>
+.gtm-btn{display:none;align-items:center;justify-content:center;width:46px;height:46px;flex:0 0 auto;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:#e8eefb;cursor:pointer;padding:0}
+.gtm-btn span,.gtm-btn span::before,.gtm-btn span::after{display:block;width:20px;height:2px;border-radius:2px;background:currentColor;content:"";position:relative;transition:transform .2s,background .2s}
+.gtm-btn span::before{position:absolute;top:-6px;left:0}.gtm-btn span::after{position:absolute;top:6px;left:0}
+.gtm-btn[aria-expanded=true] span{background:transparent}.gtm-btn[aria-expanded=true] span::before{top:0;transform:rotate(45deg)}.gtm-btn[aria-expanded=true] span::after{top:0;transform:rotate(-45deg)}
+.gtm-panel{display:none;position:fixed;left:0;right:0;bottom:0;z-index:2147483000;background:#070d16;padding:8px 20px 40px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.gtm-panel.open{display:block}
+.gtm-panel h4{margin:18px 0 4px;font:700 11px/1.2 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7f93ad}
+.gtm-panel a{display:block;padding:14px 2px;border-bottom:1px solid rgba(255,255,255,.08);color:#e8eefb;font:600 17px/1.3 system-ui,-apple-system,sans-serif;text-decoration:none}
+.gtm-panel a small{display:block;margin-top:2px;font-weight:500;font-size:13px;color:#7f93ad}
+.gtm-panel a.gtm-cta{margin-top:18px;text-align:center;border:0;border-radius:12px;background:#3d9be9;color:#04121f;padding:15px 12px}
+@media(max-width:860px){.gtm-btn{display:inline-flex}.top nav,.top .acts .btn.o{display:none}}
+</style>
+<script>
+(function(){
+  var h=document.querySelector('header.top'); if(!h) return;
+  var box=h.querySelector('.w, .wrap, .topbar')||h;
+  var B='https://geracaotechcloud.com.br/';
+  var L=[["Recursos", "#recursos"], ["Como funciona", "#tour"], ["Planos", "#planos"], ["Dúvidas", "#duvidas"], ["Fale com a equipe", "#especialista"]];
+  var panel=document.createElement('div'); panel.className='gtm-panel'; panel.id='gtmPanel'; panel.setAttribute('aria-label','Menu do site');
+  var html='<a href="'+B+'">Página inicial</a><h4>Sistemas</h4>'
+   +'<a href="'+B+'assistencia.html">Assistência técnica<small>Ordens de serviço, estoque e caixa</small></a>'
+   +'<a href="'+B+'barbearia-salao.html">Barbearia e salão<small>Agenda, comissão e caixa</small></a>'
+   +'<a href="'+B+'condominios.html">Condomínios<small>Controle de encomendas na portaria</small></a>'
+   +'<h4>Nesta página</h4>';
+  L.forEach(function(x){html+='<a href="'+x[1]+'">'+x[0]+'</a>';});
+  html+='<h4>Contato</h4><a href="'+B+'#contato">Fale conosco</a><a href="'+('https://geracaotechcloud.com.br/entrar.html')+'">Entrar no sistema</a>'
+   +'<a class="gtm-cta" href="'+('https://geracaotechcloud.com.br/teste.html?tipo=barbearia')+'">Testar grátis</a>';
+  panel.innerHTML=html; document.body.appendChild(panel);
+  var b=document.createElement('button'); b.type='button'; b.className='gtm-btn'; b.setAttribute('aria-label','Abrir menu'); b.setAttribute('aria-expanded','false'); b.setAttribute('aria-controls','gtmPanel'); b.innerHTML='<span></span>';
+  box.appendChild(b);
+  function fecha(){panel.classList.remove('open');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Abrir menu');document.documentElement.style.overflow='';}
+  function abre(){panel.style.top=Math.round(h.getBoundingClientRect().bottom)+'px';panel.classList.add('open');b.setAttribute('aria-expanded','true');b.setAttribute('aria-label','Fechar menu');document.documentElement.style.overflow='hidden';}
+  b.addEventListener('click',function(){panel.classList.contains('open')?fecha():abre();});
+  panel.addEventListener('click',function(e){if(e.target.closest('a'))fecha();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')fecha();});
+  window.addEventListener('resize',function(){if(innerWidth>860)fecha();});
+})();
+</script>
 </body></html>
