@@ -8,6 +8,11 @@
 <link rel="canonical" href="https://geracaotechcloud.com.br/condominios.html">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="shortcut icon" href="/favicon.ico">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Geração Tech"><meta property="og:title" content="Gestão de Encomendas para Condomínios | Geração Tech"><meta property="og:description" content="A portaria aponta a câmera para a etiqueta, o sistema lê sozinho e o morador recebe o aviso no WhatsApp com o código de retirada. Teste grátis por 14 dias, sem cartão."><meta property="og:url" content="https://geracaotechcloud.com.br/condominios.html">
+<meta property="og:image" content="https://geracaotechcloud.com.br/og-geracao-tech.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://geracaotechcloud.com.br/og-geracao-tech.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap">
 <link rel="stylesheet" href="encomendas-app.css">
 <style>
@@ -55,10 +60,6 @@
 .vcard p{margin:10px 0 0;text-align:center}
 .wa-fab{position:fixed;right:16px;bottom:16px;background:#25d366;color:#04210f;font-weight:800;padding:12px 18px;border-radius:99px;box-shadow:0 8px 24px #0006;z-index:20;font-family:var(--display)}
 .plans .plan{cursor:pointer}
-/* Ajustes de 17/11/2026: o botão flutuante do WhatsApp não cobre mais o rodapé e a terceira carta de cada grupo não fica sozinha no tablet. */
-footer.foot{padding-bottom:96px}
-@media (min-width:582px) and (max-width:849px){.g3>:last-child:nth-child(odd){grid-column:1/-1}}
-.grid.g3>.card{height:100%}
 </style>
 <!-- Meta Pixel --><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src='https://connect.facebook.net/en_US/fbevents.js';s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script');fbq('init','1566241344728350');fbq('track','PageView');</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18090804606"></script>
@@ -98,7 +99,6 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e
       <div class="row" style="margin-top:22px">
         <a class="btn primary big" style="width:auto"  id="ctaHero" href="https://condominios.ginfotecn.com/?cadastro=1">Cadastre seu condomínio grátis</a>
         <a class="btn ghost big" style="width:auto" id="ctaWhats" href="https://wa.me/554198069934?text=Quero%20saber%20mais%20do%20sistema%20para%20condom%C3%ADnios" target="_blank" rel="noopener">Falar com especialista</a>
-        <a class="btn ghost big" style="width:auto" id="ctaDemo" href="https://condominios.ginfotecn.com/demonstracao">Ver demonstração em vídeo</a>
       </div>
       <div class="stats">
         <div class="card"><div class="kpi">1 toque</div><div class="kpi-label">para registrar e avisar o morador</div></div>
@@ -348,46 +348,5 @@ feats();faq();render();
   var alvo=document.getElementById('precos')||document.getElementById('planos');
   if(alvo&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){gtEv('view_pricing');io.disconnect();}});},{threshold:.25});io.observe(alvo);}
 })();</script>
-
-<!-- Menu do celular (17/11/2026): as páginas de sistemas não tinham como ir para o resto do site no celular. -->
-<style>
-.gtm-btn{display:none;align-items:center;justify-content:center;width:46px;height:46px;flex:0 0 auto;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:#e8eefb;cursor:pointer;padding:0}
-.gtm-btn span,.gtm-btn span::before,.gtm-btn span::after{display:block;width:20px;height:2px;border-radius:2px;background:currentColor;content:"";position:relative;transition:transform .2s,background .2s}
-.gtm-btn span::before{position:absolute;top:-6px;left:0}.gtm-btn span::after{position:absolute;top:6px;left:0}
-.gtm-btn[aria-expanded=true] span{background:transparent}.gtm-btn[aria-expanded=true] span::before{top:0;transform:rotate(45deg)}.gtm-btn[aria-expanded=true] span::after{top:0;transform:rotate(-45deg)}
-.gtm-panel{display:none;position:fixed;left:0;right:0;bottom:0;z-index:2147483000;background:#070d16;padding:8px 20px 40px;overflow-y:auto;-webkit-overflow-scrolling:touch}
-.gtm-panel.open{display:block}
-.gtm-panel h4{margin:18px 0 4px;font:700 11px/1.2 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7f93ad}
-.gtm-panel a{display:block;padding:14px 2px;border-bottom:1px solid rgba(255,255,255,.08);color:#e8eefb;font:600 17px/1.3 system-ui,-apple-system,sans-serif;text-decoration:none}
-.gtm-panel a small{display:block;margin-top:2px;font-weight:500;font-size:13px;color:#7f93ad}
-.gtm-panel a.gtm-cta{margin-top:18px;text-align:center;border:0;border-radius:12px;background:#3d9be9;color:#04121f;padding:15px 12px}
-@media(max-width:860px){.gtm-btn{display:inline-flex}header.top.site nav.main,header.top.site .mini-signin{display:none !important}header.top.site .topbar{flex-wrap:nowrap !important;gap:10px !important}header.top.site .brand .who{display:none}header.top.site .brand img{height:44px !important}header.top.site .topcta{margin-left:auto}}
-</style>
-<script>
-(function(){
-  var h=document.querySelector('header.top'); if(!h) return;
-  var box=h.querySelector('.w, .wrap, .topbar')||h;
-  var B='https://geracaotechcloud.com.br/';
-  var L=[["Recursos", "#recursos"], ["Como funciona", "#como"], ["Preços", "#precos"], ["Dúvidas", "#faq"]];
-  var panel=document.createElement('div'); panel.className='gtm-panel'; panel.id='gtmPanel'; panel.setAttribute('aria-label','Menu do site');
-  var html='<a href="'+B+'">Página inicial</a><h4>Sistemas</h4>'
-   +'<a href="'+B+'assistencia.html">Assistência técnica<small>Ordens de serviço, estoque e caixa</small></a>'
-   +'<a href="'+B+'barbearia-salao.html">Barbearia e salão<small>Agenda, comissão e caixa</small></a>'
-   +'<a href="'+B+'condominios.html">Condomínios<small>Controle de encomendas na portaria</small></a>'
-   +'<h4>Nesta página</h4>';
-  L.forEach(function(x){html+='<a href="'+x[1]+'">'+x[0]+'</a>';});
-  html+='<h4>Contato</h4><a href="'+B+'#contato">Fale conosco</a><a href="'+('https://condominios.ginfotecn.com/login.html')+'">Entrar no sistema</a>'
-   +'<a class="gtm-cta" href="'+('https://condominios.ginfotecn.com/?cadastro=1')+'">Testar grátis</a>';
-  panel.innerHTML=html; document.body.appendChild(panel);
-  var b=document.createElement('button'); b.type='button'; b.className='gtm-btn'; b.setAttribute('aria-label','Abrir menu'); b.setAttribute('aria-expanded','false'); b.setAttribute('aria-controls','gtmPanel'); b.innerHTML='<span></span>';
-  box.appendChild(b);
-  function fecha(){panel.classList.remove('open');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Abrir menu');document.documentElement.style.overflow='';}
-  function abre(){panel.style.top=Math.round(h.getBoundingClientRect().bottom)+'px';panel.classList.add('open');b.setAttribute('aria-expanded','true');b.setAttribute('aria-label','Fechar menu');document.documentElement.style.overflow='hidden';}
-  b.addEventListener('click',function(){panel.classList.contains('open')?fecha():abre();});
-  panel.addEventListener('click',function(e){if(e.target.closest('a'))fecha();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')fecha();});
-  window.addEventListener('resize',function(){if(innerWidth>860)fecha();});
-})();
-</script>
 </body>
 </html>
