@@ -140,7 +140,7 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e
         <a class="btn ghost big" style="width:auto" href="https://condominios.ginfotecn.com/?cadastro=1">Teste grátis por 14 dias</a>
         <a class="btn ghost big" style="width:auto" href="https://wa.me/5541998069934?text=Quero%20saber%20mais%20sobre%20a%20Black%20Friday%20do%20GT-Condom%C3%ADnios" target="_blank" rel="noopener">Falar no WhatsApp</a>
       </div>
-      <p class="muted" style="font-size:12.5px;margin-top:16px;max-width:80ch">A projeção de 31,2% é nacional, não uma previsão para o seu condomínio. Preço fixo por mês: R$ 79 até 20 unidades, R$ 99 de 21 a 150 unidades e R$ 149 acima de 150, sem limite de porteiros, moradores e encomendas, sem taxa de adesão e sem fidelidade. Teste de 14 dias, sem cartão.</p>
+      <p class="muted" style="font-size:12.5px;margin-top:16px;max-width:80ch">A projeção de 31,2% é nacional, não uma previsão para o seu condomínio. Preço fixo por mês até 150 unidades: R$ 79 até 20 unidades e R$ 99 de 21 a 150; acima de 150, R$ 1,09 por unidade. Sem limite de porteiros, moradores e encomendas, sem taxa de adesão e sem fidelidade. Teste de 14 dias, sem cartão.</p>
     </div>
   </div>
 </section>
@@ -190,7 +190,7 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e
 <section class="section" id="precos">
   <div class="wrap">
     <div class="center"><div class="label">Preços</div><h2>Quantas unidades tem seu condomínio?</h2>
-      <p class="muted">Preço fixo por mês, que não muda com o número de encomendas: a partir de R$ 79, com tudo incluído. Sem limite de porteiros, moradores e encomendas.</p></div>
+      <p class="muted">Preço fixo por mês até 150 unidades, que não muda com o número de encomendas: a partir de R$ 79, com tudo incluído. Sem limite de porteiros, moradores e encomendas.</p></div>
       <div class="plans" id="tierTable" style="margin-top:22px"></div>
 
     <div class="sliderwrap" style="margin-top:26px">
@@ -201,9 +201,9 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e
         <div class="plans" id="plans" style="margin-top:12px"></div>
         <div class="price-hero" style="margin-top:16px">
           <div class="muted small"><span id="cycleName">Completo · Mensal</span></div>
-          <div class="strike" id="priceFull" style="display:none">R$ 149,00</div>
-          <div class="big" id="priceMain">R$ 149,00</div>
-          <div class="muted small" id="pricePerUnit">Preço fixo por mês</div>
+          <div class="strike" id="priceFull" style="display:none">R$ 261,60</div>
+          <div class="big" id="priceMain">R$ 261,60</div>
+          <div class="muted small" id="pricePerUnit">Condomínio grande · 151 unidades ou mais · R$ 1,09 por unidade</div>
           <div class="small muted" id="priceTotal" style="margin-top:6px"></div>
         </div>
         <a class="btn primary big" style="margin-top:16px"  id="ctaCalc" href="https://condominios.ginfotecn.com/?cadastro=1">Cadastre seu condomínio grátis</a>
@@ -284,7 +284,7 @@ const FAQ = [
   ['Como é a retirada?', 'Cada encomenda tem um código de 4 dígitos, diferente a cada pacote. O morador diz o código, o porteiro digita em "Retirar" e a baixa está feita, com registro de quem retirou e de qual porteiro atendeu.'],
   ['E se a internet cair?', 'O registro da encomenda continua funcionando e fica numa fila, que sincroniza sozinha quando a conexão volta. O envio do WhatsApp e a baixa da retirada precisam de internet.'],
   ['Preciso de ajuda para implantar?', 'Não. A maioria faz sozinha: você cria o teste de 14 dias, cadastra os moradores (por planilha ou na hora, pela portaria) e o porteiro registra a primeira encomenda no mesmo dia. Não precisa instalar equipamento: funciona no celular ou tablet da portaria. Se quiser ajuda, nossa equipe responde pelo WhatsApp.'],
-  ['Como funciona a cobrança?', 'Plano único, com tudo incluído e preço fixo por mês: até 20 unidades são R$ 79; de 21 a 150 unidades, R$ 99; acima de 150 unidades, R$ 149. O valor não muda com o número de encomendas, de moradores ou de porteiros: é tudo sem limite. Sobre esse valor vêm os descontos de 6% no trimestral, 12% no semestral e 23% no anual. Sem cobrança por encomenda, sem módulo opcional, sem taxa de implantação e sem fidelidade. Teste de 14 dias sem cartão.'],
+  ['Como funciona a cobrança?', 'Plano único, com tudo incluído. Até 150 unidades o preço é fixo por mês: até 20 unidades são R$ 79; de 21 a 150 unidades, R$ 99. Acima de 150 unidades, são R$ 1,09 por unidade por mês (240 unidades, por exemplo, dão R$ 261,60). O valor não muda com o número de encomendas, de moradores ou de porteiros: é tudo sem limite. Sobre esse valor vêm os descontos de 6% no trimestral, 12% no semestral e 23% no anual. Sem cobrança por encomenda, sem módulo opcional, sem taxa de implantação e sem fidelidade. Teste de 14 dias sem cartão.'],
   ['Posso cancelar quando quiser?', 'Sim, sem fidelidade e sem multa, direto pelo painel. Você exporta o histórico completo em CSV e seus dados ficam salvos por 90 dias.'],
   ['Os dados são do condomínio ou da empresa?', 'Do condomínio. Você exporta todo o histórico em CSV quando quiser, e no cancelamento os dados continuam disponíveis por 90 dias para exportação.'],
   ['O sistema segue a LGPD?', 'Sim. Os dados de moradores e encomendas ficam no sistema com acesso por perfil: síndico, conselho e porteiro veem apenas o que precisam. O sistema registra quem recebeu e quem entregou cada encomenda, e a leitura da etiqueta é automática, sem guardar foto (a foto só existe se o porteiro quiser guardar uma pelo botão Fotografar, e fica por 3 meses). Os dados são do condomínio: você pode exportar todo o histórico de encomendas em planilha (CSV) quando quiser. Detalhes na <a href="https://condominios.ginfotecn.com/privacidade.html">Política de Privacidade</a>.'],
@@ -303,7 +303,7 @@ const FEATS = [
       ['Multi-condomínios', 'Ideal para síndicos e administradoras'],
       ['Sem fidelidade', 'Cancele a qualquer momento, direto pelo painel'],
 ];
-var TIERS=[{id:'pequeno',label:'Prédio pequeno',range:'até 20 unidades',upTo:20,flat:79},{id:'medio',label:'Condomínio médio',range:'de 21 a 150 unidades',upTo:150,flat:99},{id:'grande',label:'Condomínio grande',range:'151 unidades ou mais',upTo:null,flat:149}],CY=[{id:'mensal',label:'Mensal',sub:'sem desconto',months:1,off:0},{id:'trimestral',label:'Trimestral',sub:'6% OFF',months:3,off:.06},{id:'semestral',label:'Semestral',sub:'12% OFF',months:6,off:.12},{id:'anual',label:'Anual',sub:'23% OFF',months:12,off:.23}];
+var TIERS=[{id:'pequeno',label:'Prédio pequeno',range:'até 20 unidades',upTo:20,flat:79},{id:'medio',label:'Condomínio médio',range:'de 21 a 150 unidades',upTo:150,flat:99},{id:'grande',label:'Condomínio grande',range:'151 unidades ou mais',upTo:null,perUnit:1.09}],CY=[{id:'mensal',label:'Mensal',sub:'sem desconto',months:1,off:0},{id:'trimestral',label:'Trimestral',sub:'6% OFF',months:3,off:.06},{id:'semestral',label:'Semestral',sub:'12% OFF',months:6,off:.12},{id:'anual',label:'Anual',sub:'23% OFF',months:12,off:.23}];
 var units=240,cycle='mensal';
 function $(s){return document.querySelector(s)}
 function r2(x){return Math.round((x+Number.EPSILON)*100)/100}
@@ -314,21 +314,21 @@ function feats(){var h=FEATS.map(function(f){return '<div class="feature">'+CHEC
 function faq(){$('#faqList').innerHTML=FAQ.map(function(f,i){return '<details'+(i===0?' open':'')+'><summary>'+f[0]+'</summary><p>'+f[1]+'</p></details>'}).join('')}
 function render(){
  var t=TIERS.filter(function(x){return x.upTo==null||units<=x.upTo})[0]||TIERS[TIERS.length-1];
- var base=r2(t.flat);
+ var base=t.flat!=null?r2(t.flat):r2(units*t.perUnit);
  var cur=CY.filter(function(c){return c.id===cycle})[0];
  var qs=CY.map(function(c){var m=r2(base*(1-c.off));return {id:c.id,label:c.label,sub:c.sub,months:c.months,off:c.off,monthly:m,total:r2(m*c.months)}});
  var q=qs.filter(function(c){return c.id===cycle})[0];
  setT('#unitsNum',units>=2000?'2000+':units);
  var pp=$('#planPick'); if(pp) pp.style.display='none';
- var tt=$('#tierTable'); if(tt) tt.innerHTML=TIERS.map(function(x){return '<div class="plan '+(x.id===t.id?'on':'')+'"><div class="name">'+x.label+'</div><div class="off">'+x.range+'</div><div class="val">'+brl(x.flat)+'</div><div class="tot">'+'por mês, no plano mensal'+'</div></div>'}).join('');
+ var tt=$('#tierTable'); if(tt) tt.innerHTML=TIERS.map(function(x){return '<div class="plan '+(x.id===t.id?'on':'')+'"><div class="name">'+x.label+'</div><div class="off">'+x.range+'</div><div class="val">'+(x.flat!=null?brl(x.flat):brl(x.perUnit)+'/un')+'</div><div class="tot">'+(x.flat!=null?'por mês, no plano mensal':'por unidade, por mês')+'</div></div>'}).join('');
  $('#plans').innerHTML=qs.map(function(c){return '<div class="plan '+(c.id===cycle?'on':'')+'" data-cycle="'+c.id+'"><div class="name">'+c.label+'</div><div class="off">'+c.sub+'</div><div class="val">'+brl(c.monthly)+'</div><div class="tot">Total '+brl(c.total)+'</div></div>'}).join('');
  [].forEach.call(document.querySelectorAll('#plans .plan'),function(el){el.onclick=function(){cycle=el.getAttribute('data-cycle');render()}});
  setT('#cycleName','Tudo incluído · '+cur.label+(cur.off?' com '+Math.round(cur.off*100)+'% OFF':''));
  var pf=$('#priceFull'); pf.style.display=cur.off?'':'none'; pf.textContent=brl(base);
  setT('#priceMain',brl(q.monthly));
- setT('#pricePerUnit',t.label+' · '+t.range+' · preço fixo, sem limite de encomendas');
+ setT('#pricePerUnit',t.label+' · '+t.range+' · '+(t.flat!=null?'preço fixo':brl(t.perUnit)+' por unidade')+', sem limite de encomendas');
  setT('#kFrom',String(TIERS[0].flat));
- setT('#priceTotal',cycle==='mensal'?'Valor fixo da faixa “'+t.label+'” ('+t.range+'): '+brl(t.flat)+'/mês':'Total de '+brl(q.total)+' a cada '+cur.months+' meses');
+ setT('#priceTotal',cycle==='mensal'?(t.flat!=null?'Valor fixo da faixa “'+t.label+'” ('+t.range+'): '+brl(t.flat)+'/mês':(units>=2000?'2000+':units)+' unidades × '+brl(t.perUnit)):'Total de '+brl(q.total)+' a cada '+cur.months+' meses');
  var href='https://condominios.ginfotecn.com/?cadastro=1&unidades='+units+'&ciclo='+cycle;
  [].forEach.call(document.querySelectorAll('a[href*="cadastro=1"]'),function(a){a.setAttribute('href',href)});
 }
