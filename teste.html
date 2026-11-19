@@ -312,7 +312,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
     fetch(API+'/cadastro',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
       .then(lerJson)
       .then(function(x){
-        if(x.j&&x.j.ok){ gtEv('generate_lead',{product_type:d.segmento}); try{ if(window.fbq) fbq('track','Lead'); }catch(e){} iniciarEspera(); if(x.j.id&&x.j.id!=='ok'){ guarda({id:x.j.id,email:d.email,t0:Date.now()}); poll(x.j.id,d.email,0); } return; }
+        if(x.j&&x.j.ok){ gtEv('generate_lead',{product_type:d.segmento}); try{ if(window.gtag&&x.j.id&&x.j.id!=='ok') gtag('event','conversion',{'send_to':'AW-18090804606/kDOtCLPT96MdEP6Kr7JD','transaction_id':String(x.j.id)}); }catch(e){} try{ if(window.fbq) fbq('track','Lead'); }catch(e){} iniciarEspera(); if(x.j.id&&x.j.id!=='ok'){ guarda({id:x.j.id,email:d.email,t0:Date.now()}); poll(x.j.id,d.email,0); } return; }
         b.disabled=false; b.textContent=rotulo(); show((x.j&&x.j.error)||'Não foi possível concluir agora. Tente novamente.','err');
         if(x.j&&x.j.codigoNecessario){ var ci=document.getElementById('codigo'); ci.value=''; ci.focus(); }
       }).catch(function(){ b.disabled=false; b.textContent=rotulo(); show('Sem conexão com o servidor. Tente novamente em instantes.','err'); });
