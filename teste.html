@@ -320,12 +320,15 @@ fbq('init','1566241344728350');fbq('track','PageView');
   document.getElementById('reenviar').addEventListener('click',function(e){ e.preventDefault(); document.getElementById('codigo').value=''; pedirCodigo(dadosAtuais()); });
   document.getElementById('corrigir').addEventListener('click',function(e){ e.preventDefault(); codBox.hidden=true; document.getElementById('codigo').value=''; b.textContent=rotulo(); m.hidden=true; f.whatsapp.focus(); });
   f.whatsapp.addEventListener('input',function(){ if(!codBox.hidden){ codBox.hidden=true; document.getElementById('codigo').value=''; b.textContent=rotulo(); } });
+  function cliqueAnuncio(){ var o={}; try{ var q=new URLSearchParams(location.search); ['gclid','gbraid','wbraid'].forEach(function(k){ var x=q.get(k); if(x&&/^[A-Za-z0-9_-]{10,200}$/.test(x)){ o[k]=x; try{sessionStorage.setItem('gt-'+k,x);}catch(e){} } else { try{ x=sessionStorage.getItem('gt-'+k); if(x) o[k]=x; }catch(e){} } }); if(!o.gclid){ var mc=document.cookie.match(/(?:^|; )_gcl_aw=GCL\.\d+\.([A-Za-z0-9_-]{10,200})/); if(mc) o.gclid=mc[1]; } ['utm_source','utm_medium'].forEach(function(k){ var x=q.get(k); if(x){ try{sessionStorage.setItem('gt-'+k,x);}catch(e){} } else { try{ x=sessionStorage.getItem('gt-'+k); }catch(e){} } if(x) o[k]=x; }); }catch(e){} return o; }
+  cliqueAnuncio();
   f.addEventListener('submit',function(e){
     e.preventDefault(); m.hidden=true;
     var og=''; try{var q=new URLSearchParams(location.search);og=q.get('origem')||(q.get('fbclid')?'meta-auto':(q.get('gclid')||q.get('gbraid')||q.get('wbraid'))?'google-auto':'')||sessionStorage.getItem('gt-origem')||'';}catch(e){}
 var cp=''; try{var q2=new URLSearchParams(location.search);cp=q2.get('campanha')||[q2.get('utm_campaign'),q2.get('utm_term'),q2.get('utm_content')].filter(Boolean).join(' | ')||sessionStorage.getItem('gt-camp')||'';}catch(e){}
     var ck=''; try{var mc=document.cookie.match(/(?:^|; )_ga=([^;]+)/); ck=mc?mc[1]:'';}catch(e){}
-    var d={gaClientId:ck,empresa:f.empresa.value.trim(),nome:f.nome.value.trim(),email:f.email.value.trim(),whatsapp:f.whatsapp.value.trim(),segmento:f.segmento.value,website:f.website.value,origem:og,campanha:cp,osMes:f.osMes.value,usaHoje:f.usaHoje.value};
+    var cl=cliqueAnuncio();
+    var d={gaClientId:ck,empresa:f.empresa.value.trim(),nome:f.nome.value.trim(),email:f.email.value.trim(),whatsapp:f.whatsapp.value.trim(),segmento:f.segmento.value,website:f.website.value,origem:og,campanha:cp,osMes:f.osMes.value,usaHoje:f.usaHoje.value,gclid:cl.gclid||'',gbraid:cl.gbraid||'',wbraid:cl.wbraid||'',utmSource:cl.utm_source||'',utmMedium:cl.utm_medium||''};
     if(!d.segmento) return bad('segmento','Escolha o tipo de negócio: assistência técnica, barbearia ou salão.');
     if(d.empresa.length<2) return bad('empresa','Falta preencher o campo "Nome da empresa" (logo acima, na lista).');
     if(d.nome.length<2) return bad('nome','Falta preencher o campo "Nome" (o primeiro da lista).');
