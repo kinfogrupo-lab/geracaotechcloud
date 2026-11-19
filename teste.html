@@ -131,6 +131,22 @@ fbq('init','1566241344728350');fbq('track','PageView');
         <option value="barbearia">Barbearia</option>
         <option value="salao">Salão de beleza</option>
       </select>
+      <label for="osMes" id="lOs">Quantas ordens de serviço você faz por mês? (opcional)</label>
+      <select id="osMes" name="osMes">
+        <option value="">Prefiro não responder</option>
+        <option value="baixo">Até 20</option>
+        <option value="medio">21 a 60</option>
+        <option value="alto">Mais de 60</option>
+        <option value="nenhum">Ainda não faço</option>
+      </select>
+      <label for="usaHoje" id="lUsa">O que você usa hoje para controlar? (opcional)</label>
+      <select id="usaHoje" name="usaHoje">
+        <option value="">Prefiro não responder</option>
+        <option value="caderno">Caderno</option>
+        <option value="planilha">Planilha</option>
+        <option value="sistema">Outro sistema</option>
+        <option value="nada">Nada</option>
+      </select>
       <div id="cod" hidden>
         <label for="codigo">Código enviado para o seu WhatsApp</label>
         <input id="codigo" name="codigo" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="6 dígitos">
@@ -195,6 +211,18 @@ fbq('init','1566241344728350');fbq('track','PageView');
   var f=document.getElementById('f'), b=document.getElementById('b'), m=document.getElementById('m');
   var p=new URLSearchParams(location.search).get('tipo'); if(p && ['assistencia','barbearia','salao'].indexOf(p)>=0) document.getElementById('segmento').value=p;
   var segAtual='';
+  // Perguntas opcionais: mudam o texto conforme o tipo de negócio (assistência x barbearia/salão). Não bloqueiam o cadastro.
+  function perguntas(){
+    var bel=(f.segmento.value==='barbearia'||f.segmento.value==='salao'), os=document.getElementById('osMes'), us=document.getElementById('usaHoje');
+    document.getElementById('lOs').textContent=bel?'Quantos atendimentos você faz por mês? (opcional)':'Quantas ordens de serviço você faz por mês? (opcional)';
+    document.getElementById('lUsa').textContent=bel?'O que você usa hoje para organizar a agenda? (opcional)':'O que você usa hoje para controlar? (opcional)';
+    var t=bel?['Prefiro não responder','Até 60','61 a 200','Mais de 200','Ainda não atendo']:['Prefiro não responder','Até 20','21 a 60','Mais de 60','Ainda não faço'];
+    for(var i=0;i<t.length;i++) os.options[i].text=t[i];
+    var u=bel?['Prefiro não responder','Agenda de papel','WhatsApp','Outro sistema','Nada']:['Prefiro não responder','Caderno','Planilha','Outro sistema','Nada'];
+    for(var j=0;j<u.length;j++) us.options[j].text=u[j];
+    us.options[1].value='caderno'; us.options[2].value=bel?'whatsapp':'planilha';
+  }
+  f.segmento.addEventListener('change',perguntas); perguntas();
   function show(t,c,h){m.hidden=false;m.className='msg '+c;if(h){m.innerHTML=h;}else{m.textContent=t;}}
   var WA='https://wa.me/554198069934?text=Fiz%20o%20cadastro%20do%20teste%20gr%C3%A1tis%20e%20n%C3%A3o%20recebi%20o%20acesso';
   function esc(x){return String(x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -297,7 +325,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
     var og=''; try{var q=new URLSearchParams(location.search);og=q.get('origem')||(q.get('fbclid')?'meta-auto':(q.get('gclid')||q.get('gbraid')||q.get('wbraid'))?'google-auto':'')||sessionStorage.getItem('gt-origem')||'';}catch(e){}
 var cp=''; try{var q2=new URLSearchParams(location.search);cp=q2.get('campanha')||[q2.get('utm_campaign'),q2.get('utm_term'),q2.get('utm_content')].filter(Boolean).join(' | ')||sessionStorage.getItem('gt-camp')||'';}catch(e){}
     var ck=''; try{var mc=document.cookie.match(/(?:^|; )_ga=([^;]+)/); ck=mc?mc[1]:'';}catch(e){}
-    var d={gaClientId:ck,empresa:f.empresa.value.trim(),nome:f.nome.value.trim(),email:f.email.value.trim(),whatsapp:f.whatsapp.value.trim(),segmento:f.segmento.value,website:f.website.value,origem:og,campanha:cp};
+    var d={gaClientId:ck,empresa:f.empresa.value.trim(),nome:f.nome.value.trim(),email:f.email.value.trim(),whatsapp:f.whatsapp.value.trim(),segmento:f.segmento.value,website:f.website.value,origem:og,campanha:cp,osMes:f.osMes.value,usaHoje:f.usaHoje.value};
     if(!d.segmento) return bad('segmento','Escolha o tipo de negócio: assistência técnica, barbearia ou salão.');
     if(d.empresa.length<2) return bad('empresa','Falta preencher o campo "Nome da empresa" (logo acima, na lista).');
     if(d.nome.length<2) return bad('nome','Falta preencher o campo "Nome" (o primeiro da lista).');
