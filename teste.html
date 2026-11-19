@@ -95,7 +95,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
     <ol class="passos">
       <li><b>Preencha o cadastro</b> e confirme o seu WhatsApp com um código.</li>
       <li><b>Criamos o seu sistema</b> em cerca de 3 minutos.</li>
-      <li><b>Você recebe no WhatsApp</b> o endereço, o login e a senha para entrar.</li>
+      <li><b>Você recebe no WhatsApp</b> o endereço, o login e uma senha provisória. Na primeira entrada, você cria a sua própria senha.</li>
     </ol>
     <ul class="check">
       <li>Tudo liberado durante os 7 dias</li>
@@ -114,7 +114,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
       <small class="dica">Este e-mail será o seu <b>login</b>. Confira se está certo, letra por letra.</small>
       <label for="whatsapp">WhatsApp com DDD</label>
       <input id="whatsapp" name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" required minlength="10" maxlength="20">
-      <small class="dica">É neste número que chegam o código de confirmação e a sua <b>senha</b>.</small>
+      <small class="dica">É neste número que chegam o código de confirmação e a sua <b>senha provisória</b>.</small>
       <label for="segmento">Tipo de negócio</label>
       <select id="segmento" name="segmento">
         <option value="" disabled selected>Escolha o seu negócio</option>
@@ -132,7 +132,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
       <button id="b" type="submit">Criar meu acesso grátis</button>
       <p class="seguro"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3zm-1.2 14.2-3.5-3.5 1.4-1.4 2.1 2.1 4.6-4.6 1.4 1.4-6 6z"/></svg>Seus dados estão seguros. Sem spam.</p>
       <div id="m" class="msg" hidden></div>
-      <p><small>O endereço, o login e a senha chegam no seu WhatsApp; o endereço também vai para o seu e-mail. Usaremos seus dados para criar a conta de teste e falar com você sobre o sistema. Não enviaremos spam. Veja a <a href="/politica-de-privacidade.html" style="color:inherit">Política de Privacidade</a>.</small></p>
+      <p><small>O endereço, o login e a senha provisória chegam no seu WhatsApp; o endereço também vai para o seu e-mail. Usaremos seus dados para criar a conta de teste e falar com você sobre o sistema. Não enviaremos spam. Veja a <a href="/politica-de-privacidade.html" style="color:inherit">Política de Privacidade</a>.</small></p>
     </form>
     <div id="espera" class="painel" hidden aria-live="polite">
       <h2>Estamos criando o seu sistema</h2>
@@ -144,7 +144,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
         <li>Criando o endereço exclusivo da sua empresa</li>
         <li>Preparando o espaço reservado para os seus dados</li>
         <li>Ativando a conexão segura (o cadeado do navegador)</li>
-        <li>Enviando o endereço, o login e a senha para o seu WhatsApp</li>
+        <li>Enviando o endereço, o login e a senha provisória para o seu WhatsApp</li>
       </ol>
       <p class="aviso">Precisou sair desta página? Sem problema: assim que ficar pronto, o acesso chega no seu WhatsApp do mesmo jeito. <b>Não precisa preencher de novo.</b></p>
       <p style="margin-top:12px"><small>Enquanto espera, <a href="#video-primeira-os" style="color:inherit;font-weight:700">veja em 1 minuto como abrir a primeira OS</a>.</small></p>
@@ -217,11 +217,12 @@ fbq('init','1566241344728350');fbq('track','PageView');
     pararEspera(); f.style.display='none'; m.hidden=true;
     var semUrl=!url;
     pr.innerHTML='<h2 class="pronto-titulo">✓ Seu sistema está pronto</h2>'
-      +'<p>Agora é só entrar. Siga os 3 passos:</p>'
+      +'<p>Agora é só entrar. Siga os 4 passos:</p>'
       +'<ol class="entrar">'
-      +'<li><b>Abra o seu WhatsApp.</b> Mandamos o endereço, o login e, em uma mensagem separada, a sua <b>senha</b>.</li>'
-      +'<li><b>Copie a senha:</b> segure o dedo em cima dela e toque em <b>Copiar</b>. Assim não tem erro de digitação.</li>'
+      +'<li><b>Abra o seu WhatsApp.</b> Mandamos o endereço, o login e, em uma mensagem separada, a sua <b>senha provisória</b>.</li>'
+      +'<li><b>Copie a senha provisória:</b> segure o dedo em cima dela e toque em <b>Copiar</b>. Assim não tem erro de digitação.</li>'
       +'<li><b>Abra o seu sistema</b> e entre com o seu e-mail e a senha copiada.<span class="login-box">Seu login: '+esc(email)+'</span></li>'
+      +'<li><b>Crie a sua senha.</b> Na primeira entrada, o sistema pede uma senha só sua, com pelo menos 8 caracteres, misturando letras e números. É ela que vale daí em diante.</li>'
       +'</ol>'
       +(semUrl?'':'<a class="btn-abrir" href="'+esc(url)+'" target="_blank" rel="noopener">Abrir o meu sistema</a><p><small>O endereço do seu sistema é <b style="word-break:break-all">'+esc(url.replace(/^https?:\/\//,''))+'</b>. É sempre por ele que você entra, no celular ou no computador.</small></p>')
       +passosIcone()
@@ -232,7 +233,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
   }
   function demorou(email){
     pararEspera(); guarda(null);
-    show('','ok','<b>Seu cadastro está feito e o sistema está sendo finalizado.</b> Demorou um pouco mais do que o normal, mas não precisa preencher de novo: o endereço, o login e a senha chegam no seu WhatsApp assim que ficar pronto. Seu login será '+esc(email)+'.<br>Não chegou em 10 minutos? <a href="'+WA+'" target="_blank" rel="noopener" style="color:inherit;font-weight:700">Fale com a equipe pelo WhatsApp.</a>');
+    show('','ok','<b>Seu cadastro está feito e o sistema está sendo finalizado.</b> Demorou um pouco mais do que o normal, mas não precisa preencher de novo: o endereço, o login e a senha provisória chegam no seu WhatsApp assim que ficar pronto. Seu login será '+esc(email)+'.<br>Não chegou em 10 minutos? <a href="'+WA+'" target="_blank" rel="noopener" style="color:inherit;font-weight:700">Fale com a equipe pelo WhatsApp.</a>');
   }
   function poll(id,email,n){
     if(n>110) return demorou(email);
@@ -295,7 +296,7 @@ var cp=''; try{var q2=new URLSearchParams(location.search);cp=q2.get('campanha')
     var dom=d.email.split('@')[1].toLowerCase(), fix={'gmial.com':'gmail.com','gmai.com':'gmail.com','gamil.com':'gmail.com','gmail.con':'gmail.com','gmaill.com':'gmail.com','gmail.com.br':'gmail.com','hotmial.com':'hotmail.com','hotmal.com':'hotmail.com','hotmail.con':'hotmail.com','outlok.com':'outlook.com','outloo.com':'outlook.com','yaho.com':'yahoo.com','yahooo.com':'yahoo.com','icloud.con':'icloud.com'};
     if(fix[dom]) return bad('email','Confira o e-mail: você quis dizer '+d.email.split('@')[0]+'@'+fix[dom]+'? Ele será o seu login.');
     segAtual=d.segmento;
-    var zap=d.whatsapp.replace(/\D/g,''); if(zap.length<10||zap.length>13) return bad('whatsapp','Informe o WhatsApp com DDD: é nele que chegam o código de confirmação e a sua senha.');
+    var zap=d.whatsapp.replace(/\D/g,''); if(zap.length<10||zap.length>13) return bad('whatsapp','Informe o WhatsApp com DDD: é nele que chegam o código de confirmação e a sua senha provisória.');
     var cod=document.getElementById('cod'), codInput=document.getElementById('codigo');
     if(!cod.hidden){
       var c=codInput.value.replace(/\D/g,'');
