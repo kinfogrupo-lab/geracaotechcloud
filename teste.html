@@ -29,6 +29,8 @@
   button{margin-top:20px;width:100%;padding:14px;border:0;border-radius:10px;background:var(--blue);color:#021726;font:inherit;font-weight:800;cursor:pointer}
   button:disabled{opacity:.6;cursor:wait}
   .hp{position:absolute;left:-9999px;height:0;width:0;opacity:0}
+  .dicas label{display:flex;align-items:center;gap:10px;margin:8px 0;color:var(--text);font-size:.95rem;cursor:pointer}
+  .dicas input{width:auto;flex:none;margin:0;transform:scale(1.25)}
   .msg{margin-top:14px;padding:12px 14px;border-radius:10px;font-size:.95rem}
   .msg.err{background:rgba(251,113,133,.12);color:var(--err);border:1px solid rgba(251,113,133,.3)}
   .msg.ok{background:rgba(52,211,153,.12);color:var(--ok);border:1px solid rgba(52,211,153,.3)}
@@ -151,6 +153,11 @@ fbq('init','1566241344728350');fbq('track','PageView');
         <label for="codigo">Código enviado para o seu WhatsApp</label>
         <input id="codigo" name="codigo" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="6 dígitos">
         <p style="margin:8px 0 0;font-size:.88rem"><a href="#" id="reenviar" style="color:inherit">Reenviar código</a> &middot; <a href="#" id="corrigir" style="color:inherit">Corrigir o número</a></p>
+      </div>
+      <div class="dicas" role="group" aria-labelledby="lDicas">
+        <p id="lDicas" style="margin:16px 0 4px;font-size:.92rem"><b>Quero receber conteúdos e dicas sobre o uso do sistema</b> (marque pelo menos uma opção)</p>
+        <label for="dicasEmail"><input type="checkbox" id="dicasEmail" name="dicasEmail"> Por e-mail</label>
+        <label for="dicasWhatsapp"><input type="checkbox" id="dicasWhatsapp" name="dicasWhatsapp"> Por WhatsApp</label>
       </div>
       <input class="hp" type="text" name="website" id="website" tabindex="-1" autocomplete="off" aria-hidden="true">
       <p style="margin:10px 0 8px;font-size:.92rem;text-align:center"><b>Sem cartão. Nada será cobrado automaticamente.</b> Você escolhe um plano depois do teste.</p>
@@ -328,7 +335,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
 var cp=''; try{var q2=new URLSearchParams(location.search);cp=q2.get('campanha')||[q2.get('utm_campaign'),q2.get('utm_term'),q2.get('utm_content')].filter(Boolean).join(' | ')||sessionStorage.getItem('gt-camp')||'';}catch(e){}
     var ck=''; try{var mc=document.cookie.match(/(?:^|; )_ga=([^;]+)/); ck=mc?mc[1]:'';}catch(e){}
     var cl=cliqueAnuncio();
-    var d={gaClientId:ck,empresa:f.empresa.value.trim(),nome:f.nome.value.trim(),email:f.email.value.trim(),whatsapp:f.whatsapp.value.trim(),segmento:f.segmento.value,website:f.website.value,origem:og,campanha:cp,osMes:f.osMes.value,usaHoje:f.usaHoje.value,gclid:cl.gclid||'',gbraid:cl.gbraid||'',wbraid:cl.wbraid||'',utmSource:cl.utm_source||'',utmMedium:cl.utm_medium||''};
+    var d={gaClientId:ck,empresa:f.empresa.value.trim(),nome:f.nome.value.trim(),email:f.email.value.trim(),whatsapp:f.whatsapp.value.trim(),segmento:f.segmento.value,website:f.website.value,origem:og,campanha:cp,osMes:f.osMes.value,usaHoje:f.usaHoje.value,dicasEmail:f.dicasEmail.checked,dicasWhatsapp:f.dicasWhatsapp.checked,gclid:cl.gclid||'',gbraid:cl.gbraid||'',wbraid:cl.wbraid||'',utmSource:cl.utm_source||'',utmMedium:cl.utm_medium||''};
     if(!d.segmento) return bad('segmento','Escolha o tipo de negócio: assistência técnica, barbearia ou salão.');
     if(d.empresa.length<2) return bad('empresa','Falta preencher o campo "Nome da empresa" (logo acima, na lista).');
     if(d.nome.length<2) return bad('nome','Falta preencher o campo "Nome" (o primeiro da lista).');
@@ -337,6 +344,7 @@ var cp=''; try{var q2=new URLSearchParams(location.search);cp=q2.get('campanha')
     if(fix[dom]) return bad('email','Confira o e-mail: você quis dizer '+d.email.split('@')[0]+'@'+fix[dom]+'? Ele será o seu login.');
     segAtual=d.segmento;
     var zap=d.whatsapp.replace(/\D/g,''); if(zap.length<10||zap.length>13) return bad('whatsapp','Informe o WhatsApp com DDD: é nele que chegam o código de confirmação e a sua senha provisória.');
+    if(!d.dicasEmail&&!d.dicasWhatsapp) return bad('dicasEmail','Marque pelo menos uma opção em "Quero receber conteúdos e dicas sobre o uso do sistema": por e-mail e/ou por WhatsApp.');
     var cod=document.getElementById('cod'), codInput=document.getElementById('codigo');
     if(!cod.hidden){
       var c=codInput.value.replace(/\D/g,'');
