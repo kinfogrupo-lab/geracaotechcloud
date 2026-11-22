@@ -65,6 +65,34 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18090804606"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18090804606');
 document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"],a[href*="whatsapp.com/send"]'):null;if(a&&window.gtag){try{gtag('event','conversion',{'send_to':'AW-18090804606/joOVCNGkpJ0dEP6Kr7JD'});}catch(x){}}},true);</script>
+
+<style>
+/* ---- Revisão de layout 22/11/2026 ---- */
+.micro{font-size:12.5px;color:var(--cinza,#9FB0C6)}
+.btn .sub,.b .sub{display:block;font-size:11.5px;font-weight:500;opacity:.78;margin-top:3px;line-height:1.2;letter-spacing:0}
+.ctas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: stretch; max-width: 700px }
+.ctas.two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 560px }
+.ctas.center { margin-inline: auto }
+.ctas > .btn { width: 100%; min-height: 56px; margin: 0; padding: 14px 16px; font-size: 15px; line-height: 1.2; text-align: center; box-sizing: border-box }
+.cta-links { margin: 14px 0 0; font-size: 14.5px; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline }
+.cta-links a { color: var(--ciano); font-weight: 600; text-decoration: none }
+.cta-links .muted { color: var(--cinza) }
+.hero .wrap { align-items: start }
+.hero-art { display: grid; gap: 14px; justify-items: center; min-width: 0 }
+.hero-art .scanmock { width: 100% }
+.hero-agendar { display: grid; gap: 8px; justify-items: center; width: 100% }
+.hero-agendar .btn { width: min(100%, 360px); min-height: 56px; margin: 0; padding: 14px 16px; font-size: 15px; box-sizing: border-box }
+.hero-agendar .small { color: var(--ciano); font-weight: 600; text-decoration: none }
+/* preços: os três números entram na coluna da calculadora (o cartão da direita é mais alto e deixava um buraco) */
+.col-calc { min-width: 0 }
+.kpi-stack { display: grid; gap: 14px; margin-top: 18px }
+.kpi-stack .card { display: flex; align-items: center; gap: 18px; padding: 18px 20px }
+.kpi-stack .kpi { font-size: 28px; flex: 0 0 auto }
+.kpi-stack .kpi-label { font-size: 11.5px; line-height: 1.45; overflow-wrap: anywhere }
+.vcard-bloco { max-width: 760px; margin: 26px auto 0 }
+@media (max-width: 860px) { .hero-agendar .btn { width: 100% } }
+@media (max-width: 700px) { .ctas, .ctas.two { grid-template-columns: minmax(0, 1fr); max-width: none } }
+</style>
 </head>
 <body>
 <header class="top site home">
@@ -96,18 +124,18 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e
       <div class="badge"><b id="trialBadge">14 dias grátis</b> · Sem cartão · <span id="promoBadge">Sem fidelidade</span></div>
       <h1 id="heroTitle">Sua portaria organizada em <span>minutos</span>.</h1>
       <p class="muted" id="heroSub" style="font-size:17px;max-width:44ch">O porteiro aponta a câmera para a etiqueta, o sistema lê sozinho e deixa pronto o aviso no WhatsApp do morador, com o código de retirada. Histórico de cada entrega, do recebimento à retirada.</p>
-      <div class="row" style="margin-top:22px">
-        <a class="btn primary big" style="width:auto"  id="ctaHero" href="https://condominios.ginfotecn.com/?cadastro=1">Cadastre seu condomínio grátis</a>
-        <a class="btn ghost big" style="width:auto" id="ctaWhats" href="https://wa.me/554198069934?text=Quero%20saber%20mais%20do%20sistema%20para%20condom%C3%ADnios" target="_blank" rel="noopener">Falar com especialista</a>
-        <a class="btn ghost big" style="width:auto" href="https://condominios.ginfotecn.com/agendar" target="_blank" rel="noopener">Agendar demonstração</a>
-        <a class="small" style="align-self:center" href="https://wa.me/554198069934?text=Quero%20saber%20mais%20do%20sistema%20para%20condom%C3%ADnios" target="_blank" rel="noopener">ou fale no WhatsApp</a>
+      <div class="ctas two" style="margin-top:22px">
+        <a class="btn primary big" id="ctaHero" href="https://condominios.ginfotecn.com/?cadastro=1">Cadastre seu condomínio grátis</a>
+        <a class="btn ghost big" id="ctaWhats" href="https://wa.me/554198069934?text=Quero%20saber%20mais%20do%20sistema%20para%20condom%C3%ADnios" target="_blank" rel="noopener">Falar com especialista</a>
       </div>
+      <p class="cta-links"><a href="https://condominios.ginfotecn.com/demonstracao" target="_blank" rel="noopener">&#9654;&nbsp; Ver a demonstração em vídeo</a><span class="muted">2 minutos, sem cadastro</span></p>
       <div class="stats">
         <div class="card"><div class="kpi">1 toque</div><div class="kpi-label">para registrar e avisar o morador</div></div>
         <div class="card"><div class="kpi">Sem internet</div><div class="kpi-label">o registro fica na fila e sincroniza depois</div></div>
         <div class="card"><div class="kpi">Código</div><div class="kpi-label">de retirada diferente a cada encomenda</div></div>
       </div>
     </div>
+    <div class="hero-art">
     <div class="scanmock">
       <div class="laser"></div>
       <svg viewBox="0 0 220 170" width="72%" aria-hidden="true">
@@ -122,6 +150,12 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e
       <div class="tag t1">Etiqueta lida</div>
       <div class="tag t2">Apto 402 · Bloco A</div>
       <div class="tag t3">Aviso pronto no WhatsApp</div>
+    </div>
+    <div class="hero-agendar">
+      <a class="btn ghost big" href="https://condominios.ginfotecn.com/agendar" target="_blank" rel="noopener">Agendar demonstração</a>
+      <span class="micro">Demonstração ao vivo, sem compromisso</span>
+      <a class="small" href="https://wa.me/554198069934?text=Quero%20saber%20mais%20do%20sistema%20para%20condom%C3%ADnios" target="_blank" rel="noopener">ou fale no WhatsApp</a>
+    </div>
     </div>
   </div>
 </section>
@@ -196,6 +230,7 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e
       <div class="plans" id="tierTable" style="margin-top:22px"></div>
 
     <div class="sliderwrap" style="margin-top:26px">
+      <div class="col-calc">
       <div class="card panel">
         <div class="sliderline"><input type="range" id="unitsRange" min="1" max="2000" step="1" value="240" aria-label="Número de unidades"><div class="num"><span id="unitsNum">240</span><span class="muted" style="font-size:14px;font-weight:400"> unidades</span></div></div>
         <div class="scale"><span>1</span><span>500</span><span>1000</span><span>1500</span><span>2000+</span></div>
@@ -212,10 +247,15 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e
         <a class="btn primary big" style="margin-top:16px"  id="ctaCalc" href="https://condominios.ginfotecn.com/?cadastro=1">Cadastre seu condomínio grátis</a>
         <p class="center small muted" style="margin-top:12px">14 dias grátis · Sem cartão · Cancele quando quiser</p>
       </div>
+      <div class="kpi-stack">
+      <div class="card panel"><div class="kpi">R$ <span id="kFrom">79</span></div><div class="kpi-label">por mês para prédios de até 20 unidades, tudo incluído</div></div>
+      <div class="card panel"><div class="kpi" id="kTrial">14 dias</div><div class="kpi-label">de teste grátis, sem cartão</div></div>
+      <div class="card panel"><div class="kpi">0</div><div class="kpi-label">módulos pagos por fora</div></div>
+      </div>
+      </div>
 
       <div class="card panel">
-        <div class="vcard"><video controls playsinline preload="none" poster="https://condominios.ginfotecn.com/assets/video-recebimento-4-passos-poster.jpg" src="https://condominios.ginfotecn.com/assets/video-recebimento-4-passos.mp4" aria-label="Vídeo: o recebimento de uma encomenda em 4 passos"></video><p class="small muted">Veja o recebimento em 4 passos, em 55 segundos.</p></div>
-        <h3 style="margin-top:18px">Tudo incluído, sem pegadinha</h3>
+        <h3>Tudo incluído, sem pegadinha</h3>
         <div class="list" id="included"></div>
         <div class="row" style="margin-top:16px;border-top:var(--borda);padding-top:14px">
           <span class="pill ativo"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><path d="M4 12.5 9 18 20 6"/></svg> Sem fidelidade</span>
@@ -223,18 +263,12 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="grid g3">
-      <div class="card panel"><div class="kpi">R$ <span id="kFrom">79</span></div><div class="kpi-label">por mês para prédios de até 20 unidades, tudo incluído</div></div>
-      <div class="card panel"><div class="kpi" id="kTrial">14 dias</div><div class="kpi-label">de teste grátis, sem cartão</div></div>
-      <div class="card panel"><div class="kpi">0</div><div class="kpi-label">módulos pagos por fora</div></div>
+    <div class="card panel vcard-bloco">
+        <div class="vcard"><video controls playsinline preload="none" poster="https://condominios.ginfotecn.com/assets/video-recebimento-4-passos-poster.jpg" src="https://condominios.ginfotecn.com/assets/video-recebimento-4-passos.mp4" aria-label="Vídeo: o recebimento de uma encomenda em 4 passos"></video><p class="small muted">Veja o recebimento em 4 passos, em 55 segundos.</p></div>
     </div>
   </div>
 </section>
+
 
 <section class="section faq" id="faq">
   <div class="wrap">
@@ -248,10 +282,10 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e
     <div class="card panel hi center" style="padding:40px 24px">
       <h2 style="margin-bottom:8px">Comece hoje mesmo</h2>
       <p class="muted" style="max-width:56ch;margin:0 auto 20px">Cadastre o condomínio, importe os moradores por planilha e faça o primeiro registro em minutos. Sem cartão de crédito.</p>
-      <div class="row center" style="justify-content:center">
-        <a class="btn primary big" style="width:auto" href="https://condominios.ginfotecn.com/?cadastro=1">Testar grátis por <span id="ctaTrialDays">14 dias</span></a>
-        <a class="btn ghost big" style="width:auto" id="ctaWhats2" href="https://wa.me/554198069934?text=Quero%20saber%20mais%20do%20sistema%20para%20condom%C3%ADnios" target="_blank" rel="noopener">Tirar dúvidas no WhatsApp</a>
-        <a class="btn ghost big" style="width:auto" href="https://condominios.ginfotecn.com/agendar" target="_blank" rel="noopener">Agendar demonstração</a>
+      <div class="ctas center">
+        <a class="btn primary big" href="https://condominios.ginfotecn.com/?cadastro=1">Testar grátis por <span id="ctaTrialDays">14 dias</span></a>
+        <a class="btn ghost big" id="ctaWhats2" href="https://wa.me/554198069934?text=Quero%20saber%20mais%20do%20sistema%20para%20condom%C3%ADnios" target="_blank" rel="noopener">Tirar dúvidas no WhatsApp</a>
+        <a class="btn ghost big" href="https://condominios.ginfotecn.com/agendar" target="_blank" rel="noopener"><span>Agendar demonstração<span class="sub">Demonstração ao vivo, sem compromisso</span></span></a>
       </div>
     </div>
   </div>
