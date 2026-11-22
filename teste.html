@@ -88,7 +88,18 @@ fbq('init','1566241344728350');fbq('track','PageView');
 </style>
 </head>
 <body>
-<header><img src="https://ginfotecn.com/logo.1779470608.png" alt="Geração Tech"><a href="/">Geração Tech Soluções Digitais</a></header>
+<header class="topo-teste"><a href="/" class="topo-marca"><img src="https://ginfotecn.com/logo.1779470608.png" alt="Geração Tech"><span>Geração Tech Soluções Digitais</span></a>
+<nav class="topo-links" aria-label="Menu do site"><a id="voltar" href="/" class="topo-voltar">← Voltar</a><a href="/">Início</a><a href="/assistencia.html">Assistência técnica</a><a href="/barbearia-salao.html">Barbearia e salão</a></nav></header>
+<style>
+.topo-teste{max-width:none;margin:0;position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;padding:10px 16px;background:rgba(5,9,18,.96);border-bottom:1px solid rgba(255,255,255,.12);backdrop-filter:blur(6px)}
+.topo-teste .topo-marca{display:flex;align-items:center;gap:10px;font-weight:700;color:inherit;text-decoration:none;min-width:0}
+.topo-teste .topo-marca img{height:30px;width:30px;object-fit:contain;flex:0 0 auto}
+.topo-teste .topo-links{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-left:auto}
+.topo-teste .topo-links a{color:inherit;text-decoration:none;font-size:.92rem;padding:6px 4px}
+.topo-teste .topo-links a:hover{text-decoration:underline}
+.topo-teste .topo-voltar{font-weight:700;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:6px 14px!important}
+@media (max-width:560px){.topo-teste .topo-links{margin-left:0;width:100%}.topo-teste .topo-marca span{font-size:.9rem}}
+</style>
 <main>
   <section>
     <h1>Comece seu teste <span>grátis por 7 dias</span></h1>
@@ -225,6 +236,9 @@ fbq('init','1566241344728350');fbq('track','PageView');
   var API='https://webhook.ginfotecn.com/teste';
   var f=document.getElementById('f'), b=document.getElementById('b'), m=document.getElementById('m');
   var p=new URLSearchParams(location.search).get('tipo'); if(p && ['assistencia','barbearia','salao'].indexOf(p)>=0) document.getElementById('segmento').value=p;
+  // Botão Voltar: volta para a página de onde veio; se abriu direto (ex.: atalho do aparelho), vai para a página de venda do tipo escolhido.
+  (function(){var v=document.getElementById('voltar'); if(!v) return; var tp=p||''; var dest=(tp==='barbearia'||tp==='salao')?'/barbearia-salao.html':(tp==='assistencia'?'/assistencia.html':'/'); v.href=dest;
+    v.addEventListener('click',function(e){ try{ if(document.referrer && new URL(document.referrer).host===location.host && history.length>1){ e.preventDefault(); history.back(); } }catch(x){} });})();
   var segAtual='';
   // Perguntas opcionais: mudam o texto conforme o tipo de negócio (assistência x barbearia/salão). Não bloqueiam o cadastro.
   function perguntas(){
