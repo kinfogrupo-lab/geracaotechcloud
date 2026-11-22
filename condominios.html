@@ -99,6 +99,8 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e
       <div class="row" style="margin-top:22px">
         <a class="btn primary big" style="width:auto"  id="ctaHero" href="https://condominios.ginfotecn.com/?cadastro=1">Cadastre seu condomínio grátis</a>
         <a class="btn ghost big" style="width:auto" id="ctaWhats" href="https://wa.me/554198069934?text=Quero%20saber%20mais%20do%20sistema%20para%20condom%C3%ADnios" target="_blank" rel="noopener">Falar com especialista</a>
+        <a class="btn ghost big" style="width:auto" href="https://condominios.ginfotecn.com/agendar" target="_blank" rel="noopener">Agendar demonstração</a>
+        <a class="small" style="align-self:center" href="https://wa.me/554198069934?text=Quero%20saber%20mais%20do%20sistema%20para%20condom%C3%ADnios" target="_blank" rel="noopener">ou fale no WhatsApp</a>
       </div>
       <div class="stats">
         <div class="card"><div class="kpi">1 toque</div><div class="kpi-label">para registrar e avisar o morador</div></div>
@@ -203,6 +205,7 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e
           <div class="muted small"><span id="cycleName">Completo · Mensal</span></div>
           <div class="strike" id="priceFull" style="display:none">R$ 261,60</div>
           <div class="big" id="priceMain">R$ 261,60</div>
+          <div class="muted small" id="priceUnitMonth">R$ 1,09 por unidade/mês</div>
           <div class="muted small" id="pricePerUnit">Condomínio grande · 101 unidades ou mais · R$ 1,09 por unidade</div>
           <div class="small muted" id="priceTotal" style="margin-top:6px"></div>
         </div>
@@ -248,6 +251,7 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e
       <div class="row center" style="justify-content:center">
         <a class="btn primary big" style="width:auto" href="https://condominios.ginfotecn.com/?cadastro=1">Testar grátis por <span id="ctaTrialDays">14 dias</span></a>
         <a class="btn ghost big" style="width:auto" id="ctaWhats2" href="https://wa.me/554198069934?text=Quero%20saber%20mais%20do%20sistema%20para%20condom%C3%ADnios" target="_blank" rel="noopener">Tirar dúvidas no WhatsApp</a>
+        <a class="btn ghost big" style="width:auto" href="https://condominios.ginfotecn.com/agendar" target="_blank" rel="noopener">Agendar demonstração</a>
       </div>
     </div>
   </div>
@@ -298,7 +302,7 @@ const FEATS = [
       ['Moradores sem limite', 'Cadastro completo com apartamento e contato, sem pagar a mais por morador'],
       ['Relatórios e histórico', 'Entregas e retiradas, com quem atendeu cada uma'],
       ['Porteiros sem limite', 'Quantos operadores a portaria precisar, ao mesmo tempo'],
-      ['Suporte pelo WhatsApp', 'Atendimento da equipe Geração Tech'],
+      ['Suporte pelo WhatsApp', 'Atendimento humano, segunda a sexta, das 9h às 17h'],
       ['Atualizações gratuitas', 'Sempre a versão mais recente, sem custo extra'],
       ['Multi-condomínios', 'Ideal para síndicos e administradoras'],
       ['Sem fidelidade', 'Cancele a qualquer momento, direto pelo painel'],
@@ -326,8 +330,9 @@ function render(){
  setT('#cycleName','Tudo incluído · '+cur.label+(cur.off?' com '+Math.round(cur.off*100)+'% OFF':''));
  var pf=$('#priceFull'); pf.style.display=cur.off?'':'none'; pf.textContent=brl(base);
  setT('#priceMain',brl(q.monthly));
+ setT('#priceUnitMonth',brl(r2(q.monthly/units))+' por unidade/mês');
  setT('#pricePerUnit',t.label+' · '+t.range+' · '+(t.flat!=null?'preço fixo':brl(t.perUnit)+' por unidade')+', sem limite de encomendas');
- setT('#kFrom',String(TIERS[0].flat));
+ setT('#kFrom',TIERS[0].flat.toFixed(2).replace('.',','));
  setT('#priceTotal',cycle==='mensal'?(t.flat!=null?'Valor fixo da faixa “'+t.label+'” ('+t.range+'): '+brl(t.flat)+'/mês':(units>=2000?'2000+':units)+' unidades × '+brl(t.perUnit)):'Total de '+brl(q.total)+' a cada '+cur.months+' meses');
  var href='https://condominios.ginfotecn.com/?cadastro=1&unidades='+units+'&ciclo='+cycle;
  [].forEach.call(document.querySelectorAll('a[href*="cadastro=1"]'),function(a){a.setAttribute('href',href)});
