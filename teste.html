@@ -107,7 +107,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
     <h2 style="font-size:1.05rem;margin:22px 0 0">Como funciona, em 3 passos</h2>
     <ol class="passos">
       <li><b>Preencha o cadastro</b> e confirme o seu WhatsApp com um código.</li>
-      <li><b>Criamos o seu sistema</b> em cerca de 3 minutos.</li>
+      <li><b>Criamos o seu sistema</b> automaticamente.</li>
       <li><b>Você recebe no WhatsApp</b> o endereço, o login e uma senha provisória. Na primeira entrada, você cria a sua própria senha.</li>
     </ol>
     <div style="margin:18px 0 6px;text-align:center">
@@ -179,7 +179,7 @@ fbq('init','1566241344728350');fbq('track','PageView');
     </form>
     <div id="espera" class="painel" hidden aria-live="polite">
       <h2>Estamos criando o seu sistema</h2>
-      <p>Isso leva <b>cerca de 3 minutos</b>. Está tudo certo: é só aguardar nesta página.</p>
+      <p>Está tudo certo: é só aguardar nesta página.</p>
       <div class="barra" aria-hidden="true"><i id="barra"></i></div>
       <small id="tempo"></small>
       <ol class="etapas">
@@ -274,8 +274,8 @@ fbq('init','1566241344728350');fbq('track','PageView');
     var s=Math.max(0,Math.floor((Date.now()-t0)/1000)), li=esp.querySelectorAll('.etapas li'), at=0, i;
     for(i=0;i<MARCOS.length;i++) if(s>=MARCOS[i]) at=i;
     for(i=0;i<li.length;i++) li[i].className=i<at?'feito':i===at?'agora':'';
-    document.getElementById('barra').style.width=Math.min(96,3+s/185*92)+'%';
-    document.getElementById('tempo').textContent=s<=195?('Tempo: '+Math.floor(s/60)+':'+('0'+s%60).slice(-2)+' de cerca de 3:00'):'Quase lá. Às vezes leva um pouquinho mais de 3 minutos; continua tudo certo.';
+    document.getElementById('barra').style.width=Math.min(96,3+s/110*92)+'%';
+    document.getElementById('tempo').textContent=s<=120?('Tempo: '+Math.floor(s/60)+':'+('0'+s%60).slice(-2)):'Quase lá, continua tudo certo.';
   }
   function iniciarEspera(desde){
     f.style.display='none'; m.hidden=true; pr.hidden=true; esp.hidden=false; t0=desde||Date.now(); pintar();
